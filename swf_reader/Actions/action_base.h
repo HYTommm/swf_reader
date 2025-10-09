@@ -9,6 +9,7 @@
 
 #pragma once
 #include "cpp_base_type.h"
+#include "iaction_visitor.h"
 
 enum class ActionCode : u8;
 
@@ -18,7 +19,7 @@ namespace swf_reader::actions {
     public:
         ActionCode action_code;
 
-        //template<typename TArg, typename TResult>
-        //TResult& accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg);
+        template<typename TArg, typename TResult>
+        TResult& accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg);
     };
 }

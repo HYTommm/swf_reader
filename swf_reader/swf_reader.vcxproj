@@ -105,6 +105,8 @@
       <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +143,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/std:c++17</AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -153,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClipActions\clip_actions_stream_ext.cpp" />
     <ClCompile Include="Data\color_transform_stream_ext.cpp" />
     <ClCompile Include="my_main.cpp" />
     <ClCompile Include="swf_file.cpp" />
@@ -166,7 +170,9 @@
   <ItemGroup>
     <ClInclude Include="Actions\action_base.h" />
     <ClInclude Include="Actions\action_code.h" />
+    <ClInclude Include="Actions\iaction_visitor.h" />
     <ClInclude Include="ClipActions\clip_actions_list.h" />
+    <ClInclude Include="ClipActions\clip_actions_stream_ext.h" />
     <ClInclude Include="ClipActions\clip_action_record.h" />
     <ClInclude Include="ClipActions\clip_event_flags.h" />
     <ClInclude Include="cpp_base_type.h" />

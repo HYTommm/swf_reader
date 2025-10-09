@@ -94,7 +94,7 @@ namespace swf_reader::tags {
 		if (tag.flags.get(PlaceObject2Flag::HasName))           tag.name = reader.read_string();
 		if (tag.flags.get(PlaceObject2Flag::HasClipDepth))      tag.clip_depth = reader.read_ui16();
 		// TODO: read clip actions
-		//if (tag.flags.get(PlaceObject2Flag::HasClipActions))
+		if (tag.flags.get(PlaceObject2Flag::HasClipActions))
 
 		return tag;
 	}

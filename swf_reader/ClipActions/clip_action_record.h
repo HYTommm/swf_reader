@@ -15,6 +15,7 @@ namespace swf_reader::clip_actions {
 	class ClipActionRecord {
 	public:
 		ClipEventFlags flags;
+        u32 offset;
 		u8 key_code;
 		Vec<Box<actions::ActionBase>> actions;
         ClipActionRecord() = default;
