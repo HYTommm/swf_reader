@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Data">
+      <UniqueIdentifier>{8306d1de-59bd-4297-8b3e-de070a4080e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tags">
+      <UniqueIdentifier>{855c47d0-3e53-49ca-9f20-19a779467afd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Actions">
+      <UniqueIdentifier>{55678f1e-42c2-40b8-b14e-498ac7c48e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ClipActions">
+      <UniqueIdentifier>{9f098185-b006-4c20-970c-d3821c5de86b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Data">
+      <UniqueIdentifier>{77617121-213a-4a68-bbb1-67b1ae08bddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tags">
+      <UniqueIdentifier>{6cc70683-d2f9-433a-b0de-d2d3d68b62e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Actions">
+      <UniqueIdentifier>{c5123344-4b00-461d-9d05-975105d6d18a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ClipActions">
+      <UniqueIdentifier>{7524cc1e-756d-4be4-9972-5f3f0743902c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tags\DisplayListTags">
+      <UniqueIdentifier>{b7f58131-9536-4393-96bd-7180d65024a7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="my_main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="swf_file.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="swf_stream_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="swf_stream_reader_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="swf_zip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\color_transform_stream_ext.cpp">
+      <Filter>源文件\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Tags\swf_tag_base.cpp">
+      <Filter>源文件\Tags</Filter>
+    </ClCompile>
+    <ClCompile Include="Tags\swf_tag_deserializer.cpp">
+      <Filter>源文件\Tags</Filter>
+    </ClCompile>
+    <ClCompile Include="Tags\tag_stream_ext.cpp">
+      <Filter>源文件\Tags</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp_base_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="iswf_stream_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_file.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_file_info.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_format.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_stream_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_stream_reader_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="swf_zip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\color_transform_rgb.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\color_transform_rgba.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\color_transform_stream_ext.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_header.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_matrix.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_rect.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_rgb.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_rgba.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_symbol_reference.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\swf_vector.h">
+      <Filter>头文件\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\action_base.h">
+      <Filter>头文件\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipActions\clip_action_record.h">
+      <Filter>头文件\ClipActions</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipActions\clip_event_flags.h">
+      <Filter>头文件\ClipActions</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\iswf_tag_visitor.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tag_base.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tag_data.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tag_deserializer.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tag_forward_decls.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tag_types.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\swf_tags_factory.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\tag_stream_ext.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\action_code.h">
+      <Filter>头文件\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipActions\clip_actions_list.h">
+      <Filter>头文件\ClipActions</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\display_list_base_tag.h">
+      <Filter>头文件\Tags\DisplayListTags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object2_flag.h">
+      <Filter>头文件\Tags\DisplayListTags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object2_tag.h">
+      <Filter>头文件\Tags\DisplayListTags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object_tag.h">
+      <Filter>头文件\Tags\DisplayListTags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\unknown_tag.h">
+      <Filter>头文件\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object_base_tag.h">
+      <Filter>头文件\Tags\DisplayListTags</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
