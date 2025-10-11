@@ -17,9 +17,21 @@ namespace swf_reader::actions {
 
 	class ActionBase {
     public:
-        ActionCode action_code;
+        ActionBase() = default;
+		virtual ~ActionBase() = default;
 
-        template<typename TArg, typename TResult>
-        TResult& accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg);
+        // 删除拷贝操作
+        ActionBase(const ActionBase&) = delete;
+        ActionBase& operator=(const ActionBase&) = delete;
+
+        // 可移动
+        ActionBase(ActionBase&&) = default;
+        ActionBase& operator=(ActionBase&&) = default;
+
+		ActionCode action_code;
+
+        //template<typename TArg, typename TResult>
+        //TResult& accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg);
+        virtual ActionBase& accept_visitor(IActionVisitor<u8, ActionBase&>&, u8);
     };
 }

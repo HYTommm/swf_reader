@@ -13,8 +13,8 @@
 namespace swf_reader::actions {
 	class ActionBase;
 
-	class ActionReader : IActionVisitor<u8, ActionBase> {
+	class ActionReader : IActionVisitor<u8, ActionBase&> {
 	public:
-
+		ActionBase& visit(ActionEnd& action, u8 arg) override;
 	};
 }

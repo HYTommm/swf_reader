@@ -19,5 +19,9 @@ namespace swf_reader::tags::display_list_tags {
 		PlaceObjectTag() {
 			tag_type = SwfTagType::PlaceObject;
 		}
+
+		SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override {
+			return visitor.visit(*this, reader);
+		}
 	};
 }

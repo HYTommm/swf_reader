@@ -10,7 +10,7 @@
 #include "action_code.h"
 
 namespace swf_reader::actions {
-	template <typename TArg, typename TResult>
+	/*template <typename TArg, typename TResult>
 	TResult& ActionBase::accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg)
 	{
 		switch (action_code)
@@ -18,5 +18,5 @@ namespace swf_reader::actions {
 			case ActionCode::End:
 				return visitor.visit();
 		}
-	}
+	}*/
 }

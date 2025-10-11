@@ -36,6 +36,7 @@ namespace swf_reader::tags
 		[[nodiscard]] SwfFile& swf_file() const;
 		SwfTagBase& visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader) override;
 		SwfTagBase& visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader) override;
+		SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 
 
 		// ... 其他 Visit 方法的实现将继续

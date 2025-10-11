@@ -17,5 +17,11 @@ namespace swf_reader::tags {
 		{
 			tag_type = SwfTagType::Unknown;
 		}
+
+		SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
+		{
+			return visitor.visit(*this, reader);
+			//return visitor;
+		}
 	};
 }

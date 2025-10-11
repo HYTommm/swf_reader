@@ -7,9 +7,17 @@
  * Licensed under the MIT License.
  */
 
-#include "iaction_visitor.h"
+#include "action_reader.h"
+
+//#include "action_base.h"
+#include "action_end.h"
 
 namespace swf_reader::actions {
 
-	//TResult IActionVisitor::visit(ActionEnd& action, TArg arg)
+	ActionBase& ActionReader::visit(ActionEnd& action, u8 arg)
+	{
+		return action;
+	}
+
+
 }

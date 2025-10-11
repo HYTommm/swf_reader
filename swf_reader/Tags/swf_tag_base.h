@@ -46,11 +46,11 @@ namespace swf_reader::tags
 		/// <summary>
             /// Accept visitor.
             /// </summary>
-		template<typename TArg, typename TResult>
-		TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
-		
+		//template<typename TArg, typename TResult>
+		//TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
+		virtual SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&, ISwfStreamReader&) = 0;
 	};
-	extern template SwfTagBase& SwfTagBase::accept_visitor<ISwfStreamReader, SwfTagBase>(
-		ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&,
-		ISwfStreamReader&);
+	//extern template SwfTagBase& SwfTagBase::accept_visitor<ISwfStreamReader, SwfTagBase>(
+	//	ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&,
+	//	ISwfStreamReader&);
 }

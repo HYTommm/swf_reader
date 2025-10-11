@@ -129,6 +129,6 @@ namespace swf_reader::tags
 //		virtual TResult& visit(DefineBinaryDataTag& tag, TArg& arg) = 0;
 //		virtual TResult& visit(DebugIDTag& tag,          TArg& arg) = 0;
 //		virtual TResult& visit(ProductInfoTag& tag,      TArg& arg) = 0;
-//		virtual TResult& visit(UnknownTag& tag,          TArg& arg) = 0;
+		virtual TResult& visit(UnknownTag& tag,          TArg& arg) = 0;
 	};
 }

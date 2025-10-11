@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include <cstdint>
 #include <memory>
+#include <optional>
 #include <unordered_map>
 #include <vector>
-#include <optional>
 
 using u8 = uint8_t;
 using u16 = uint16_t;
