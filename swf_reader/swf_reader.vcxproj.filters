@@ -72,6 +72,12 @@
     <ClCompile Include="ClipActions\clip_actions_stream_ext.cpp">
       <Filter>源文件\ClipActions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\action_base.cpp">
+      <Filter>源文件\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\action_reader.cpp">
+      <Filter>源文件\Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -192,6 +198,12 @@
       <Filter>头文件\ClipActions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\iaction_visitor.h">
+      <Filter>头文件\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\action_end.h">
+      <Filter>头文件\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\action_reader.h">
       <Filter>头文件\Actions</Filter>
     </ClInclude>
   </ItemGroup>

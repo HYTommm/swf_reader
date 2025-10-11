@@ -12,6 +12,11 @@
 #include "iswf_tag_visitor.h"
 #include "swf_tag_types.h"
 
+namespace swf_reader
+{
+	class ISwfStreamReader;
+}
+
 namespace swf_reader::tags
 {
 	
@@ -45,5 +50,7 @@ namespace swf_reader::tags
 		TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
 		
 	};
-
+	extern template SwfTagBase& SwfTagBase::accept_visitor<ISwfStreamReader, SwfTagBase>(
+		ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&,
+		ISwfStreamReader&);
 }

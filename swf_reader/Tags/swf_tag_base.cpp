@@ -8,11 +8,9 @@
  */
 #include "swf_tag_base.h"
 
-#include <complex>
-
 #include "iswf_stream_reader.h"
-#include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
+#include "DisplayListTags/place_object_tag.h"
 
 namespace swf_reader::tags {
 	template <typename TArg, typename TResult>

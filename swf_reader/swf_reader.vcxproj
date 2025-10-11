@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actions\action_base.cpp" />
+    <ClCompile Include="Actions\action_reader.cpp" />
     <ClCompile Include="ClipActions\clip_actions_stream_ext.cpp" />
     <ClCompile Include="Data\color_transform_stream_ext.cpp" />
     <ClCompile Include="my_main.cpp" />
@@ -170,6 +172,8 @@
   <ItemGroup>
     <ClInclude Include="Actions\action_base.h" />
     <ClInclude Include="Actions\action_code.h" />
+    <ClInclude Include="Actions\action_end.h" />
+    <ClInclude Include="Actions\action_reader.h" />
     <ClInclude Include="Actions\iaction_visitor.h" />
     <ClInclude Include="ClipActions\clip_actions_list.h" />
     <ClInclude Include="ClipActions\clip_actions_stream_ext.h" />

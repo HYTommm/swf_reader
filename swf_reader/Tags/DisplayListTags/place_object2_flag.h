@@ -49,11 +49,11 @@ namespace swf_reader::tags::display_list_tags {
     struct PlaceObject2Flags {
         PlaceObject2Flag flags;
 
-        [[nodiscard]] bool get(const PlaceObject2Flag mask) const noexcept
+        [[nodiscard]] constexpr bool get(const PlaceObject2Flag mask) const noexcept
         {
             return static_cast<bool>(flags & mask);
         }
-        void set(const PlaceObject2Flag mask, const bool value) noexcept
+        constexpr void set(const PlaceObject2Flag mask, const bool value) noexcept
         {
             if (value) flags |= mask;
             else flags &= ~mask;

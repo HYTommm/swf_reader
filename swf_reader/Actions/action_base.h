@@ -11,11 +11,11 @@
 #include "cpp_base_type.h"
 #include "iaction_visitor.h"
 
-enum class ActionCode : u8;
 
 namespace swf_reader::actions {
+	enum class ActionCode : u8;
 
-    class ActionBase {
+	class ActionBase {
     public:
         ActionCode action_code;
 
