@@ -78,6 +78,15 @@
     <ClCompile Include="Actions\action_reader.cpp">
       <Filter>源文件\Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgb.h">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\color_stream_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -86,7 +95,7 @@
     <ClInclude Include="cpp_base_type.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="iswf_stream_reader.h">
+    <ClInclude Include="i_swf_stream_reader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="swf_file.h">
@@ -146,7 +155,7 @@
     <ClInclude Include="ClipActions\clip_event_flags.h">
       <Filter>头文件\ClipActions</Filter>
     </ClInclude>
-    <ClInclude Include="Tags\iswf_tag_visitor.h">
+    <ClInclude Include="Tags\i_swf_tag_visitor.h">
       <Filter>头文件\Tags</Filter>
     </ClInclude>
     <ClInclude Include="Tags\swf_tag_base.h">
@@ -197,7 +206,7 @@
     <ClInclude Include="ClipActions\clip_actions_stream_ext.h">
       <Filter>头文件\ClipActions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\iaction_visitor.h">
+    <ClInclude Include="Actions\i_action_visitor.h">
       <Filter>头文件\Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\action_end.h">
@@ -206,5 +215,29 @@
     <ClInclude Include="Actions\action_reader.h">
       <Filter>头文件\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\shape_base_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\fillstyle_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgb_visitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgb_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\fillstyle_factory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\color_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-tidy" />
   </ItemGroup>
 </Project>

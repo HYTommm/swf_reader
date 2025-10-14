@@ -13,41 +13,38 @@
 #include <memory>
 #include <vector>
 
-#include "iswf_stream_reader.h"
+#include "i_swf_stream_reader.h"
 #include "swf_file_info.h"
 #include "Data/swf_header.h"
 #include "Tags/swf_tag_base.h"
 
-
 namespace swf_reader {
+	//class SwfTagDeserializer;
+	class SwfTagSerializer;
 
-    //class SwfTagDeserializer;
-    class SwfTagSerializer;
+	class SwfFile {
+	public:
 
-    class SwfFile {
-    public:
+		SwfFileInfo file_info;
+		data::SwfHeader header;
 
-        SwfFileInfo file_info;
-        data::SwfHeader header;
-        
-        Vec<Box<tags::SwfTagBase>> tags;
+		Vec<Box<tags::SwfTagBase>> tags;
 
-        SwfFile() = default;
-        ~SwfFile() = default;
+		SwfFile() = default;
+		~SwfFile() = default;
 
-        // 删除拷贝操作，允许移动操作
-        SwfFile(const SwfFile&) = delete;
-        SwfFile& operator=(const SwfFile&) = delete;
-        SwfFile(SwfFile&&) = default;
-        SwfFile& operator=(SwfFile&&) = default;
+		// 删除拷贝操作，允许移动操作
+		SwfFile(const SwfFile&) = delete;
+		SwfFile& operator=(const SwfFile&) = delete;
+		SwfFile(SwfFile&&) = default;
+		SwfFile& operator=(SwfFile&&) = default;
 
-        static Box<SwfFile> read_from(std::istream& stream);
+		static Box<SwfFile> read_from(std::istream& stream);
 
-    private:
-        Box<std::stringstream> decompressed_stream_;
-        static void read_tags(SwfFile& file, ISwfStreamReader& reader);
-        Box<ISwfStreamReader> get_swf_stream_reader(
-	        const SwfFileInfo& info, std::istream& stream);
-    };
-
+	private:
+		Box<std::stringstream> decompressed_stream_;
+		static void read_tags(SwfFile& file, ISwfStreamReader& reader);
+		Box<ISwfStreamReader> get_swf_stream_reader(
+			const SwfFileInfo& info, std::istream& stream);
+	};
 }

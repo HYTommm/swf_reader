@@ -10,13 +10,12 @@
 #pragma once
 #include "color_transform_rgb.h"
 #include "color_transform_rgba.h"
-#include "iswf_stream_reader.h"
-
+#include "i_swf_stream_reader.h"
 
 namespace swf_reader::data {
-    class ColorTransformStreamExt {
-    public:
-        static ColorTransformRGB read_color_transform_rgb(ISwfStreamReader& reader);
-        static ColorTransformRGBA read_color_transform_rgba(ISwfStreamReader& reader);
-    };
+	class ColorTransformStreamExt {
+	public:
+		static ColorTransformRGB read_color_transform_rgb(ISwfStreamReader& reader);
+		static ColorTransformRGBA read_color_transform_rgba(ISwfStreamReader& reader);
+	};
 }

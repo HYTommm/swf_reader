@@ -9,7 +9,7 @@
 
 #pragma once
 #include "cpp_base_type.h"
-#include "iswf_tag_visitor.h"
+#include "i_swf_tag_visitor.h"
 #include "swf_tag_types.h"
 
 namespace swf_reader
@@ -19,7 +19,6 @@ namespace swf_reader
 
 namespace swf_reader::tags
 {
-	
 	class SwfTagBase {
 	public:
 		SwfTagBase() = default;
@@ -34,18 +33,18 @@ namespace swf_reader::tags
 		SwfTagBase& operator=(SwfTagBase&&) = default;
 
 		/// <summary>
-            /// Gets swf tag type.
-            /// </summary>
+			/// Gets swf tag type.
+			/// </summary>
 		SwfTagType tag_type;
 
 		/// <summary>
-            /// Gets or sets rest data that is not parsed into properties.
-            /// </summary>
+			/// Gets or sets rest data that is not parsed into properties.
+			/// </summary>
 		Option<Vec<u8>> rest_data;
 
 		/// <summary>
-            /// Accept visitor.
-            /// </summary>
+			/// Accept visitor.
+			/// </summary>
 		//template<typename TArg, typename TResult>
 		//TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
 		virtual SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&, ISwfStreamReader&) = 0;

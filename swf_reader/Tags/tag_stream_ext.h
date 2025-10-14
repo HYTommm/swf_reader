@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "iswf_stream_reader.h"
+#include "i_swf_stream_reader.h"
 
 namespace swf_reader::tags
 {

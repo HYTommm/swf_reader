@@ -16,7 +16,6 @@ namespace swf_reader::actions {
 		IActionVisitor(IActionVisitor&&) = default;
 		IActionVisitor& operator=(IActionVisitor&&) = default;
 
-		virtual TResult& visit(ActionEnd& action, TArg arg);
-
+		virtual TResult& visit(ActionEnd& action, TArg arg) = 0;
 	};
 }
