@@ -21,6 +21,6 @@ namespace swf_reader::shapes::fillstyles
 		virtual ~FillStyleRgb() = default;
 
 		virtual FillStyleType get_type() const = 0;
-		virtual FillStyleRgb& accept_visitor(IFillStyleRGBVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) = 0;
+		virtual FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) = 0;
 	};
 }
