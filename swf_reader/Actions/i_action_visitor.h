@@ -1,4 +1,12 @@
-﻿#pragma once
+﻿/**
+ * @file    i_action_visitor.h
+ *
+ * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
+ * C++ port: Copyright (c) 2025 HYTomZ
+ *
+ * Licensed under the MIT License.
+ */
+#pragma once
 
 namespace swf_reader::actions {
 	class ActionEnd;
@@ -16,7 +24,6 @@ namespace swf_reader::actions {
 		IActionVisitor(IActionVisitor&&) = default;
 		IActionVisitor& operator=(IActionVisitor&&) = default;
 
-		virtual TResult& visit(ActionEnd& action, TArg arg);
-
+		virtual TResult& visit(ActionEnd& action, TArg arg) = 0;
 	};
 }

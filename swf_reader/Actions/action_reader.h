@@ -8,7 +8,7 @@
  */
 #pragma once
 #include "cpp_base_type.h"
-#include "iaction_visitor.h"
+#include "i_action_visitor.h"
 
 namespace swf_reader::actions {
 	class ActionBase;

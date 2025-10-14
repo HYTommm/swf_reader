@@ -7,8 +7,10 @@
  * Licensed under the MIT License.
  */
 #pragma once
+#include "clip_actions_list.h"
 #include "clip_event_flags.h"
 #include "cpp_base_type.h"
+#include "i_swf_stream_reader.h"
 
 namespace swf_reader
 {

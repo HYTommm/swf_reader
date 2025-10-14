@@ -1,5 +1,5 @@
 ﻿/**
- * @file    iswf_tag_visitor.h
+ * @file    i_swf_tag_visitor.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
  * C++ port: Copyright (c) 2025 HYTomZ
@@ -27,12 +27,12 @@ namespace swf_reader::tags
 		ISwfTagVisitor& operator=(ISwfTagVisitor&&) = default;
 
 #pragma region Display list tags
-		virtual TResult& visit(display_list_tags::PlaceObjectTag& tag,   TArg& arg) = 0;
-		virtual TResult& visit(display_list_tags::PlaceObject2Tag& tag,  TArg& arg) = 0;
-//		virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag,  TArg& arg) = 0;
-//		virtual TResult& visit(display_list_tags::RemoveObjectTag& tag,  TArg& arg) = 0;
-//		virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
-//		virtual TResult& visit(display_list_tags::ShowFrameTag& tag,     TArg& arg) = 0;
+		virtual TResult& visit(display_list_tags::PlaceObjectTag& tag, TArg& arg) = 0;
+		virtual TResult& visit(display_list_tags::PlaceObject2Tag& tag, TArg& arg) = 0;
+		//		virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag,  TArg& arg) = 0;
+		//		virtual TResult& visit(display_list_tags::RemoveObjectTag& tag,  TArg& arg) = 0;
+		//		virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
+		//		virtual TResult& visit(display_list_tags::ShowFrameTag& tag,     TArg& arg) = 0;
 #pragma endregion
 //
 //#pragma region Control tags
@@ -129,6 +129,6 @@ namespace swf_reader::tags
 //		virtual TResult& visit(DefineBinaryDataTag& tag, TArg& arg) = 0;
 //		virtual TResult& visit(DebugIDTag& tag,          TArg& arg) = 0;
 //		virtual TResult& visit(ProductInfoTag& tag,      TArg& arg) = 0;
-		virtual TResult& visit(UnknownTag& tag,          TArg& arg) = 0;
+		virtual TResult& visit(UnknownTag& tag, TArg& arg) = 0;
 	};
 }

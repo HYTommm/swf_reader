@@ -8,7 +8,7 @@
  */
 #include "swf_tag_base.h"
 
-#include "iswf_stream_reader.h"
+#include "i_swf_stream_reader.h"
 #include "DisplayListTags/place_object2_tag.h"
 #include "DisplayListTags/place_object_tag.h"
 

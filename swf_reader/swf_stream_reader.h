@@ -8,64 +8,59 @@
  */
 #pragma once
 
-#include "iswf_stream_reader.h"
+#include "i_swf_stream_reader.h"
 
 namespace swf_reader {
+	class SwfStreamReader : public ISwfStreamReader {
+	public:
+		explicit SwfStreamReader(std::istream& stream);
 
-    class SwfStreamReader : public ISwfStreamReader {
-    public:
-        explicit SwfStreamReader(std::istream& stream);
+		~SwfStreamReader() override = default;
+		SwfStreamReader(const SwfStreamReader&) = delete;
+		SwfStreamReader& operator=(const SwfStreamReader&) = delete;
 
+		SwfStreamReader(SwfStreamReader&&) = default;
+		SwfStreamReader& operator=(SwfStreamReader&&) = default;
 
-        ~SwfStreamReader() override = default;
-        SwfStreamReader(const SwfStreamReader&) = delete;
-        SwfStreamReader& operator=(const SwfStreamReader&) = delete;
+		[[nodiscard]] bool is_eof() const override;
+		[[nodiscard]] usize position() const override;
+		[[nodiscard]] usize bytes_left() const override;
 
-        SwfStreamReader(SwfStreamReader&&) = default;
-        SwfStreamReader& operator=(SwfStreamReader&&) = default;
+		f64 read_fixed8() override;
+		f64 read_fixed() override;
+		f64 read_fb(u32 bits) override;
 
-        [[nodiscard]] bool is_eof() const override;
-        [[nodiscard]] usize position() const override;
-        [[nodiscard]] usize bytes_left() const override;
+		u16 read_ui16() override;
+		i16 read_si16() override;
 
-        f64 read_fixed8() override;
-        f64 read_fixed() override;
-        f64 read_fb(u32 bits) override;
+		u32  read_ui32() override;
+		i32 read_si32() override;
 
-        u16 read_ui16() override;
-        i16 read_si16() override;
+		u64 read_ui64() override;
+		u32 read_encoded_u32() override;
 
-        u32  read_ui32() override;
-        i32 read_si32() override;
+		u8 read_byte() override;
+		Vec<u8> read_bytes(usize count) override;
+		Vec<u8> read_rest() override;
 
-        u64 read_ui64() override;
-        u32 read_encoded_u32() override;
+		std::string read_string() override;
 
-        u8 read_byte() override;
-        Vec<u8> read_bytes(usize count) override;
-        Vec<u8> read_rest() override;
+		f32 read_float() override;
+		f64 read_double() override;
+		f32 read_f16() override;
 
-        std::string read_string() override;
+		bool read_bit() override;
+		i32 read_sb(u32 count) override;
+		u32 read_ub(u32 count) override;
+		void align_to_byte() override;
 
-        f32 read_float() override;
-        f64 read_double() override;
-        f32 read_f16() override;
+	private:
+		struct BitContext {
+			u8 cached_byte{ 0 };
+			u8 bit_index{ 0 };
+		};
 
-        bool read_bit() override;
-        i32 read_sb(u32 count) override;
-        u32 read_ub(u32 count) override;
-        void align_to_byte() override;
-
-
-
-    private:
-        struct BitContext {
-            u8 cached_byte{ 0 };
-            u8 bit_index{ 0 };
-        };
-
-        std::istream * stream_;
-        BitContext bit_context_;
-    };
-
+		std::istream* stream_;
+		BitContext bit_context_;
+	};
 }

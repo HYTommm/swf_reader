@@ -8,7 +8,7 @@
  */
 
 #include "clip_actions_stream_ext.h"
-#include "iswf_stream_reader.h"
+#include "i_swf_stream_reader.h"
 #include "clip_actions_list.h"
 
 namespace swf_reader::clip_actions {
@@ -29,22 +29,6 @@ namespace swf_reader::clip_actions {
 			empty = record->flags.is_empty();
 			target.push_back(std::move(record));
 		} while (!empty);
-	}
-
-	void ClipActionsStreamExt::read_clip_action_record(ISwfStreamReader& reader, const u8 swf_version, Box<ClipActionRecord>& record)
-	{
-		record->flags = read_clip_event_flags(reader, swf_version);
-		if (record->flags.is_empty()) return;
-
-		record->offset = reader.read_ui32();
-
-		if (record->flags.get(ClipEventFlag::KeyPress))
-		{
-			record->key_code = reader.read_byte();
-		}
-
-		
-		
 	}
 
 	ClipEventFlags ClipActionsStreamExt::read_clip_event_flags(ISwfStreamReader& reader, const u8 swf_version)
@@ -80,6 +64,21 @@ namespace swf_reader::clip_actions {
 
 			flags.reserved2 = reader.read_byte();
 		}
+
+		// TODO: Read clip actions
 		return flags;
+	}
+
+	void ClipActionsStreamExt::read_clip_action_record(ISwfStreamReader& reader, const u8 swf_version, Box<ClipActionRecord>& record)
+	{
+		record->flags = read_clip_event_flags(reader, swf_version);
+		if (record->flags.is_empty()) return;
+
+		record->offset = reader.read_ui32();
+
+		if (record->flags.get(ClipEventFlag::KeyPress))
+		{
+			record->key_code = reader.read_byte();
+		}
 	}
 }

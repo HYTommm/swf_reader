@@ -10,7 +10,7 @@
 #pragma once
 #include <sstream>
 
-#include "iswf_tag_visitor.h"
+#include "i_swf_tag_visitor.h"
 #include "swf_tag_data.h"
 #include "swf_file.h"
 #include "swf_tags_factory.h"
@@ -18,7 +18,6 @@
 
 namespace swf_reader::tags
 {
-
 	class SwfTagDeserializer : public ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>
 	{
 	public:
@@ -38,7 +37,6 @@ namespace swf_reader::tags
 		SwfTagBase& visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader) override;
 		SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 
-
 		// ... 其他 Visit 方法的实现将继续
 
 	private:
@@ -46,4 +44,3 @@ namespace swf_reader::tags
 		SwfTagsFactory factory_;
 	};
 }
-

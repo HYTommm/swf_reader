@@ -13,9 +13,9 @@
 #include "cpp_base_type.h"
 
 namespace swf_reader::data {
-    class SwfSymbolReference {
-    public:
-        u16 symbol_id;
-        std::string symbol_name;
-    };
+	class SwfSymbolReference {
+	public:
+		u16 symbol_id;
+		std::string symbol_name;
+	};
 }

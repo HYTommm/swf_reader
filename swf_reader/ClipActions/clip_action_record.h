@@ -15,18 +15,16 @@ namespace swf_reader::clip_actions {
 	class ClipActionRecord {
 	public:
 		ClipEventFlags flags;
-        u32 offset;
+		u32 offset;
 		u8 key_code;
 		Vec<Box<actions::ActionBase>> actions;
-        ClipActionRecord() = default;
-        ~ClipActionRecord() = default;
+		ClipActionRecord() = default;
+		~ClipActionRecord() = default;
 
-        // 移动语义支持
-        ClipActionRecord(ClipActionRecord&&) = default;
-        ClipActionRecord& operator=(ClipActionRecord&&) = default;
-
-        // 禁止拷贝（因为unique_ptr不可拷贝）
-        ClipActionRecord(const ClipActionRecord&) = delete;
-        ClipActionRecord& operator=(const ClipActionRecord&) = delete;
+		// 移动语义支持
+		ClipActionRecord(ClipActionRecord&&) = default;
+		// 禁止拷贝（因为unique_ptr不可拷贝）
+		ClipActionRecord(const ClipActionRecord&) = delete;
+		ClipActionRecord& operator=(const ClipActionRecord&) = delete;
 	};
 }

@@ -73,6 +73,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -125,6 +129,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableSpecificWarnings>4820</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,8 +164,11 @@
     <ClCompile Include="Actions\action_base.cpp" />
     <ClCompile Include="Actions\action_reader.cpp" />
     <ClCompile Include="ClipActions\clip_actions_stream_ext.cpp" />
+    <ClCompile Include="Data\color_stream_ext.cpp" />
     <ClCompile Include="Data\color_transform_stream_ext.cpp" />
     <ClCompile Include="my_main.cpp" />
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgb.h" />
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
@@ -174,12 +182,13 @@
     <ClInclude Include="Actions\action_code.h" />
     <ClInclude Include="Actions\action_end.h" />
     <ClInclude Include="Actions\action_reader.h" />
-    <ClInclude Include="Actions\iaction_visitor.h" />
+    <ClInclude Include="Actions\i_action_visitor.h" />
     <ClInclude Include="ClipActions\clip_actions_list.h" />
     <ClInclude Include="ClipActions\clip_actions_stream_ext.h" />
     <ClInclude Include="ClipActions\clip_action_record.h" />
     <ClInclude Include="ClipActions\clip_event_flags.h" />
     <ClInclude Include="cpp_base_type.h" />
+    <ClInclude Include="Data\color_stream_ext.h" />
     <ClInclude Include="Data\color_transform_rgb.h" />
     <ClInclude Include="Data\color_transform_rgba.h" />
     <ClInclude Include="Data\color_transform_stream_ext.h" />
@@ -190,8 +199,13 @@
     <ClInclude Include="Data\swf_rgba.h" />
     <ClInclude Include="Data\swf_symbol_reference.h" />
     <ClInclude Include="Data\swf_vector.h" />
-    <ClInclude Include="iswf_stream_reader.h" />
+    <ClInclude Include="i_swf_stream_reader.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Shapes\FillStyles\fillstyle_factory.h" />
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgb_reader.h" />
+    <ClInclude Include="Shapes\FillStyles\fillstyle_type.h" />
+    <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgb_visitor.h" />
+    <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgb.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />
@@ -203,7 +217,8 @@
     <ClInclude Include="Tags\DisplayListTags\place_object2_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object_base_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object_tag.h" />
-    <ClInclude Include="Tags\iswf_tag_visitor.h" />
+    <ClInclude Include="Tags\i_swf_tag_visitor.h" />
+    <ClInclude Include="Tags\ShapeTags\shape_base_tag.h" />
     <ClInclude Include="Tags\swf_tags_factory.h" />
     <ClInclude Include="Tags\swf_tag_base.h" />
     <ClInclude Include="Tags\swf_tag_data.h" />
@@ -212,6 +227,9 @@
     <ClInclude Include="Tags\swf_tag_types.h" />
     <ClInclude Include="Tags\tag_stream_ext.h" />
     <ClInclude Include="Tags\unknown_tag.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-tidy" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
