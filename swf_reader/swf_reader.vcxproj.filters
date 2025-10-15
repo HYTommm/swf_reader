@@ -87,6 +87,9 @@
     <ClCompile Include="Data\color_stream_ext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -234,6 +237,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Data\color_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgba_visitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgba_reader.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -168,6 +168,7 @@
     <ClCompile Include="Data\color_transform_stream_ext.cpp" />
     <ClCompile Include="my_main.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb.h" />
+    <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
@@ -202,10 +203,14 @@
     <ClInclude Include="i_swf_stream_reader.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_factory.h" />
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgba.h" />
+    <ClInclude Include="Shapes\FillStyles\fillstyle_rgba_reader.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_rgb_reader.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_type.h" />
+    <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgba_visitor.h" />
     <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgb_visitor.h" />
     <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgb.h" />
+    <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgba.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />

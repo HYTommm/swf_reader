@@ -9,9 +9,14 @@
 #include "fillstyle_rgb_reader.h"
 
 namespace swf_reader::shapes::fillstyles {
-	inline FillStyleRgb& FillStyleRgbReader::visit(SolidFillStyleRgb& fillStyle, ISwfStreamReader& reader)
+	inline Box<FillStyleRgb> FillStyleRgbReader::read(ISwfStreamReader& reader, FillStyleType type) {
+		Box<FillStyleRgb> fillstyle = _factory.create_rgb(type);
+		fillstyle->accept_visitor(*this, reader);
+		return fillstyle;
+	}
+	inline FillStyleRgb& FillStyleRgbReader::visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader)
 	{
-		fillStyle.color = data::ColorStreamExt::read_rgb(reader);
-		return fillStyle;
+		fillstyle.color = data::ColorStreamExt::read_rgb(reader);
+		return fillstyle;
 	}
 }

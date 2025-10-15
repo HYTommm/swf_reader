@@ -1,5 +1,5 @@
-﻿/**
- * @file    fillstyle_rgb.h
+/**
+ * @file    fillstyle_rgba.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
  * C++ port: Copyright (c) 2025 HYTomZ
@@ -7,18 +7,18 @@
  * Licensed under the MIT License.
  */
 #pragma once
-#include "i_fillstyle_rgb_visitor.h"
+#include "i_fillstyle_rgba_visitor.h"
 #include "fillstyle_type.h"
 #include "i_swf_stream_reader.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class FillStyleRgb
+	class FillStyleRgba
 	{
 	public:
-		FillStyleRgb() = default;
-		virtual ~FillStyleRgb() = default;
+		FillStyleRgba() = default;
+		virtual ~FillStyleRgba() = default;
 
 		virtual FillStyleType get_type() const = 0;
-		virtual FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) = 0;
+		virtual FillStyleRgba& accept_visitor(IFillStyleRgbaVisitor<ISwfStreamReader, FillStyleRgba&>& visitor, ISwfStreamReader& arg) = 0;
 	};
 }

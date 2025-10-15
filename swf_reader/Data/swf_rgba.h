@@ -12,23 +12,22 @@
 #include "swf_rgb.h"
 
 namespace swf_reader::data {
+	struct SwfRgba {
+		u8 red{ 0 };
+		u8 green{ 0 };
+		u8 blue{ 0 };
+		u8 alpha{ 255 };  // 默认不透明
 
-    struct SwfRGBA {
-        u8 red{ 0 };
-        u8 green{ 0 };
-        u8 blue{ 0 };
-        u8 alpha{ 255 };  // 默认不透明
+		SwfRgba() = default;
+		SwfRgba(const u8 red, const u8 green, const u8 blue, const u8 alpha = 255)
+			: red(red), green(green), blue(blue), alpha(alpha)
+		{
+		}
 
-        SwfRGBA() = default;
-        SwfRGBA(const u8 red, const u8 green, const u8 blue, const u8 alpha = 255)
-            : red(red), green(green), blue(blue), alpha(alpha)
-        {
-        }
-
-        // 从 SwfRGB 转换的构造函数
-        explicit SwfRGBA(const SwfRGB& rgb, const u8 alpha = 255)
-            : red(rgb.red), green(rgb.green), blue(rgb.blue), alpha(alpha)
-        {
-        }
-    };
+		// 从 SwfRgb 转换的构造函数
+		explicit SwfRgba(const SwfRgb& rgb, const u8 alpha = 255)
+			: red(rgb.red), green(rgb.green), blue(rgb.blue), alpha(alpha)
+		{
+		}
+	};
 }

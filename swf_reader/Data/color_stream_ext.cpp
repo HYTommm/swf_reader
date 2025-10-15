@@ -9,19 +9,36 @@
 #include "color_stream_ext.h"
 #include "i_swf_stream_reader.h"
 #include "swf_rgb.h"
+#include "swf_rgba.h"
 
 namespace swf_reader::data
 {
-	inline SwfRGB ColorStreamExt::read_rgb(ISwfStreamReader& reader)
+	inline SwfRgb ColorStreamExt::read_rgb(ISwfStreamReader& reader)
 	{
-		SwfRGB color;
+		SwfRgb color;
 		read_rgb(reader, color);
 		return color;
 	}
-	inline void ColorStreamExt::read_rgb(ISwfStreamReader& reader, SwfRGB& color)
+	inline void ColorStreamExt::read_rgb(ISwfStreamReader& reader, SwfRgb& color)
 	{
 		color.red = reader.read_byte();
 		color.green = reader.read_byte();
 		color.blue = reader.read_byte();
+	}
+	inline SwfRgba ColorStreamExt::read_rgba(ISwfStreamReader& reader) {
+		SwfRgba color;
+		color.red = reader.read_byte();
+		color.green = reader.read_byte();
+		color.blue = reader.read_byte();
+		color.alpha = reader.read_byte();
+		return color;
+	}
+	inline SwfRgba ColorStreamExt::read_argb(ISwfStreamReader& reader) {
+		SwfRgba color;
+		color.alpha = reader.read_byte();
+		color.red = reader.read_byte();
+		color.green = reader.read_byte();
+		color.blue = reader.read_byte();
+		return color;
 	}
 }

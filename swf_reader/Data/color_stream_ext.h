@@ -16,29 +16,16 @@ namespace swf_reader
 }
 namespace swf_reader::data
 {
-	struct SwfRGB;
+	struct SwfRgb;
+	struct SwfRgba;
 	class ColorStreamExt {
 	public:
-		static SwfRGB read_rgb(ISwfStreamReader& reader);
+		static SwfRgb read_rgb(ISwfStreamReader& reader);
 
-		static void read_rgb(ISwfStreamReader& reader, SwfRGB& color);
+		static void read_rgb(ISwfStreamReader& reader, SwfRgb& color);
 
-		//static SwfRGBA read_rgba(ISwfStreamReader& reader) {
-		//	SwfRGBA color;
-		//	color.red = reader.read_byte();
-		//	color.green = reader.read_byte();
-		//	color.blue = reader.read_byte();
-		//	color.alpha = reader.read_byte();
-		//	return color;
-		//}
+		static SwfRgba read_rgba(ISwfStreamReader& reader);
 
-		//static SwfRGBA read_argb(ISwfStreamReader& reader) {
-		//	SwfRGBA color;
-		//	color.alpha = reader.read_byte();
-		//	color.red = reader.read_byte();
-		//	color.green = reader.read_byte();
-		//	color.blue = reader.read_byte();
-		//	return color;
-		//}
+		static SwfRgba read_argb(ISwfStreamReader& reader);
 	};
 }

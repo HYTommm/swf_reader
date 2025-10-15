@@ -20,6 +20,7 @@ namespace swf_reader::shapes::fillstyles
 	private:
 		FillStyleFactory _factory;
 	public:
+		Box<FillStyleRgb> read(ISwfStreamReader& reader, FillStyleType type);
 		FillStyleRgb& visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
 	};
 }
