@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -170,6 +170,7 @@
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb.h" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
+    <ClCompile Include="Shapes\fillstyle_stream_ext.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Shapes\FillStyles\i_fillstyle_rgb_visitor.h" />
     <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgb.h" />
     <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgba.h" />
+    <ClInclude Include="Shapes\fillstyle_stream_ext.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />
@@ -223,6 +225,7 @@
     <ClInclude Include="Tags\DisplayListTags\place_object_base_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object_tag.h" />
     <ClInclude Include="Tags\i_swf_tag_visitor.h" />
+    <ClInclude Include="Tags\ShapeTags\define_shape_tag.h" />
     <ClInclude Include="Tags\ShapeTags\shape_base_tag.h" />
     <ClInclude Include="Tags\swf_tags_factory.h" />
     <ClInclude Include="Tags\swf_tag_base.h" />

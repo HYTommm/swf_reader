@@ -19,9 +19,12 @@
 #include "Data/color_transform_stream_ext.h"
 #include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
+#include "ShapeTags/define_shape_tag.h"
+#include "Shapes/fillstyle_stream_ext.h"
 #include "swf_file.h"
 
-namespace swf_reader::tags {
+namespace swf_reader::tags
+{
 	Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagData& tag_data)
 	{
 		const std::string data = std::string(reinterpret_cast<const char*>(tag_data.data.data()), tag_data.data.size());
@@ -34,7 +37,7 @@ namespace swf_reader::tags {
 	Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagType type, ISwfStreamReader& reader)
 	{
 		Box<SwfTagBase> tag = factory_.create(type);
-		if (tag->tag_type == SwfTagType::Unknown)
+		if (tag->get_type() == SwfTagType::Unknown)
 		{
 			return tag;
 		}
@@ -97,6 +100,15 @@ namespace swf_reader::tags {
 		{
 			clip_actions::ClipActionsStreamExt::read_clip_actions(reader, file_->file_info.version, *tag.clip_actions);
 		}
+		return tag;
+	}
+
+	SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader)
+	{
+		tag.shape_id = reader.read_ui16();
+		tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
+		shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
+		// TODO: add linestyles and shape records
 		return tag;
 	}
 

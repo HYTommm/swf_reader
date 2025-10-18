@@ -13,7 +13,8 @@
 namespace swf_reader::tags
 {
 	template<typename TArg, typename TResult>
-	class ISwfTagVisitor {
+	class ISwfTagVisitor
+	{
 	public:
 		ISwfTagVisitor() = default;
 		virtual ~ISwfTagVisitor() = default;
@@ -61,12 +62,12 @@ namespace swf_reader::tags
 //		virtual TResult& visit(DoABCDefineTag& tag,  TArg& arg) = 0;
 //#pragma endregion
 //
-//#pragma region Shape tags
-//		virtual TResult& visit(DefineShapeTag& tag,  TArg& arg) = 0;
-//		virtual TResult& visit(DefineShape2Tag& tag, TArg& arg) = 0;
-//		virtual TResult& visit(DefineShape3Tag& tag, TArg& arg) = 0;
-//		virtual TResult& visit(DefineShape4Tag& tag, TArg& arg) = 0;
-//#pragma endregion
+#pragma region Shape tags
+		virtual TResult& visit(shape_tags::DefineShapeTag& tag, TArg& arg) = 0;
+		//		virtual TResult& visit(DefineShape2Tag& tag, TArg& arg) = 0;
+		//		virtual TResult& visit(DefineShape3Tag& tag, TArg& arg) = 0;
+		//		virtual TResult& visit(DefineShape4Tag& tag, TArg& arg) = 0;
+#pragma endregion
 //
 //#pragma region Bitmap tags
 //		virtual TResult& visit(DefineBitsTag& tag,          TArg& arg) = 0;

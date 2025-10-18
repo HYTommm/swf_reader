@@ -12,7 +12,8 @@
 namespace swf_reader::tags
 {
 	// 前向声明所有具体的标签类
-	namespace display_list_tags {
+	namespace display_list_tags
+	{
 		class PlaceObjectTag;
 		class PlaceObject2Tag;
 		class PlaceObject3Tag;
@@ -40,10 +41,13 @@ namespace swf_reader::tags
 	class DoInitActionTag;
 	class DoABCTag;
 	class DoABCDefineTag;
-	class DefineShapeTag;
-	class DefineShape2Tag;
-	class DefineShape3Tag;
-	class DefineShape4Tag;
+	namespace shape_tags
+	{
+		class DefineShapeTag;
+		class DefineShape2Tag;
+		class DefineShape3Tag;
+		class DefineShape4Tag;
+	}
 	class DefineBitsTag;
 	class JPEGTablesTag;
 	class DefineBitsJPEG2Tag;

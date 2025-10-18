@@ -13,19 +13,20 @@
 
 namespace swf_reader::data
 {
-	inline SwfRgb ColorStreamExt::read_rgb(ISwfStreamReader& reader)
+	SwfRgb ColorStreamExt::read_rgb(ISwfStreamReader& reader)
 	{
 		SwfRgb color;
 		read_rgb(reader, color);
 		return color;
 	}
-	inline void ColorStreamExt::read_rgb(ISwfStreamReader& reader, SwfRgb& color)
+	void ColorStreamExt::read_rgb(ISwfStreamReader& reader, SwfRgb& color)
 	{
 		color.red = reader.read_byte();
 		color.green = reader.read_byte();
 		color.blue = reader.read_byte();
 	}
-	inline SwfRgba ColorStreamExt::read_rgba(ISwfStreamReader& reader) {
+	SwfRgba ColorStreamExt::read_rgba(ISwfStreamReader& reader)
+	{
 		SwfRgba color;
 		color.red = reader.read_byte();
 		color.green = reader.read_byte();
@@ -33,7 +34,8 @@ namespace swf_reader::data
 		color.alpha = reader.read_byte();
 		return color;
 	}
-	inline SwfRgba ColorStreamExt::read_argb(ISwfStreamReader& reader) {
+	SwfRgba ColorStreamExt::read_argb(ISwfStreamReader& reader)
+	{
 		SwfRgba color;
 		color.alpha = reader.read_byte();
 		color.red = reader.read_byte();

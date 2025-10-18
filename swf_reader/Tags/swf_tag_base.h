@@ -19,23 +19,24 @@ namespace swf_reader
 
 namespace swf_reader::tags
 {
-	class SwfTagBase {
+	class SwfTagBase
+	{
 	public:
-		SwfTagBase() = default;
-		virtual ~SwfTagBase() = default;
+		SwfTagBase () = default;
+		virtual ~SwfTagBase () = default;
 
 		// 删除拷贝操作（多态基类通常不应该被拷贝）
-		SwfTagBase(const SwfTagBase&) = delete;
+		SwfTagBase (const SwfTagBase&) = delete;
 		SwfTagBase& operator=(const SwfTagBase&) = delete;
 
 		// 允许移动操作
-		SwfTagBase(SwfTagBase&&) = default;
+		SwfTagBase (SwfTagBase&&) = default;
 		SwfTagBase& operator=(SwfTagBase&&) = default;
 
 		/// <summary>
 			/// Gets swf tag type.
 			/// </summary>
-		SwfTagType tag_type;
+		//SwfTagType tag_type;
 
 		/// <summary>
 			/// Gets or sets rest data that is not parsed into properties.
@@ -47,7 +48,8 @@ namespace swf_reader::tags
 			/// </summary>
 		//template<typename TArg, typename TResult>
 		//TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
-		virtual SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&, ISwfStreamReader&) = 0;
+		virtual SwfTagBase& accept_visitor (ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&, ISwfStreamReader&) = 0;
+		virtual SwfTagType get_type () const = 0;
 	};
 	//extern template SwfTagBase& SwfTagBase::accept_visitor<ISwfStreamReader, SwfTagBase>(
 	//	ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&,

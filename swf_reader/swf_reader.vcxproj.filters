@@ -90,6 +90,9 @@
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\fillstyle_stream_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -249,6 +252,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shapes\FillStyles\fillstyle_rgba_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\define_shape_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\fillstyle_stream_ext.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

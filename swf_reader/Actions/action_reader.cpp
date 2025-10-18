@@ -9,15 +9,13 @@
 
 #include "action_reader.h"
 
-//#include "action_base.h"
+ //#include "action_base.h"
 #include "action_end.h"
 
-namespace swf_reader::actions {
-
-	ActionBase& ActionReader::visit(ActionEnd& action, u8 arg)
+namespace swf_reader::actions
+{
+	ActionBase& ActionReader::visit (ActionEnd& action, u8 arg)
 	{
 		return action;
 	}
-
-
 }

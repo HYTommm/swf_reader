@@ -9,13 +9,19 @@
 #pragma once
 #include "swf_tag_base.h"
 
-namespace swf_reader::tags {
-
-	class UnknownTag : public SwfTagBase {
+namespace swf_reader::tags
+{
+	class UnknownTag : public SwfTagBase
+	{
 	public:
-		UnknownTag()
+		//UnknownTag ()
+		//{
+		//	tag_type = SwfTagType::Unknown;
+		//}
+
+		SwfTagType get_type() const override
 		{
-			tag_type = SwfTagType::Unknown;
+			return SwfTagType::Unknown;
 		}
 
 		SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override

@@ -8,22 +8,24 @@
  */
 #pragma once
 
-namespace swf_reader::actions {
+namespace swf_reader::actions
+{
 	class ActionEnd;
 
 	template<typename TArg, typename TResult>
-	class IActionVisitor {
+	class IActionVisitor
+	{
 	public:
-		IActionVisitor() = default;
-		virtual ~IActionVisitor() = default;
+		IActionVisitor () = default;
+		virtual ~IActionVisitor () = default;
 
 		// 删除拷贝操作（抽象基类通常不应该被拷贝）
-		IActionVisitor(const IActionVisitor&) = delete;
+		IActionVisitor (const IActionVisitor&) = delete;
 		IActionVisitor& operator=(const IActionVisitor&) = delete;
 		// 允许移动操作
-		IActionVisitor(IActionVisitor&&) = default;
+		IActionVisitor (IActionVisitor&&) = default;
 		IActionVisitor& operator=(IActionVisitor&&) = default;
 
-		virtual TResult& visit(ActionEnd& action, TArg arg) = 0;
+		virtual TResult& visit (ActionEnd& action, TArg arg) = 0;
 	};
 }

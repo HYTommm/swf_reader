@@ -11,26 +11,28 @@
 #include "cpp_base_type.h"
 #include "i_action_visitor.h"
 
-namespace swf_reader::actions {
+namespace swf_reader::actions
+{
 	enum class ActionCode : u8;
 
-	class ActionBase {
+	class ActionBase
+	{
 	public:
-		ActionBase() = default;
-		virtual ~ActionBase() = default;
+		ActionBase () = default;
+		virtual ~ActionBase () = default;
 
 		// 删除拷贝操作
-		ActionBase(const ActionBase&) = delete;
+		ActionBase (const ActionBase&) = delete;
 		ActionBase& operator=(const ActionBase&) = delete;
 
 		// 可移动
-		ActionBase(ActionBase&&) = default;
+		ActionBase (ActionBase&&) = default;
 		ActionBase& operator=(ActionBase&&) = default;
 
 		ActionCode action_code;
 
 		//template<typename TArg, typename TResult>
 		//TResult& accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg);
-		virtual ActionBase& accept_visitor(IActionVisitor<u8, ActionBase&>&, u8) = 0;
+		virtual ActionBase& accept_visitor (IActionVisitor<u8, ActionBase&>&, u8) = 0;
 	};
 }

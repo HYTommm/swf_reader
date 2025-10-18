@@ -9,7 +9,8 @@
 #include "action_base.h"
 #include "action_code.h"
 
-namespace swf_reader::actions {
+namespace swf_reader::actions
+{
 	/*template <typename TArg, typename TResult>
 	TResult& ActionBase::accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg)
 	{

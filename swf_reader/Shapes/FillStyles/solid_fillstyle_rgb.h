@@ -12,7 +12,8 @@
 #include "Data/swf_rgb.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class SolidFillStyleRgb : public FillStyleRgb {
+	class SolidFillStyleRgb : public FillStyleRgb
+	{
 	public:
 		data::SwfRgb color;
 
