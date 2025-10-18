@@ -93,6 +93,9 @@
     <ClCompile Include="Shapes\fillstyle_stream_ext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\linestyle_stream_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -258,6 +261,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shapes\fillstyle_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\linestyle_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\linestyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\linestyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\linestyle_ex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\linestyle_ex_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\cap_style.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\LineStyles\join_style.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

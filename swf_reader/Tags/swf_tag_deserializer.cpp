@@ -21,6 +21,7 @@
 #include "DisplayListTags/place_object2_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "Shapes/fillstyle_stream_ext.h"
+#include "Shapes/linestyle_stream_ext.h"
 #include "swf_file.h"
 
 namespace swf_reader::tags
@@ -108,7 +109,8 @@ namespace swf_reader::tags
 		tag.shape_id = reader.read_ui16();
 		tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
 		shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
-		// TODO: add linestyles and shape records
+		shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
+		// TODO: add shape records
 		return tag;
 	}
 

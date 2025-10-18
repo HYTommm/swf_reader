@@ -171,6 +171,7 @@
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
     <ClCompile Include="Shapes\fillstyle_stream_ext.cpp" />
+    <ClCompile Include="Shapes\linestyle_stream_ext.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
@@ -213,6 +214,13 @@
     <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgb.h" />
     <ClInclude Include="Shapes\FillStyles\solid_fillstyle_rgba.h" />
     <ClInclude Include="Shapes\fillstyle_stream_ext.h" />
+    <ClInclude Include="Shapes\LineStyles\cap_style.h" />
+    <ClInclude Include="Shapes\LineStyles\join_style.h" />
+    <ClInclude Include="Shapes\LineStyles\linestyle_ex.h" />
+    <ClInclude Include="Shapes\LineStyles\linestyle_ex_flag.h" />
+    <ClInclude Include="Shapes\LineStyles\linestyle_rgb.h" />
+    <ClInclude Include="Shapes\LineStyles\linestyle_rgba.h" />
+    <ClInclude Include="Shapes\linestyle_stream_ext.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />

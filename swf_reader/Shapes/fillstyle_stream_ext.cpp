@@ -1,5 +1,5 @@
 /**
- * @file     fillstyle_stream_ext.h
+ * @file    fillstyle_stream_ext.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
  * C++ port: Copyright (c) 2025 HYTomZ
@@ -19,8 +19,9 @@ namespace swf_reader::shapes
 			count = reader.read_ui16();
 		for (u16 i = 0; i < count; i++)
 		{
-			Box<fillstyles::FillStyleRgb> style = read_fillstyle_rgb(reader);
-			fillStyles.push_back(std::move(style));
+			//Box<fillstyles::FillStyleRgb> style = read_fillstyle_rgb(reader);
+			//fillStyles.push_back(std::move(style));
+			fillStyles.push_back(read_fillstyle_rgb(reader));
 		}
 	}
 
@@ -31,8 +32,9 @@ namespace swf_reader::shapes
 			count = reader.read_ui16();
 		for (u16 i = 0; i < count; i++)
 		{
-			Box<fillstyles::FillStyleRgba> style = read_fillstyle_rgba(reader);
-			fillStyles.push_back(std::move(style));
+			//Box<fillstyles::FillStyleRgba> style = read_fillstyle_rgba(reader);
+			//fillStyles.push_back(std::move(style));
+			fillStyles.push_back(read_fillstyle_rgba(reader));
 		}
 	}
 
