@@ -1,5 +1,6 @@
 
 x64/
-swf_reader\swf_reader\x64
+swf_reader/swf_reader/x64
 .vs/
+swf_reader/.idea/
 

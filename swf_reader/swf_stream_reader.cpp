@@ -14,9 +14,8 @@
 
 #include "Tags/tag_stream_ext.h"
 
-namespace swf_reader {
-
-
+namespace swf_reader
+{
     SwfStreamReader::SwfStreamReader(std::istream& stream)
         :stream_(&stream)
     {
@@ -38,9 +37,9 @@ namespace swf_reader {
 
     usize SwfStreamReader::bytes_left() const
     {
-	    const std::streampos current_pos = stream_->tellg();
+        const std::streampos current_pos = stream_->tellg();
         stream_->seekg(0, std::ios::end);
-	    const std::streampos end_pos = stream_->tellg();
+        const std::streampos end_pos = stream_->tellg();
         stream_->seekg(current_pos);
         return static_cast<size_t>(end_pos - current_pos);
     }
@@ -234,5 +233,4 @@ namespace swf_reader {
         bit_context_.bit_index = 0;
         bit_context_.cached_byte = 0;
     }
-
 }

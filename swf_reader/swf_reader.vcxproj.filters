@@ -96,6 +96,9 @@
     <ClCompile Include="Shapes\linestyle_stream_ext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\Records\shape_record_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -282,6 +285,39 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shapes\LineStyles\join_style.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\i_shape_record.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\i_shape_record_visitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\end_shape_record.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\i_shape_record_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\i_shape_record_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\i_shape_record_ex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\shape_record_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\style_change_record_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\style_change_shape_record.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\style_change_shape_record_ex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\straight_edge_shape_record.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

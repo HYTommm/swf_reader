@@ -172,6 +172,7 @@
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
     <ClCompile Include="Shapes\fillstyle_stream_ext.cpp" />
     <ClCompile Include="Shapes\linestyle_stream_ext.cpp" />
+    <ClCompile Include="Shapes\Records\shape_record_reader.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
@@ -221,6 +222,17 @@
     <ClInclude Include="Shapes\LineStyles\linestyle_rgb.h" />
     <ClInclude Include="Shapes\LineStyles\linestyle_rgba.h" />
     <ClInclude Include="Shapes\linestyle_stream_ext.h" />
+    <ClInclude Include="Shapes\Records\end_shape_record.h" />
+    <ClInclude Include="Shapes\Records\i_shape_record.h" />
+    <ClInclude Include="Shapes\Records\i_shape_record_ex.h" />
+    <ClInclude Include="Shapes\Records\i_shape_record_rgb.h" />
+    <ClInclude Include="Shapes\Records\i_shape_record_rgba.h" />
+    <ClInclude Include="Shapes\Records\i_shape_record_visitor.h" />
+    <ClInclude Include="Shapes\Records\shape_record_reader.h" />
+    <ClInclude Include="Shapes\Records\straight_edge_shape_record.h" />
+    <ClInclude Include="Shapes\Records\style_change_record_flag.h" />
+    <ClInclude Include="Shapes\Records\style_change_shape_record.h" />
+    <ClInclude Include="Shapes\Records\style_change_shape_record_ex.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />
