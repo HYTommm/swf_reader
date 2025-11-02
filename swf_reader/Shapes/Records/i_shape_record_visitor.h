@@ -7,12 +7,13 @@
  * Licensed under the MIT License.
  */
 #pragma once
- //#include "end_shape_record.h"
 #include "cpp_base_type.h"
 namespace swf_reader::shapes::records
 {
     class EndShapeRecord;
     class StyleChangeShapeRecordEx;
+    class StyleChangeShapeRecordRgb;
+    class StyleChangeShapeRecordRgba;
     class StraightEdgeShapeRecord;
     class CurvedEdgeShapeRecord;
     template<typename TArg, typename TResult>
@@ -25,26 +26,42 @@ namespace swf_reader::shapes::records
             bool allow_big_array,
             u32& fill_bits_count,
             u32& line_bits_count) = 0;
-        //virtual TResult visit(StyleChangeShapeRecordRGB& record, TArg& arg) = 0;
-        //virtual TResult visit(StyleChangeShapeRecordRGBA& record, TArg& arg) = 0;
+
+        virtual TResult visit(
+            StyleChangeShapeRecordRgb& record,
+            TArg& arg,
+            bool allow_big_array,
+            u32& fill_bits_count,
+            u32& line_bits_count) = 0;
+
+        virtual TResult visit(
+            StyleChangeShapeRecordRgba& record,
+            TArg& arg,
+            bool allow_big_array,
+            u32& fill_bits_count,
+            u32& line_bits_count) = 0;
+
         virtual TResult visit(
             StyleChangeShapeRecordEx& record,
             TArg& arg,
             bool allow_big_array,
             u32& fill_bits_count,
             u32& line_bits_count) = 0;
+
         virtual TResult visit(
             StraightEdgeShapeRecord& record,
             TArg& arg,
             bool allow_big_array,
             u32& fill_bits_count,
             u32& line_bits_count) = 0;
+
         virtual TResult visit(
             CurvedEdgeShapeRecord& record,
             TArg& arg,
             bool allow_big_array,
             u32& fill_bits_count,
             u32& line_bits_count) = 0;
+
         virtual ~IShapeRecordVisitor() = default;
     };
 }

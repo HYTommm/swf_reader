@@ -8,11 +8,11 @@
  */
 
 #pragma once
-#include <Tags/swf_tag_base.h>
+#include "Tags/swf_tag_base.h"
 
-namespace swf_reader::tags::display_list_tags {
-
-	class DisplayListBaseTag : public SwfTagBase {
-
-	};
+namespace swf_reader::tags::display_list_tags
+{
+    class DisplayListBaseTag : public SwfTagBase
+    {
+    };
 }

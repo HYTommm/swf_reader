@@ -13,14 +13,14 @@
 #include "LineStyles/linestyle_ex.h"
 namespace swf_reader::shapes
 {
-	class LineStyleStreamExt
-	{
-	public:
-		static void read_to_linestyles_rgb(ISwfStreamReader& reader, Vec<linestyles::LineStyleRgb>& lineStyles, bool allowBigArray);
-		static void read_to_linestyles_rgba(ISwfStreamReader& reader, Vec<linestyles::LineStyleRgba>& lineStyles);
-		static void read_to_linestyles_ex(ISwfStreamReader& reader, Vec<linestyles::LineStyleEx>& lineStyles);
-		static linestyles::LineStyleRgb read_linestyle_rgb(ISwfStreamReader& reader);
-		static linestyles::LineStyleRgba read_linestyle_rgba(ISwfStreamReader& reader);
-		static linestyles::LineStyleEx read_linestyle_ex(ISwfStreamReader& reader);
-	};
+    class LineStyleStreamExt
+    {
+    public:
+        static void read_to_linestyles_rgb(ISwfStreamReader& reader, Vec<Box<linestyles::LineStyleRgb>>& lineStyles, bool allowBigArray);
+        static void read_to_linestyles_rgba(ISwfStreamReader& reader, Vec<Box<linestyles::LineStyleRgba>>& lineStyles);
+        static void read_to_linestyles_ex(ISwfStreamReader& reader, Vec<Box<linestyles::LineStyleEx>>& lineStyles);
+        static Box<linestyles::LineStyleRgb> read_linestyle_rgb(ISwfStreamReader& reader);
+        static Box<linestyles::LineStyleRgba> read_linestyle_rgba(ISwfStreamReader& reader);
+        static Box<linestyles::LineStyleEx> read_linestyle_ex(ISwfStreamReader& reader);
+    };
 }

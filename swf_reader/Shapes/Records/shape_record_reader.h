@@ -47,6 +47,19 @@ namespace swf_reader::shapes::records
             u32& fill_bits_count,
             u32& line_bits_count) override;
 
+        IShapeRecord& visit(
+            StyleChangeShapeRecordRgb& record,
+            ISwfStreamReader& reader,
+            bool allow_big_array,
+            u32& fill_bits_count,
+            u32& line_bits_count) override;
+        IShapeRecord& visit(
+            StyleChangeShapeRecordRgba& record,
+            ISwfStreamReader& reader,
+            bool allow_big_array,
+            u32& fill_bits_count,
+            u32& line_bits_count) override;
+
         virtual Box<StyleChangeShapeRecord> create_style_change_record() = 0;
         virtual void read_fillstyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
         virtual void read_linestyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
