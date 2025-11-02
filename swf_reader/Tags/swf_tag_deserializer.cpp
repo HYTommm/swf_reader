@@ -26,103 +26,100 @@
 
 namespace swf_reader::tags
 {
-	Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagData& tag_data)
-	{
-		const std::string data = std::string(reinterpret_cast<const char*>(tag_data.data.data()), tag_data.data.size());
-		const Box<std::istringstream> stream = boxed<std::istringstream>(data);
-		const Box<SwfStreamReader> reader = boxed<SwfStreamReader>(*stream);
-		const SwfTagType type = tag_data.type;
-		return read_tag(type, *reader);
-	}
+    Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagData& tag_data)
+    {
+        const std::string data = std::string(reinterpret_cast<const char*>(tag_data.data.data()), tag_data.data.size());
+        const Box<std::istringstream> stream = boxed<std::istringstream>(data);
+        const Box<SwfStreamReader> reader = boxed<SwfStreamReader>(*stream);
+        const SwfTagType type = tag_data.type;
+        return read_tag(type, *reader);
+    }
 
-	Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagType type, ISwfStreamReader& reader)
-	{
-		Box<SwfTagBase> tag = factory_.create(type);
-		if (tag->get_type() == SwfTagType::Unknown)
-		{
-			return tag;
-		}
-		tag->accept_visitor(*this, reader);
+    Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagType type, ISwfStreamReader& reader)
+    {
+        Box<SwfTagBase> tag = factory_.create(type);
+        if (tag->get_type() == SwfTagType::Unknown)
+        {
+            return tag;
+        }
+        tag->accept_visitor(*this, reader);
 
-		if (reader.bytes_left() > 0)
-		{
-			tag->rest_data = reader.read_rest();
-		}
-		else
-		{
-			tag->rest_data = std::nullopt;
-		}
+        if (reader.bytes_left() > 0)
+        {
+            tag->rest_data = reader.read_rest();
+        }
+        else
+        {
+            tag->rest_data = std::nullopt;
+        }
 
-		return tag;
-	}
+        return tag;
+    }
 
-	[[nodiscard]] SwfFile& SwfTagDeserializer::swf_file() const
-	{
-		return *file_;
-	}
+    [[nodiscard]] SwfFile& SwfTagDeserializer::swf_file() const
+    {
+        return *file_;
+    }
 
-	SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader)
-	{
-		tag.character_id = reader.read_ui16();
-		tag.depth = reader.read_ui16();
-		tag.matrix = SwfStreamReaderExt::read_matrix(reader);
-		if (!reader.is_eof())
-		{
-			tag.color_transform = std::make_unique<data::ColorTransformRGB>(data::ColorTransformStreamExt::read_color_transform_rgb(reader));
-		}
-		else
-		{
-			tag.color_transform = nullptr;
-		}
-		return tag;
-	}
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader)
+    {
+        tag.character_id = reader.read_ui16();
+        tag.depth = reader.read_ui16();
+        tag.matrix = SwfStreamReaderExt::read_matrix(reader);
+        if (!reader.is_eof())
+        {
+            tag.color_transform = boxed<data::ColorTransformRGB>(data::ColorTransformStreamExt::read_color_transform_rgb(reader));
+        }
+        else
+        {
+            tag.color_transform = nullptr;
+        }
+        return tag;
+    }
 
-	SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader)
-	{
-		using namespace display_list_tags;
-		tag.flags.set(PlaceObject2Flag::HasClipActions, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasClipDepth, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasName, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasRatio, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasColorTransform, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasMatrix, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasCharacter, reader.read_bit());
-		tag.flags.set(PlaceObject2Flag::HasMove, reader.read_bit());
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader)
+    {
+        using namespace display_list_tags;
+        tag.flags.set(PlaceObject2Flag::HasClipActions, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasClipDepth, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasName, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasRatio, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasColorTransform, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasMatrix, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasCharacter, reader.read_bit());
+        tag.flags.set(PlaceObject2Flag::HasMove, reader.read_bit());
 
-		tag.depth = reader.read_ui16();
-		if (tag.flags.get(PlaceObject2Flag::HasCharacter))      tag.character_id = reader.read_ui16();
-		if (tag.flags.get(PlaceObject2Flag::HasMatrix))         tag.matrix = SwfStreamReaderExt::read_matrix(reader);
-		if (tag.flags.get(PlaceObject2Flag::HasColorTransform)) tag.color_transform = boxed<data::ColorTransformRGBA>(data::ColorTransformStreamExt::read_color_transform_rgba(reader));
-		if (tag.flags.get(PlaceObject2Flag::HasRatio))          tag.ratio = reader.read_ui16();
-		if (tag.flags.get(PlaceObject2Flag::HasName))           tag.name = reader.read_string();
-		if (tag.flags.get(PlaceObject2Flag::HasClipDepth))      tag.clip_depth = reader.read_ui16();
-		// TODO: read clip actions
-		if (tag.flags.get(PlaceObject2Flag::HasClipActions))
-		{
-			clip_actions::ClipActionsStreamExt::read_clip_actions(reader, file_->file_info.version, *tag.clip_actions);
-		}
-		return tag;
-	}
+        tag.depth = reader.read_ui16();
+        if (tag.flags.get(PlaceObject2Flag::HasCharacter))      tag.character_id = reader.read_ui16();
+        if (tag.flags.get(PlaceObject2Flag::HasMatrix))         tag.matrix = SwfStreamReaderExt::read_matrix(reader);
+        if (tag.flags.get(PlaceObject2Flag::HasColorTransform)) tag.color_transform = boxed<data::ColorTransformRGBA>(data::ColorTransformStreamExt::read_color_transform_rgba(reader));
+        if (tag.flags.get(PlaceObject2Flag::HasRatio))          tag.ratio = reader.read_ui16();
+        if (tag.flags.get(PlaceObject2Flag::HasName))           tag.name = reader.read_string();
+        if (tag.flags.get(PlaceObject2Flag::HasClipDepth))      tag.clip_depth = reader.read_ui16();
+        if (tag.flags.get(PlaceObject2Flag::HasClipActions))    clip_actions::ClipActionsStreamExt::read_clip_actions(reader, file_->file_info.version, *tag.clip_actions);
+        return tag;
+    }
 
-	SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader)
-	{
-		tag.shape_id = reader.read_ui16();
-		tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
-		shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
-		shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
-		// TODO: add shape records
-		return tag;
-	}
+    SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader)
+    {
+        tag.shape_id = reader.read_ui16();
+        tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
+        shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
+        shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
+        //shapes::ShapeRecordStreamExt
+            // TODO: add shape records
+        return tag;
+    }
 
-	SwfTagBase& SwfTagDeserializer::visit(UnknownTag& tag, ISwfStreamReader& reader)
-	{
-		tag.rest_data = reader.read_rest();
-		return tag;
-	}
+    SwfTagBase& SwfTagDeserializer::visit(UnknownTag& tag, ISwfStreamReader& reader)
+    {
+        tag.rest_data = reader.read_rest();
+        return tag;
+    }
 
-	template<typename T>
-	Box<T> SwfTagDeserializer::read_tag(const SwfTagData& data)
-	{
-		return Box<T>(static_cast<T*>(read_tag(data).release()));
-	}
+    template<typename T>
+    Box<T> SwfTagDeserializer::read_tag(const SwfTagData& data)
+    {
+        return Box<T>(static_cast<T*>(read_tag(data).release()));
+    }
 }

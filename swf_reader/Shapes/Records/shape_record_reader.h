@@ -8,6 +8,7 @@
  */
 #pragma once
 #include "i_shape_record_visitor.h"
+#include "Tags/swf_tag_types.h"
 #include "i_swf_stream_reader.h"
 #include "i_shape_record.h"
 #include "style_change_shape_record.h"
@@ -17,7 +18,8 @@ namespace swf_reader::shapes::records
     {
     public:
 
-        Box<IShapeRecord> read(ISwfStreamReader& reader, bool allowBigArray, u32& fillBitsCount, u32& lineBitsCount);
+        template<std::derived_from<StyleChangeShapeRecord> T>
+        Box<T> read(ISwfStreamReader& reader, bool allowBigArray, u32& fillBitsCount, u32& lineBitsCount);
 
         IShapeRecord& visit(
             EndShapeRecord& record,
@@ -60,8 +62,19 @@ namespace swf_reader::shapes::records
             u32& fill_bits_count,
             u32& line_bits_count) override;
 
-        virtual Box<StyleChangeShapeRecord> create_style_change_record() = 0;
-        virtual void read_fillstyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
-        virtual void read_linestyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
+        static inline Box<StyleChangeShapeRecordRgb> create_style_change_record_rgb()
+        {
+            return boxed<StyleChangeShapeRecordRgb>();
+        }
+        static inline Box<StyleChangeShapeRecordRgba> create_style_change_record_rgba()
+        {
+            return boxed<StyleChangeShapeRecordRgba>();
+        }
+        static inline Box<StyleChangeShapeRecordEx> create_style_change_record_ex()
+        {
+            return boxed<StyleChangeShapeRecordEx>();
+        }
+        //virtual void read_fillstyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
+        //virtual void read_linestyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
     };
 }

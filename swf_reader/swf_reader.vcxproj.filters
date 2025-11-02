@@ -332,6 +332,9 @@
     <ClInclude Include="Shapes\Records\shape_record_type.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\shape_record_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

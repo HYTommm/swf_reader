@@ -22,7 +22,8 @@
 
 namespace swf_reader::shapes::records
 {
-    Box<IShapeRecord> ShapeRecordReader::read(
+    template<std::derived_from<StyleChangeShapeRecord> T>
+    Box<T> ShapeRecordReader::read(
         ISwfStreamReader& reader,
         bool allow_big_array,
         u32& fill_bits_count,
@@ -56,7 +57,7 @@ namespace swf_reader::shapes::records
 
             if (static_cast<u8>(flags.flags))
             {
-                Box<StyleChangeShapeRecord> style_change = create_style_change_record();
+                Box<StyleChangeShapeRecord> style_change = boxed<T>();
                 style_change->flags = flags;
                 style_change->accept_visitor(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
                 return style_change;
@@ -68,7 +69,6 @@ namespace swf_reader::shapes::records
                 return end_shape;
             }
         }
-        return {};
     }
 
     IShapeRecord& ShapeRecordReader::visit(

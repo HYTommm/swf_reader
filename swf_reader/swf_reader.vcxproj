@@ -237,6 +237,7 @@
     <ClInclude Include="Shapes\Records\style_change_shape_record_ex.h" />
     <ClInclude Include="Shapes\Records\style_change_shape_record_rgb.h" />
     <ClInclude Include="Shapes\Records\style_change_shape_record_rgba.h" />
+    <ClInclude Include="Shapes\shape_record_stream_ext.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />
