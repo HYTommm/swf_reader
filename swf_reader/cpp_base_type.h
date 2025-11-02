@@ -22,23 +22,23 @@ using usize = size_t;
 using isize = ptrdiff_t;
 
 
-template<typename T>
-using Box = std::unique_ptr<T>;
+template<typename StyleChangeShapeRecord_T>
+using Box = std::unique_ptr<StyleChangeShapeRecord_T>;
 // std::make_unique
-template<typename T, typename... Args>
-constexpr Box<T> boxed(Args&&... args)
+template<typename StyleChangeShapeRecord_T, typename... Args>
+constexpr Box<StyleChangeShapeRecord_T> boxed(Args&&... args)
 {
-    return std::make_unique<T>(std::forward<Args>(args)...);
+    return std::make_unique<StyleChangeShapeRecord_T>(std::forward<Args>(args)...);
 }
 
-template<typename T>
-using Rc = std::shared_ptr<T>;
-template<typename T>
-using Weak = std::weak_ptr<T>;
+template<typename StyleChangeShapeRecord_T>
+using Rc = std::shared_ptr<StyleChangeShapeRecord_T>;
+template<typename StyleChangeShapeRecord_T>
+using Weak = std::weak_ptr<StyleChangeShapeRecord_T>;
 
-template<typename T>
-using Vec = std::vector<T>;
+template<typename StyleChangeShapeRecord_T>
+using Vec = std::vector<StyleChangeShapeRecord_T>;
 template<typename K, typename V>
 using Map = std::unordered_map<K, V>;
-template<typename T>
-using Option = std::optional<T>;
+template<typename StyleChangeShapeRecord_T>
+using Option = std::optional<StyleChangeShapeRecord_T>;

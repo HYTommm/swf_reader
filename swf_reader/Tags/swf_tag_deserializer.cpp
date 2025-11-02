@@ -22,6 +22,8 @@
 #include "ShapeTags/define_shape_tag.h"
 #include "Shapes/fillstyle_stream_ext.h"
 #include "Shapes/linestyle_stream_ext.h"
+#include "Shapes/shape_record_stream_ext.h"
+
 #include "swf_file.h"
 
 namespace swf_reader::tags
@@ -106,8 +108,8 @@ namespace swf_reader::tags
         tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
         shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
         shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
-        //shapes::ShapeRecordStreamExt
-            // TODO: add shape records
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.shape_records);
+        // TODO: add shape records
         return tag;
     }
 
@@ -117,9 +119,9 @@ namespace swf_reader::tags
         return tag;
     }
 
-    template<typename T>
-    Box<T> SwfTagDeserializer::read_tag(const SwfTagData& data)
+    template<typename StyleChangeShapeRecord_T>
+    Box<StyleChangeShapeRecord_T> SwfTagDeserializer::read_tag(const SwfTagData& data)
     {
-        return Box<T>(static_cast<T*>(read_tag(data).release()));
+        return Box<StyleChangeShapeRecord_T>(static_cast<StyleChangeShapeRecord_T*>(read_tag(data).release()));
     }
 }

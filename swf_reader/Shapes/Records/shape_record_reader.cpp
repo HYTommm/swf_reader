@@ -14,55 +14,6 @@
 
 namespace swf_reader::shapes::records
 {
-    template<std::derived_from<StyleChangeShapeRecord> T>
-    Box<T> ShapeRecordReader::read(
-        ISwfStreamReader& reader,
-        bool allow_big_array,
-        u32& fill_bits_count,
-        u32& line_bits_count)
-    {
-        bool is_edge = reader.read_bit();
-        if (is_edge)
-        {
-            bool straight = reader.read_bit();
-            if (straight)
-            {
-                Box<StraightEdgeShapeRecord> straight_edge = boxed<StraightEdgeShapeRecord>();
-                straight_edge->accept_visitor(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
-                return straight_edge;
-            }
-            else
-            {
-                Box<CurvedEdgeShapeRecord> curved_edge = boxed<CurvedEdgeShapeRecord>();
-                curved_edge->accept_visitor(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
-                return curved_edge;
-            }
-        }
-        else
-        {
-            StyleChangeRecordFlags flags{};
-            flags.set(StyleChangeRecordFlag::StateNewStyles, reader.read_bit());
-            flags.set(StyleChangeRecordFlag::StateLineStyle, reader.read_bit());
-            flags.set(StyleChangeRecordFlag::StateFillStyle1, reader.read_bit());
-            flags.set(StyleChangeRecordFlag::StateFillStyle0, reader.read_bit());
-            flags.set(StyleChangeRecordFlag::StateMoveTo, reader.read_bit());
-
-            if (static_cast<u8>(flags.flags))
-            {
-                Box<StyleChangeShapeRecord> style_change = boxed<T>();
-                style_change->flags = flags;
-                style_change->accept_visitor(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
-                return style_change;
-            }
-            else
-            {
-                Box<EndShapeRecord> end_shape = boxed<EndShapeRecord>();
-                end_shape->accept_visitor(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
-                return end_shape;
-            }
-        }
-    }
-
     IShapeRecord& ShapeRecordReader::visit(
         EndShapeRecord& record,
         ISwfStreamReader& reader,

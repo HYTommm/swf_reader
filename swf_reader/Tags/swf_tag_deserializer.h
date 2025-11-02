@@ -29,8 +29,8 @@ namespace swf_reader::tags
 
 		Box<SwfTagBase> read_tag(const SwfTagType type, ISwfStreamReader& reader);
 
-		template<typename T>
-		Box<T> read_tag(const SwfTagData& data);
+		template<typename StyleChangeShapeRecord_T>
+		Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
 
 		[[nodiscard]] SwfFile& swf_file() const;
 		SwfTagBase& visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader) override;
