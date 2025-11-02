@@ -7,6 +7,7 @@
  * Licensed under the MIT License.
  */
 #pragma once
+#include "shape_record_type.h"
 #include "i_swf_stream_reader.h"
 #include "i_shape_record_visitor.h"
 namespace swf_reader::shapes::records
@@ -14,7 +15,7 @@ namespace swf_reader::shapes::records
     class IShapeRecord
     {
     public:
-        //virtual
+        virtual inline ShapeRecordType get_type() const = 0;
         virtual ~IShapeRecord() = default;
 
         virtual IShapeRecord& accept_visitor(

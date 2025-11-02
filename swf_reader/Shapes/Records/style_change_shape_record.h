@@ -23,6 +23,8 @@ namespace swf_reader::shapes::records
         i16 move_delta_x;
         i16 move_delta_y;
 
+        inline ShapeRecordType get_type() const override { return ShapeRecordType::StyleChangeRecord; }
+
         // 在C#中，accept_visitor函数在IShapeRecord接口中声明，所以需要在StyleChangeShapeRecord实现
         // 但C++中没有接口，此函数直接继承于IShapeRecord，所以不需要在此处实现
         //virtual IShapeRecord& accept_visitor(IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor, ISwfStreamReader& arg) = 0;

@@ -18,6 +18,7 @@ namespace swf_reader::shapes::records
         int delta_x;
         int delta_y;
 
+        inline ShapeRecordType get_type() const override { return ShapeRecordType::StraightEdge; }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

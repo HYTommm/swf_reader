@@ -16,10 +16,13 @@ namespace swf_reader::shapes::records
     class CurvedEdgeShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
     {
     public:
-        i16 control_delta_x;
-        i16 control_delta_y;
-        i16 anchor_delta_x;
-        i16 anchor_delta_y;
+        i32 control_delta_x;
+        i32 control_delta_y;
+        i32 anchor_delta_x;
+        i32 anchor_delta_y;
+
+        inline ShapeRecordType get_type() const override { return ShapeRecordType::CurvedEdgeRecord; }
+
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

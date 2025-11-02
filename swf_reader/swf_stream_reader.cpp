@@ -188,7 +188,7 @@ namespace swf_reader
 
     bool SwfStreamReader::read_bit()
     {
-        const u8 bit_index = bit_context_.bit_index & 0x07;
+        const u8 bit_index = bit_context_.bit_index & 0x07u;
         if (bit_index == 0)
         {
             bit_context_.cached_byte = read_byte();

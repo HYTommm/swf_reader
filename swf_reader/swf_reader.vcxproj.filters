@@ -329,6 +329,9 @@
     <ClInclude Include="Shapes\Records\style_change_shape_record_rgb.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\Records\shape_record_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

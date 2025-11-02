@@ -129,7 +129,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <DisableSpecificWarnings>4820</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4061;4062;4514;4100;4820;5045;26495</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -230,6 +230,7 @@
     <ClInclude Include="Shapes\Records\i_shape_record_rgba.h" />
     <ClInclude Include="Shapes\Records\i_shape_record_visitor.h" />
     <ClInclude Include="Shapes\Records\shape_record_reader.h" />
+    <ClInclude Include="Shapes\Records\shape_record_type.h" />
     <ClInclude Include="Shapes\Records\straight_edge_shape_record.h" />
     <ClInclude Include="Shapes\Records\style_change_record_flag.h" />
     <ClInclude Include="Shapes\Records\style_change_shape_record.h" />

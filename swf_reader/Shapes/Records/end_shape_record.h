@@ -16,6 +16,7 @@ namespace swf_reader::shapes::records
     class EndShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
     {
     public:
+        inline ShapeRecordType get_type() const override { return ShapeRecordType::EndRecord; }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,
