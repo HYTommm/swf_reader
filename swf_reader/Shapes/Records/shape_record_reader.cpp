@@ -8,15 +8,7 @@
  */
 
 #include "shape_record_reader.h"
-
-#include "straight_edge_shape_record.h"
-#include "curved_edge_shape_record.h"
 #include "style_change_record_flag.h"
-#include "end_shape_record.h"
-#include "style_change_shape_record.h"
-#include "style_change_shape_record_ex.h"
-#include "style_change_shape_record_rgb.h"
-#include "style_change_shape_record_rgba.h"
 #include "../fillstyle_stream_ext.h"
 #include "../linestyle_stream_ext.h"
 

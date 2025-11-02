@@ -12,6 +12,13 @@
 #include "i_swf_stream_reader.h"
 #include "i_shape_record.h"
 #include "style_change_shape_record.h"
+
+#include "end_shape_record.h"
+#include "straight_edge_shape_record.h"
+#include "curved_edge_shape_record.h"
+#include "style_change_shape_record_ex.h"
+#include "style_change_shape_record_rgb.h"
+#include "style_change_shape_record_rgba.h"
 namespace swf_reader::shapes::records
 {
     class ShapeRecordReader : public IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>
@@ -74,6 +81,7 @@ namespace swf_reader::shapes::records
         {
             return boxed<StyleChangeShapeRecordEx>();
         }
+
         //virtual void read_fillstyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
         //virtual void read_linestyles(ISwfStreamReader& reader, IShapeRecord& record, bool allowBigArray) = 0;
     };
