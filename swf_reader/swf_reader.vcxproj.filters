@@ -320,6 +320,15 @@
     <ClInclude Include="Shapes\Records\straight_edge_shape_record.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\Records\curved_edge_shape_record.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\style_change_shape_record_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Records\style_change_shape_record_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

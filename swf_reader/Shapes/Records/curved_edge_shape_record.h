@@ -27,7 +27,7 @@ namespace swf_reader::shapes::records
             u32& fill_bits_count,
             u32& line_bits_count) override
         {
-            visitor.visit(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
+            return visitor.visit(*this, reader, allow_big_array, fill_bits_count, line_bits_count);
         }
     };
 } // namespace swf_reader::shapes::records

@@ -222,6 +222,7 @@
     <ClInclude Include="Shapes\LineStyles\linestyle_rgb.h" />
     <ClInclude Include="Shapes\LineStyles\linestyle_rgba.h" />
     <ClInclude Include="Shapes\linestyle_stream_ext.h" />
+    <ClInclude Include="Shapes\Records\curved_edge_shape_record.h" />
     <ClInclude Include="Shapes\Records\end_shape_record.h" />
     <ClInclude Include="Shapes\Records\i_shape_record.h" />
     <ClInclude Include="Shapes\Records\i_shape_record_ex.h" />
@@ -233,6 +234,8 @@
     <ClInclude Include="Shapes\Records\style_change_record_flag.h" />
     <ClInclude Include="Shapes\Records\style_change_shape_record.h" />
     <ClInclude Include="Shapes\Records\style_change_shape_record_ex.h" />
+    <ClInclude Include="Shapes\Records\style_change_shape_record_rgb.h" />
+    <ClInclude Include="Shapes\Records\style_change_shape_record_rgba.h" />
     <ClInclude Include="swf_file.h" />
     <ClInclude Include="swf_file_info.h" />
     <ClInclude Include="swf_format.h" />

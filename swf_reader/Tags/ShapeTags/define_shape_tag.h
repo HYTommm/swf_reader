@@ -16,7 +16,7 @@ namespace swf_reader::tags::shape_tags
     {
     public:
         Vec<Box<shapes::fillstyles::FillStyleRgb>> fill_styles;
-        Vec<shapes::linestyles::LineStyleRgb> line_styles;
+        Vec<Box<shapes::linestyles::LineStyleRgb>> line_styles;
 
         // 通过 ShapeBaseTag 继承
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& args) override

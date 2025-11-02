@@ -61,7 +61,7 @@ namespace swf_reader::shapes
     Box<LineStyleEx> LineStyleStreamExt::read_linestyle_ex(ISwfStreamReader& reader)
     {
         //LineStyleEx line_style;
-        Box<LineStyleEx> line_style = boxed<LineStyleEx>(line_style);
+        Box<LineStyleEx> line_style = boxed<LineStyleEx>();
         line_style->width = reader.read_ui16();
         line_style->start_cap_style = static_cast<CapStyle>(reader.read_ub(2));
         line_style->join_style = static_cast<JoinStyle>(reader.read_ub(2));
