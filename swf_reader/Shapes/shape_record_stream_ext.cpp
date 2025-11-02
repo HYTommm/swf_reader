@@ -11,42 +11,48 @@
 
 namespace swf_reader::shapes
 {
-    void ShapeRecordStreamExt::ReadToShapeRecordsRgb(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgb>>& shapeRecords)
+    inline void ShapeRecordStreamExt::ReadToShapeRecordsRgb(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgb>>& shapeRecords)
     {
         u32 fillstyle_bits = reader.read_ub(4);
         u32 linestyle_bits = reader.read_ub(4);
         reader.align_to_byte();
         Box<records::IShapeRecordRgb> record;
+        bool is_end = false;
         do
         {
             record = _shape_record_reader.read<records::StyleChangeShapeRecordRgb>(reader, true, fillstyle_bits, linestyle_bits);
-            shapeRecords.push_back(record);
-        } while (record->get_type() != records::ShapeRecordType::EndRecord);
+            is_end = record->get_type() == records::ShapeRecordType::EndRecord;
+            shapeRecords.push_back(std::move(record));
+        } while (!is_end);
     }
 
-    void ShapeRecordStreamExt::ReadToShapeRecordsRgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords)
+    inline void ShapeRecordStreamExt::ReadToShapeRecordsRgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords)
     {
         u32 fillstyle_bits = reader.read_ub(4);
         u32 linestyle_bits = reader.read_ub(4);
         reader.align_to_byte();
         Box<records::IShapeRecordRgba> record;
+        bool is_end = false;
         do
         {
             record = _shape_record_reader.read<records::StyleChangeShapeRecordRgba>(reader, true, fillstyle_bits, linestyle_bits);
-            shapeRecords.push_back(record);
-        } while (record->get_type() != records::ShapeRecordType::EndRecord);
+            is_end = record->get_type() == records::ShapeRecordType::EndRecord;
+            shapeRecords.push_back(std::move(record));
+        } while (!is_end);
     }
 
-    void ShapeRecordStreamExt::ReadToShapeRecordsEx(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords)
+    inline void ShapeRecordStreamExt::ReadToShapeRecordsEx(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords)
     {
         u32 fillstyle_bits = reader.read_ub(4);
         u32 linestyle_bits = reader.read_ub(4);
         reader.align_to_byte();
         Box<records::IShapeRecordEx> record;
+        bool is_end = false;
         do
         {
             record = _shape_record_reader.read<records::StyleChangeShapeRecordEx>(reader, true, fillstyle_bits, linestyle_bits);
-            shapeRecords.push_back(record);
-        } while (record->get_type() != records::ShapeRecordType::EndRecord);
+            is_end = record->get_type() == records::ShapeRecordType::EndRecord;
+            shapeRecords.push_back(std::move(record));
+        } while (!is_end);
     }
 }

@@ -99,6 +99,9 @@
     <ClCompile Include="Shapes\Records\shape_record_reader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\shape_record_stream_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

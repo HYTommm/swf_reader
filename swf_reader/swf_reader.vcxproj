@@ -173,6 +173,7 @@
     <ClCompile Include="Shapes\fillstyle_stream_ext.cpp" />
     <ClCompile Include="Shapes\linestyle_stream_ext.cpp" />
     <ClCompile Include="Shapes\Records\shape_record_reader.cpp" />
+    <ClCompile Include="Shapes\shape_record_stream_ext.cpp" />
     <ClCompile Include="swf_file.cpp" />
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
