@@ -15,12 +15,15 @@
 #include "Data/color_stream_ext.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class FillStyleRgbReader : IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>
-	{
-	private:
-		FillStyleFactory _factory;
-	public:
-		Box<FillStyleRgb> read(ISwfStreamReader& reader, FillStyleType type);
-		FillStyleRgb& visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
-	};
+    class FillStyleRgbReader : IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>
+    {
+    private:
+        FillStyleFactory _factory;
+    public:
+        Box<FillStyleRgb> read(ISwfStreamReader& reader, FillStyleType type);
+        FillStyleRgb& visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
+        FillStyleRgb& visit(LinearGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
+        FillStyleRgb& visit(RadialGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
+        FillStyleRgb& visit(FocalGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader);
+    };
 }

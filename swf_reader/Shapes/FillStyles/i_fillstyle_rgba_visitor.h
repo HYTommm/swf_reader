@@ -10,18 +10,22 @@
 
 namespace swf_reader::shapes::fillstyles
 {
-	// Forward declaration
-	class SolidFillStyleRgba;
+    // Forward declaration
+    class SolidFillStyleRgba;
+    class LinearGradientFillStyleRgba;
+    class RadialGradientFillStyleRgba;
+    class FocalGradientFillStyleRgba;
+    class BitmapFillStyleRgba;
 
-	template<typename TArg, typename TResult>
-	class IFillStyleRgbaVisitor
-	{
-	public:
-		virtual TResult& visit(SolidFillStyleRgba& fillStyle, TArg& arg) = 0;
-		//virtual TResult visit(LinearGradientFillStyleRGB& fillStyle, TArg arg) = 0;
-		//virtual TResult visit(RadialGradientFillStyleRGB& fillStyle, TArg arg) = 0;
-		//virtual TResult visit(FocalGradientFillStyleRGB& fillStyle, TArg arg) = 0;
-		//virtual TResult visit(BitmapFillStyleRGB& fillStyle, TArg arg) = 0;
-		virtual ~IFillStyleRgbaVisitor() = default;
-	};
+    template<typename TArg, typename TResult>
+    class IFillStyleRgbaVisitor
+    {
+    public:
+        virtual TResult& visit(SolidFillStyleRgba& fillStyle, TArg& arg) = 0;
+        virtual TResult& visit(LinearGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
+        virtual TResult& visit(RadialGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
+        virtual TResult& visit(FocalGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
+        //virtual TResult& visit(BitmapFillStyleRgba& fillStyle, TArg& arg) = 0;
+        virtual ~IFillStyleRgbaVisitor() = default;
+    };
 }

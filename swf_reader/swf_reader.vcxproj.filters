@@ -338,6 +338,57 @@
     <ClInclude Include="Shapes\shape_record_stream_ext.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\linear_gradient_fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\base_gradient_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\spread_mode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\interpolation_mode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\gradient_record_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\linear_gradient_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\focal_gradient_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\base_gradient_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\gradient_record_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\focal_gradient_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\linear_gradient_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Gradients\gradient_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\linear_gradient_fillstyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\radial_gradient_fillstyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\radial_gradient_fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\focal_gradient_fillstyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\focal_gradient_fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

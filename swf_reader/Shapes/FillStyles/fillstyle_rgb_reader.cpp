@@ -7,18 +7,39 @@
  * Licensed under the MIT License.
  */
 #include "fillstyle_rgb_reader.h"
+#include "Data/color_stream_ext.h"
+
+#include "Gradients/gradient_stream_ext.h"
 
 namespace swf_reader::shapes::fillstyles
 {
-	Box<FillStyleRgb> FillStyleRgbReader::read(ISwfStreamReader& reader, FillStyleType type)
-	{
-		Box<FillStyleRgb> fillstyle = _factory.create_rgb(type);
-		fillstyle->accept_visitor(*this, reader);
-		return fillstyle;
-	}
-	FillStyleRgb& FillStyleRgbReader::visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader)
-	{
-		fillstyle.color = data::ColorStreamExt::read_rgb(reader);
-		return fillstyle;
-	}
+    Box<FillStyleRgb> FillStyleRgbReader::read(ISwfStreamReader& reader, FillStyleType type)
+    {
+        Box<FillStyleRgb> fillstyle = _factory.create_rgb(type);
+        fillstyle->accept_visitor(*this, reader);
+        return fillstyle;
+    }
+    FillStyleRgb& FillStyleRgbReader::visit(SolidFillStyleRgb& fillstyle, ISwfStreamReader& reader)
+    {
+        fillstyle.color = data::ColorStreamExt::read_rgb(reader);
+        return fillstyle;
+    }
+    FillStyleRgb& FillStyleRgbReader::visit(LinearGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader)
+    {
+        fillstyle.gradient_matrix = SwfStreamReaderExt::read_matrix(reader);
+        fillstyle.gradient = gradients::GradientStreamExt::read_linear_gradient_rgb(reader);
+        return fillstyle;
+    }
+    FillStyleRgb& FillStyleRgbReader::visit(RadialGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader)
+    {
+        fillstyle.gradient_matrix = SwfStreamReaderExt::read_matrix(reader);
+        fillstyle.gradient = gradients::GradientStreamExt::read_linear_gradient_rgb(reader);
+        return fillstyle;
+    }
+    FillStyleRgb& FillStyleRgbReader::visit(FocalGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader)
+    {
+        fillstyle.gradient_matrix = SwfStreamReaderExt::read_matrix(reader);
+        fillstyle.gradient = gradients::GradientStreamExt::read_focal_gradient_rgb(reader);
+        return fillstyle;
+    }
 }

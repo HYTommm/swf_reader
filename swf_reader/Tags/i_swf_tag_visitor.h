@@ -12,28 +12,28 @@
 
 namespace swf_reader::tags
 {
-	template<typename TArg, typename TResult>
-	class ISwfTagVisitor
-	{
-	public:
-		ISwfTagVisitor() = default;
-		virtual ~ISwfTagVisitor() = default;
+    template<typename TArg, typename TResult>
+    class ISwfTagVisitor
+    {
+    public:
+        ISwfTagVisitor() = default;
+        virtual ~ISwfTagVisitor() = default;
 
-		// 删除拷贝操作（抽象基类通常不应该被拷贝）
-		ISwfTagVisitor(const ISwfTagVisitor&) = delete;
-		ISwfTagVisitor& operator=(const ISwfTagVisitor&) = delete;
+        // 删除拷贝操作（抽象基类通常不应该被拷贝）
+        ISwfTagVisitor(const ISwfTagVisitor&) = delete;
+        ISwfTagVisitor& operator=(const ISwfTagVisitor&) = delete;
 
-		// 允许移动操作
-		ISwfTagVisitor(ISwfTagVisitor&&) = default;
-		ISwfTagVisitor& operator=(ISwfTagVisitor&&) = default;
+        // 允许移动操作
+        ISwfTagVisitor(ISwfTagVisitor&&) = default;
+        ISwfTagVisitor& operator=(ISwfTagVisitor&&) = default;
 
 #pragma region Display list tags
-		virtual TResult& visit(display_list_tags::PlaceObjectTag& tag, TArg& arg) = 0;
-		virtual TResult& visit(display_list_tags::PlaceObject2Tag& tag, TArg& arg) = 0;
-		//		virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag,  TArg& arg) = 0;
-		//		virtual TResult& visit(display_list_tags::RemoveObjectTag& tag,  TArg& arg) = 0;
-		//		virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
-		//		virtual TResult& visit(display_list_tags::ShowFrameTag& tag,     TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::PlaceObjectTag& tag, TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::PlaceObject2Tag& tag, TArg& arg) = 0;
+        //		virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag,  TArg& arg) = 0;
+        //		virtual TResult& visit(display_list_tags::RemoveObjectTag& tag,  TArg& arg) = 0;
+        //		virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
+        //		virtual TResult& visit(display_list_tags::ShowFrameTag& tag,     TArg& arg) = 0;
 #pragma endregion
 //
 //#pragma region Control tags
@@ -63,10 +63,10 @@ namespace swf_reader::tags
 //#pragma endregion
 //
 #pragma region Shape tags
-		virtual TResult& visit(shape_tags::DefineShapeTag& tag, TArg& arg) = 0;
-		//		virtual TResult& visit(DefineShape2Tag& tag, TArg& arg) = 0;
-		//		virtual TResult& visit(DefineShape3Tag& tag, TArg& arg) = 0;
-		//		virtual TResult& visit(DefineShape4Tag& tag, TArg& arg) = 0;
+        virtual TResult& visit(shape_tags::DefineShapeTag& tag, TArg& arg) = 0;
+        //		virtual TResult& visit(DefineShape2Tag& tag, TArg& arg) = 0;
+        //		virtual TResult& visit(DefineShape3Tag& tag, TArg& arg) = 0;
+        //		virtual TResult& visit(DefineShape4Tag& tag, TArg& arg) = 0;
 #pragma endregion
 //
 //#pragma region Bitmap tags
@@ -130,6 +130,6 @@ namespace swf_reader::tags
 //		virtual TResult& visit(DefineBinaryDataTag& tag, TArg& arg) = 0;
 //		virtual TResult& visit(DebugIDTag& tag,          TArg& arg) = 0;
 //		virtual TResult& visit(ProductInfoTag& tag,      TArg& arg) = 0;
-		virtual TResult& visit(UnknownTag& tag, TArg& arg) = 0;
-	};
+        virtual TResult& visit(UnknownTag& tag, TArg& arg) = 0;
+    };
 }

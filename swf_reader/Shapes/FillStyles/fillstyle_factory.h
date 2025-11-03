@@ -8,10 +8,17 @@
  */
 #pragma once
 
+#include "fillstyle_type.h"
 #include "fillstyle_rgb.h"
 #include "fillstyle_rgba.h"
 #include "solid_fillstyle_rgb.h"
 #include "solid_fillstyle_rgba.h"
+#include "linear_gradient_fillstyle_rgb.h"
+#include "linear_gradient_fillstyle_rgba.h"
+#include "radial_gradient_fillstyle_rgb.h"
+#include "radial_gradient_fillstyle_rgba.h"
+#include "focal_gradient_fillstyle_rgb.h"
+#include "focal_gradient_fillstyle_rgba.h"
 namespace swf_reader::shapes::fillstyles
 {
     class FillStyleFactory
@@ -23,12 +30,12 @@ namespace swf_reader::shapes::fillstyles
             {
                 case FillStyleType::SolidColor:
                     return boxed<SolidFillStyleRgb>();
-                    //case FillStyleType.LinearGradient:
-                    //    return new LinearGradientFillStyleRGB();
-                    //case FillStyleType.RadialGradient:
-                    //    return new RadialGradientFillStyleRGB();
-                    //case FillStyleType.FocalGradient:
-                    //    return new FocalGradientFillStyleRGB();
+                case FillStyleType::LinearGradient:
+                    return boxed<LinearGradientFillStyleRgb>();
+                case FillStyleType::RadialGradient:
+                    return boxed<RadialGradientFillStyleRgb>();
+                case FillStyleType::FocalGradient:
+                    return boxed<FocalGradientFillStyleRgb>();
                     //case FillStyleType.RepeatingBitmap:
                     //    return new BitmapFillStyleRGB { Smoothing = true, Mode = BitmapMode.Repeat};
                     //case FillStyleType.ClippedBitmap:
@@ -47,6 +54,12 @@ namespace swf_reader::shapes::fillstyles
             {
                 case FillStyleType::SolidColor:
                     return boxed<SolidFillStyleRgba>();
+                case FillStyleType::LinearGradient:
+                    return boxed<LinearGradientFillStyleRgba>();
+                case FillStyleType::RadialGradient:
+                    return boxed<RadialGradientFillStyleRgba>();
+                case FillStyleType::FocalGradient:
+                    return boxed<FocalGradientFillStyleRgba>();
             }
         }
     };
