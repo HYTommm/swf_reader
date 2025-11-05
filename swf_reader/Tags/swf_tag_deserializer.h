@@ -39,6 +39,8 @@ namespace swf_reader::tags
         SwfTagBase& visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(DefineSpriteTag& tag, ISwfStreamReader& reader) override;
+        Box<SwfTagBase> read_define_sprite_sub_tag(ISwfStreamReader& reader);
         SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 
         // ... 其他 Visit 方法的实现将继续

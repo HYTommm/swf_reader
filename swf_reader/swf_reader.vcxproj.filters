@@ -102,6 +102,9 @@
     <ClCompile Include="Shapes\shape_record_stream_ext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Tags\define_sprite_tag.h">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

@@ -23,6 +23,8 @@
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
 #include "ShapeTags/define_shape4_tag.h"
+#include "define_sprite_tag.h"
+#include "tag_stream_ext.h"
 #include "Shapes/fillstyle_stream_ext.h"
 #include "Shapes/linestyle_stream_ext.h"
 #include "Shapes/shape_record_stream_ext.h"
@@ -137,18 +139,6 @@ namespace swf_reader::tags
 
     SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader)
     {
-        /* C#
-            tag.ShapeID = reader.ReadUInt16();
-            tag.ShapeBounds = reader.ReadRect();
-            reader.ReadRect(out tag.EdgeBounds);
-            tag.Flags = reader.ReadByte();
-            reader.ReadToFillStylesRGBA(tag.FillStyles);
-            reader.ReadToLineStylesEx(tag.LineStyles);
-            reader.ReadToShapeRecordsEx(tag.ShapeRecords);
-            return tag;
-        */
-
-        // C++
         tag.shape_id = reader.read_ui16();
         SwfStreamReaderExt::read_rect(reader, tag.shape_bounds);
         SwfStreamReaderExt::read_rect(reader, tag.edge_bounds);
@@ -156,6 +146,35 @@ namespace swf_reader::tags
         shapes::FillStyleStreamExt::read_to_fillstyles_rgba(reader, tag.fill_styles);
         shapes::LineStyleStreamExt::read_to_linestyles_ex(reader, tag.line_styles);
         shapes::ShapeRecordStreamExt::read_to_shape_records_ex(reader, tag.shape_records);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(DefineSpriteTag& tag, ISwfStreamReader& reader)
+    {
+        /* C#:
+        tag.SpriteID = reader.ReadUInt16();
+        tag.FramesCount = reader.ReadUInt16();
+        SwfTagBase subTag;
+        do
+        {
+        subTag = ReadDefineSpriteSubTag(reader);
+        if (subTag != null) tag.Tags.Add(subTag);
+        } while (subTag != null && subTag.TagType != SwfTagType.End && reader.BytesLeft > 0);
+        return tag;
+        */
+
+        // C++:
+
+        tag.sprite_id = reader.read_ui16();
+        tag.frames_count = reader.read_ui16();
+        Box<SwfTagBase> sub_tag;
+        bool is_end_tag;
+        do
+        {
+            sub_tag = read_tag(TagStreamExt::read_tag_data(reader));
+            is_end_tag = sub_tag && sub_tag->get_type() != SwfTagType::End && reader.bytes_left() > 0;
+            if (sub_tag)    tag.tags.push_back(std::move(sub_tag));
+        } while (is_end_tag);
         return tag;
     }
 

@@ -118,9 +118,9 @@ namespace swf_reader::tags
         //		virtual TResult& visit(DefineButtonSoundTag& tag,  TArg& arg) = 0;
         //#pragma endregion
         //
-        //#pragma region Sprites and movie clips
-        //		virtual TResult& visit(DefineSpriteTag& tag, TArg& arg) = 0;
-        //#pragma endregion
+#pragma region Sprites and movie clips
+        virtual TResult& visit(DefineSpriteTag& tag, TArg& arg) = 0;
+#pragma endregion
         //
         //#pragma region Video tags
         //		virtual TResult& visit(DefineVideoStreamTag& tag, TArg& arg) = 0;

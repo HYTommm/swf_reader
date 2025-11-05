@@ -17,6 +17,7 @@
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
 #include "ShapeTags/define_shape4_tag.h"
+#include "define_sprite_tag.h"
 
 namespace swf_reader::tags
 {
@@ -89,8 +90,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<DefineBitsLossless2Tag>();
                     //case SwfTagType::DefineEditText:
                     //	return std::make_unique<DefineEditTextTag>();
-                    //case SwfTagType::DefineSprite:
-                    //	return std::make_unique<DefineSpriteTag>();
+                case SwfTagType::DefineSprite:
+                    return boxed<DefineSpriteTag>();
                     //case SwfTagType::FrameLabel:
                     //	return std::make_unique<FrameLabelTag>();
                     //case SwfTagType::SoundStreamHead2:

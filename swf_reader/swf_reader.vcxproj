@@ -178,6 +178,7 @@
     <ClCompile Include="swf_stream_reader.cpp" />
     <ClCompile Include="swf_stream_reader_ext.cpp" />
     <ClCompile Include="swf_zip.cpp" />
+    <ClCompile Include="Tags\define_sprite_tag.h" />
     <ClCompile Include="Tags\swf_tag_base.cpp" />
     <ClCompile Include="Tags\swf_tag_deserializer.cpp" />
     <ClCompile Include="Tags\tag_stream_ext.cpp" />
