@@ -49,7 +49,7 @@ Usage examples are provided in separate example files. Please refer to the `exam
 This port is currently in active development. The core reading functionality is being implemented incrementally.
 
 Due to the large number of SWF tags, we are constantly improving the library with the spirit of the "Foolish Old Man Removes the Mountains". Current progress:
-[######>-------------------------------------------] 12%
+[###############>----------------------------------] 21%
 
 ## Building
 
