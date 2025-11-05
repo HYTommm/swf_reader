@@ -217,6 +217,9 @@
     <ClInclude Include="Gradients\spread_mode.h" />
     <ClInclude Include="i_swf_stream_reader.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgb.h" />
+    <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgba.h" />
+    <ClInclude Include="Shapes\FillStyles\bitmap_mode.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_factory.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_rgba.h" />
     <ClInclude Include="Shapes\FillStyles\fillstyle_rgba_reader.h" />
@@ -268,6 +271,10 @@
     <ClInclude Include="Tags\DisplayListTags\place_object_base_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object_tag.h" />
     <ClInclude Include="Tags\i_swf_tag_visitor.h" />
+    <ClInclude Include="Tags\ShapeTags\define_shape2_tag.h" />
+    <ClInclude Include="Tags\ShapeTags\define_shape3_tag.h" />
+    <ClInclude Include="Tags\ShapeTags\define_shape4_flag.h" />
+    <ClInclude Include="Tags\ShapeTags\define_shape4_tag.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape_tag.h" />
     <ClInclude Include="Tags\ShapeTags\shape_base_tag.h" />
     <ClInclude Include="Tags\swf_tags_factory.h" />

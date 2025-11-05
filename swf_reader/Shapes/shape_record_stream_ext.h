@@ -21,8 +21,8 @@ namespace swf_reader::shapes
         static records::ShapeRecordReader _shape_record_reader;
         static void read_to_shape_records_rgb(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgb>>& shapeRecords);
 
-        static void ReadToShapeRecordsRgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords);
+        static void read_to_shape_records_rgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords);
 
-        static void ReadToShapeRecordsEx(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords);
+        static void read_to_shape_records_ex(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords);
     };
 }

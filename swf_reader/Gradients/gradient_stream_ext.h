@@ -86,7 +86,7 @@ namespace swf_reader::gradients
         static Box<GradientRecordRgb> read_gradient_record_rgb(ISwfStreamReader& reader)
         {
             Box<GradientRecordRgb> record = boxed<GradientRecordRgb>();
-            record->ratio = reader.read_ui16();
+            record->ratio = reader.read_byte();
             record->color = data::ColorStreamExt::read_rgb(reader);
             return record;
         }
@@ -94,7 +94,7 @@ namespace swf_reader::gradients
         static Box<GradientRecordRgba> read_gradient_record_rgba(ISwfStreamReader& reader)
         {
             Box<GradientRecordRgba> record = boxed<GradientRecordRgba>();
-            record->ratio = reader.read_ui16();
+            record->ratio = reader.read_byte();
             record->color = data::ColorStreamExt::read_rgba(reader);
             return record;
         }

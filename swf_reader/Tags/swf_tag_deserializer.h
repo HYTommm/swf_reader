@@ -18,30 +18,33 @@
 
 namespace swf_reader::tags
 {
-	class SwfTagDeserializer : public ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>
-	{
-	public:
-		explicit SwfTagDeserializer(SwfFile& file) : file_(&file)
-		{
-		}
+    class SwfTagDeserializer : public ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>
+    {
+    public:
+        explicit SwfTagDeserializer(SwfFile& file) : file_(&file)
+        {
+        }
 
-		Box<SwfTagBase> read_tag(const SwfTagData& tag_data);
+        Box<SwfTagBase> read_tag(const SwfTagData& tag_data);
 
-		Box<SwfTagBase> read_tag(const SwfTagType type, ISwfStreamReader& reader);
+        Box<SwfTagBase> read_tag(const SwfTagType type, ISwfStreamReader& reader);
 
-		template<typename StyleChangeShapeRecord_T>
-		Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
+        template<typename StyleChangeShapeRecord_T>
+        Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
 
-		[[nodiscard]] SwfFile& swf_file() const;
-		SwfTagBase& visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader) override;
-		SwfTagBase& visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader) override;
-		SwfTagBase& visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader) override;
-		SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
+        [[nodiscard]] SwfFile& swf_file() const;
+        SwfTagBase& visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 
-		// ... 其他 Visit 方法的实现将继续
+        // ... 其他 Visit 方法的实现将继续
 
-	private:
-		SwfFile* file_;
-		SwfTagsFactory factory_;
-	};
+    private:
+        SwfFile* file_;
+        SwfTagsFactory factory_;
+    };
 }

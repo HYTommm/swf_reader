@@ -27,7 +27,7 @@ namespace swf_reader::shapes
         } while (!is_end);
     }
 
-    void ShapeRecordStreamExt::ReadToShapeRecordsRgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords)
+    void ShapeRecordStreamExt::read_to_shape_records_rgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords)
     {
         u32 fillstyle_bits = reader.read_ub(4);
         u32 linestyle_bits = reader.read_ub(4);
@@ -37,12 +37,14 @@ namespace swf_reader::shapes
         do
         {
             record = _shape_record_reader.read<records::StyleChangeShapeRecordRgba, records::IShapeRecordRgba>(reader, true, fillstyle_bits, linestyle_bits);
+            //auto type = record->get_type();
+            //printf("type: %d\n", type);
             is_end = record->get_type() == records::ShapeRecordType::EndRecord;
             shapeRecords.push_back(std::move(record));
         } while (!is_end);
     }
 
-    void ShapeRecordStreamExt::ReadToShapeRecordsEx(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords)
+    void ShapeRecordStreamExt::read_to_shape_records_ex(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords)
     {
         u32 fillstyle_bits = reader.read_ub(4);
         u32 linestyle_bits = reader.read_ub(4);

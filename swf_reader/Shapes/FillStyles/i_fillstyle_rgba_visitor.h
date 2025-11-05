@@ -25,7 +25,7 @@ namespace swf_reader::shapes::fillstyles
         virtual TResult& visit(LinearGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
         virtual TResult& visit(RadialGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
         virtual TResult& visit(FocalGradientFillStyleRgba& fillStyle, TArg& arg) = 0;
-        //virtual TResult& visit(BitmapFillStyleRgba& fillStyle, TArg& arg) = 0;
+        virtual TResult& visit(BitmapFillStyleRgba& fillStyle, TArg& arg) = 0;
         virtual ~IFillStyleRgbaVisitor() = default;
     };
 }

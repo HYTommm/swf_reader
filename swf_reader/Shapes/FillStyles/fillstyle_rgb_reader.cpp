@@ -16,6 +16,8 @@ namespace swf_reader::shapes::fillstyles
     Box<FillStyleRgb> FillStyleRgbReader::read(ISwfStreamReader& reader, FillStyleType type)
     {
         Box<FillStyleRgb> fillstyle = _factory.create_rgb(type);
+        if (!fillstyle)
+            return nullptr;
         fillstyle->accept_visitor(*this, reader);
         return fillstyle;
     }
@@ -40,6 +42,12 @@ namespace swf_reader::shapes::fillstyles
     {
         fillstyle.gradient_matrix = SwfStreamReaderExt::read_matrix(reader);
         fillstyle.gradient = gradients::GradientStreamExt::read_focal_gradient_rgb(reader);
+        return fillstyle;
+    }
+    FillStyleRgb& FillStyleRgbReader::visit(BitmapFillStyleRgb& fillstyle, ISwfStreamReader& reader)
+    {
+        fillstyle.bitmap_id = reader.read_ui16();
+        fillstyle.bitmap_matrix = SwfStreamReaderExt::read_matrix(reader);
         return fillstyle;
     }
 }

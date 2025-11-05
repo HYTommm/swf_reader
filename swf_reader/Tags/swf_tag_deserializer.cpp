@@ -20,6 +20,9 @@
 #include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
 #include "ShapeTags/define_shape_tag.h"
+#include "ShapeTags/define_shape2_tag.h"
+#include "ShapeTags/define_shape3_tag.h"
+#include "ShapeTags/define_shape4_tag.h"
 #include "Shapes/fillstyle_stream_ext.h"
 #include "Shapes/linestyle_stream_ext.h"
 #include "Shapes/shape_record_stream_ext.h"
@@ -109,7 +112,50 @@ namespace swf_reader::tags
         shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
         shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
         shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.shape_records);
-        // TODO: add shape records
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader)
+    {
+        tag.shape_id = reader.read_ui16();
+        tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
+        shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, true);
+        shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, true);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.shape_records);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader)
+    {
+        tag.shape_id = reader.read_ui16();
+        tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
+        shapes::FillStyleStreamExt::read_to_fillstyles_rgba(reader, tag.fill_styles);
+        shapes::LineStyleStreamExt::read_to_linestyles_rgba(reader, tag.line_styles);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgba(reader, tag.shape_records);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader)
+    {
+        /* C#
+            tag.ShapeID = reader.ReadUInt16();
+            tag.ShapeBounds = reader.ReadRect();
+            reader.ReadRect(out tag.EdgeBounds);
+            tag.Flags = reader.ReadByte();
+            reader.ReadToFillStylesRGBA(tag.FillStyles);
+            reader.ReadToLineStylesEx(tag.LineStyles);
+            reader.ReadToShapeRecordsEx(tag.ShapeRecords);
+            return tag;
+        */
+
+        // C++
+        tag.shape_id = reader.read_ui16();
+        SwfStreamReaderExt::read_rect(reader, tag.shape_bounds);
+        SwfStreamReaderExt::read_rect(reader, tag.edge_bounds);
+        tag.flags.set(reader.read_byte());
+        shapes::FillStyleStreamExt::read_to_fillstyles_rgba(reader, tag.fill_styles);
+        shapes::LineStyleStreamExt::read_to_linestyles_ex(reader, tag.line_styles);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_ex(reader, tag.shape_records);
         return tag;
     }
 

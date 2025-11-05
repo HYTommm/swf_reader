@@ -25,5 +25,6 @@ namespace swf_reader::shapes::fillstyles
         FillStyleRgb& visit(LinearGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
         FillStyleRgb& visit(RadialGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
         FillStyleRgb& visit(FocalGradientFillStyleRgb& fillstyle, ISwfStreamReader& reader);
+        FillStyleRgb& visit(BitmapFillStyleRgb& fillstyle, ISwfStreamReader& reader) override;
     };
 }

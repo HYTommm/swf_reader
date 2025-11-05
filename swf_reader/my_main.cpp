@@ -200,21 +200,30 @@ int main(int argc, char* argv[])
     std::print("显示区域（像素）: {}, {}=> {}, {}像素\n",
         swf_file->header.frame_size.x_min / 20, swf_file->header.frame_size.y_min / 20,
         swf_file->header.frame_size.x_max / 20, swf_file->header.frame_size.y_max / 20);
-
+    int unknown_count = 0;
     for (i32 i = 0; i < swf_file->tags.size(); i++)
     {
         swf_reader::tags::SwfTagBase& tag = *(swf_file->tags[i]);
         if (tag.get_type() == swf_reader::tags::SwfTagType::Unknown)
         {
+            unknown_count++;
             continue;
         }
+
         std::print("标签类型: {}", static_cast<int>(tag.get_type()));
-        if (tag.get_type() == swf_reader::tags::SwfTagType::DefineShape)
+        if (tag.get_type() == swf_reader::tags::SwfTagType::DefineShape
+            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape2
+            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape3
+            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape4
+            )
         {
-            std::print("id: {}\n", static_cast<swf_reader::tags::shape_tags::DefineShapeTag&>(tag).shape_id);
+            std::print("id: {}", static_cast<swf_reader::tags::shape_tags::ShapeBaseTag&>(tag).shape_id);
         }
+        std::print("\n");
+
         //std::print("标签数据: {}\n", tag.data);
     }
+    std::print("可解析的标签比例: {}%\n", (100.0 - unknown_count * 100.0 / swf_file->tags.size()));
 
     return 0;
 }

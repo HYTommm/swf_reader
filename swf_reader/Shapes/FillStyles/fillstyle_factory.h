@@ -19,6 +19,8 @@
 #include "radial_gradient_fillstyle_rgba.h"
 #include "focal_gradient_fillstyle_rgb.h"
 #include "focal_gradient_fillstyle_rgba.h"
+#include "bitmap_fillstyle_rgb.h"
+#include "bitmap_fillstyle_rgba.h"
 namespace swf_reader::shapes::fillstyles
 {
     class FillStyleFactory
@@ -36,16 +38,16 @@ namespace swf_reader::shapes::fillstyles
                     return boxed<RadialGradientFillStyleRgb>();
                 case FillStyleType::FocalGradient:
                     return boxed<FocalGradientFillStyleRgb>();
-                    //case FillStyleType.RepeatingBitmap:
-                    //    return new BitmapFillStyleRGB { Smoothing = true, Mode = BitmapMode.Repeat};
-                    //case FillStyleType.ClippedBitmap:
-                    //    return new BitmapFillStyleRGB { Smoothing = true, Mode = BitmapMode.Clip};
-                    //case FillStyleType.NonSmoothedRepeatingBitmap:
-                    //    return new BitmapFillStyleRGB { Smoothing = false, Mode = BitmapMode.Repeat };
-                    //case FillStyleType.NonSmoothedClippedBitmap:
-                    //    return new BitmapFillStyleRGB { Smoothing = false, Mode = BitmapMode.Clip};
-                    //default:
-                    //    throw new NotSupportedException();
+                case FillStyleType::RepeatingBitmap:
+                    return boxed<BitmapFillStyleRgb>(true, BitmapMode::Repeat);
+                case FillStyleType::ClippedBitmap:
+                    return boxed<BitmapFillStyleRgb>(true, BitmapMode::Clip);
+                case FillStyleType::NonSmoothedRepeatingBitmap:
+                    return boxed<BitmapFillStyleRgb>(false, BitmapMode::Repeat);
+                case FillStyleType::NonSmoothedClippedBitmap:
+                    return boxed<BitmapFillStyleRgb>(false, BitmapMode::Clip);
+                default:
+                    throw std::runtime_error("Not supported");
             }
         }
         Box<FillStyleRgba> create_rgba(const FillStyleType type)
@@ -60,6 +62,16 @@ namespace swf_reader::shapes::fillstyles
                     return boxed<RadialGradientFillStyleRgba>();
                 case FillStyleType::FocalGradient:
                     return boxed<FocalGradientFillStyleRgba>();
+                case FillStyleType::RepeatingBitmap:
+                    return boxed<BitmapFillStyleRgba>(true, BitmapMode::Repeat);
+                case FillStyleType::ClippedBitmap:
+                    return boxed<BitmapFillStyleRgba>(true, BitmapMode::Clip);
+                case FillStyleType::NonSmoothedRepeatingBitmap:
+                    return boxed<BitmapFillStyleRgba>(false, BitmapMode::Repeat);
+                case FillStyleType::NonSmoothedClippedBitmap:
+                    return boxed<BitmapFillStyleRgba>(false, BitmapMode::Clip);
+                default:
+                    throw std::runtime_error("Not supported");
             }
         }
     };

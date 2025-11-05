@@ -389,6 +389,27 @@
     <ClInclude Include="Shapes\FillStyles\focal_gradient_fillstyle_rgba.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\define_shape2_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\define_shape3_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgba.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\FillStyles\bitmap_mode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\define_shape4_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ShapeTags\define_shape4_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />
