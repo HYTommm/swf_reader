@@ -8,7 +8,7 @@
  */
 #pragma once
 
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 namespace swf_reader::shapes::fillstyles
 {
     enum class BitmapMode : u8

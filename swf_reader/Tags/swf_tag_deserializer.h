@@ -29,18 +29,23 @@ namespace swf_reader::tags
 
         Box<SwfTagBase> read_tag(const SwfTagType type, ISwfStreamReader& reader);
 
-        template<typename StyleChangeShapeRecord_T>
-        Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
+        //template<typename StyleChangeShapeRecord_T>
+        //Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
 
         [[nodiscard]] SwfFile& swf_file() const;
         SwfTagBase& visit(display_list_tags::PlaceObjectTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(display_list_tags::PlaceObject2Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(display_list_tags::PlaceObject3Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(display_list_tags::RemoveObjectTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(display_list_tags::RemoveObject2Tag& tag, ISwfStreamReader& reader) override;
+
+        SwfTagBase& visit(control_tags::EndTag& tag, ISwfStreamReader& reader) override;
+
         SwfTagBase& visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(DefineSpriteTag& tag, ISwfStreamReader& reader) override;
-        Box<SwfTagBase> read_define_sprite_sub_tag(ISwfStreamReader& reader);
         SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 
         // ... 其他 Visit 方法的实现将继续

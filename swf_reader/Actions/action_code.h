@@ -8,14 +8,15 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 
-namespace swf_reader::actions {
-
+namespace swf_reader::actions
+{
     /**
      * 表示 ActionScript 2.0 的动作代码
      */
-    enum class ActionCode : u8 {
+    enum class ActionCode : u8
+    {
         End = 0x00,
 
         /// <summary>

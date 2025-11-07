@@ -105,6 +105,15 @@
     <ClCompile Include="Tags\define_sprite_tag.h">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Filters\filter_factory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\filter_reader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\filter_stream_ext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -411,6 +420,45 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Tags\ShapeTags\define_shape4_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ControlTags\end_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\remove_object_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\remove_object2_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object3_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\place_object3_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\blend_mode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\base_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\i_filter_visitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\filter_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="primitive_types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\filter_stream_ext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\filter_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\filter_factory.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,32 +8,35 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
+#include <type_traits>
 
-namespace swf_reader::clip_actions {
-    enum class ClipEventFlag : u32 {
-        None           = 0,
-        KeyUp          = 1 << 0,
-        KeyDown        = 1 << 1,
-        MouseUp        = 1 << 2,
-        MouseDown      = 1 << 3,
-        MouseMove      = 1 << 4,
-        Unload         = 1 << 5,
-        EnterFrame     = 1 << 6,
-        Load           = 1 << 7,
-                     
-        DragOver       = 1 << 8,
-        RollOut        = 1 << 9,
-        RollOver       = 1 << 10,
+namespace swf_reader::clip_actions
+{
+    enum class ClipEventFlag : u32
+    {
+        None = 0,
+        KeyUp = 1 << 0,
+        KeyDown = 1 << 1,
+        MouseUp = 1 << 2,
+        MouseDown = 1 << 3,
+        MouseMove = 1 << 4,
+        Unload = 1 << 5,
+        EnterFrame = 1 << 6,
+        Load = 1 << 7,
+
+        DragOver = 1 << 8,
+        RollOut = 1 << 9,
+        RollOver = 1 << 10,
         ReleaseOutside = 1 << 11,
-        Release        = 1 << 12,
-        Press          = 1 << 13,
-        Initialize     = 1 << 14,
-        Data           = 1 << 15,
+        Release = 1 << 12,
+        Press = 1 << 13,
+        Initialize = 1 << 14,
+        Data = 1 << 15,
 
-        Construct      = 1 << 16,
-        KeyPress       = 1 << 17,
-        DragOut        = 1 << 18
+        Construct = 1 << 16,
+        KeyPress = 1 << 17,
+        DragOut = 1 << 18
     };
 
     // 位或操作符
@@ -74,7 +77,8 @@ namespace swf_reader::clip_actions {
         return static_cast<ClipEventFlag>(~static_cast<u32>(flag));
     }
 
-    struct ClipEventFlags {
+    struct ClipEventFlags
+    {
         ClipEventFlag flags{ ClipEventFlag::None };
         u8 reserved{ 0 };
         u8 reserved2{ 0 };
@@ -93,8 +97,8 @@ namespace swf_reader::clip_actions {
         // 检查是否为空的属性
         [[nodiscard]] bool is_empty() const noexcept
         {
-            return flags == ClipEventFlag::None 
-                && reserved == 0 
+            return flags == ClipEventFlag::None
+                && reserved == 0
                 && reserved2 == 0;
         }
     };

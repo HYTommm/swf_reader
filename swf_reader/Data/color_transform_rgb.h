@@ -8,19 +8,21 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 
-namespace swf_reader::data {
-	class ColorTransformRGB {
-	public:
-		i16 red_mult_term;
-		i16 green_mult_term;
-		i16 blue_mult_term;
-		i16 red_add_term;
-		i16 green_add_term;
-		i16 blue_add_term;
+namespace swf_reader::data
+{
+    class ColorTransformRGB
+    {
+    public:
+        i16 red_mult_term;
+        i16 green_mult_term;
+        i16 blue_mult_term;
+        i16 red_add_term;
+        i16 green_add_term;
+        i16 blue_add_term;
 
-		bool has_add_terms;
-		bool has_mult_terms;
-	};
+        bool has_add_terms;
+        bool has_mult_terms;
+    };
 }

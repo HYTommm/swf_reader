@@ -20,6 +20,7 @@ namespace swf_reader::shapes::records
         Vec<Box<fillstyles::FillStyleRgba>> FillStyles;
         Vec<Box<linestyles::LineStyleRgba>> LineStyles;
 
+        inline ShapeRecordType get_type() const override { return ShapeRecordType::StyleChangeRecord; }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

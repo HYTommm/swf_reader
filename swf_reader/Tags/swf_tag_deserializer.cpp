@@ -17,8 +17,13 @@
 
 #include "ClipActions/clip_actions_stream_ext.h"
 #include "Data/color_transform_stream_ext.h"
+#include "Filters/filter_stream_ext.h"
 #include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
+#include "DisplayListTags/place_object3_tag.h"
+#include "DisplayListTags/remove_object_tag.h"
+#include "DisplayListTags/remove_object2_tag.h"
+#include "ControlTags/end_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
@@ -99,11 +104,50 @@ namespace swf_reader::tags
         tag.depth = reader.read_ui16();
         if (tag.flags.get(PlaceObject2Flag::HasCharacter))      tag.character_id = reader.read_ui16();
         if (tag.flags.get(PlaceObject2Flag::HasMatrix))         tag.matrix = SwfStreamReaderExt::read_matrix(reader);
-        if (tag.flags.get(PlaceObject2Flag::HasColorTransform)) tag.color_transform = boxed<data::ColorTransformRGBA>(data::ColorTransformStreamExt::read_color_transform_rgba(reader));
+        if (tag.flags.get(PlaceObject2Flag::HasColorTransform)) tag.color_transform = boxed<data::ColorTransformRgba>(data::ColorTransformStreamExt::read_color_transform_rgba(reader));
         if (tag.flags.get(PlaceObject2Flag::HasRatio))          tag.ratio = reader.read_ui16();
         if (tag.flags.get(PlaceObject2Flag::HasName))           tag.name = reader.read_string();
         if (tag.flags.get(PlaceObject2Flag::HasClipDepth))      tag.clip_depth = reader.read_ui16();
         if (tag.flags.get(PlaceObject2Flag::HasClipActions))    clip_actions::ClipActionsStreamExt::read_clip_actions(reader, file_->file_info.version, *tag.clip_actions);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObject3Tag& tag, ISwfStreamReader& reader)
+    {
+        using namespace display_list_tags;
+        tag.flags.set(reader.read_ui16());
+
+        tag.depth = reader.read_ui16();
+        if (tag.flags.get(PlaceObject3Flag::HasClassName)) tag.class_name = reader.read_string();
+        if (tag.flags.get(PlaceObject3Flag::HasCharacter)) tag.character_id = reader.read_ui16();
+        if (tag.flags.get(PlaceObject3Flag::HasMatrix)) tag.matrix = SwfStreamReaderExt::read_matrix(reader);
+        if (tag.flags.get(PlaceObject3Flag::HasColorTransform)) tag.color_tranform = data::ColorTransformStreamExt::read_color_transform_rgba(reader);
+        if (tag.flags.get(PlaceObject3Flag::HasRatio)) tag.ratio = reader.read_ui16();
+        if (tag.flags.get(PlaceObject3Flag::HasName)) tag.name = reader.read_string();
+        if (tag.flags.get(PlaceObject3Flag::HasClipDepth)) tag.clip_depth = reader.read_ui16();
+        if (tag.flags.get(PlaceObject3Flag::HasFilterList)) filters::FilterStreamExt::read_filter_list(reader, tag.filters);
+        if (tag.flags.get(PlaceObject3Flag::HasBlendMode)) tag.blend_mode = static_cast<data::BlendMode>(reader.read_byte());
+        if (tag.flags.get(PlaceObject3Flag::HasVisible)) tag.visible = reader.read_byte();
+        if (tag.flags.get(PlaceObject3Flag::HasOpaqueBackground)) tag.background_color = data::ColorStreamExt::read_rgba(reader);
+        if (tag.flags.get(PlaceObject3Flag::HasClipActions)) clip_actions::ClipActionsStreamExt::read_clip_actions(reader, file_->file_info.version, tag.clip_actions);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::RemoveObjectTag& tag, ISwfStreamReader& reader)
+    {
+        tag.character_id = reader.read_ui16();
+        tag.depth = reader.read_ui16();
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::RemoveObject2Tag& tag, ISwfStreamReader& reader)
+    {
+        tag.depth = reader.read_ui16();
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::EndTag& tag, ISwfStreamReader& reader)
+    {
         return tag;
     }
 
@@ -151,20 +195,6 @@ namespace swf_reader::tags
 
     SwfTagBase& SwfTagDeserializer::visit(DefineSpriteTag& tag, ISwfStreamReader& reader)
     {
-        /* C#:
-        tag.SpriteID = reader.ReadUInt16();
-        tag.FramesCount = reader.ReadUInt16();
-        SwfTagBase subTag;
-        do
-        {
-        subTag = ReadDefineSpriteSubTag(reader);
-        if (subTag != null) tag.Tags.Add(subTag);
-        } while (subTag != null && subTag.TagType != SwfTagType.End && reader.BytesLeft > 0);
-        return tag;
-        */
-
-        // C++:
-
         tag.sprite_id = reader.read_ui16();
         tag.frames_count = reader.read_ui16();
         Box<SwfTagBase> sub_tag;
@@ -184,9 +214,9 @@ namespace swf_reader::tags
         return tag;
     }
 
-    template<typename StyleChangeShapeRecord_T>
-    Box<StyleChangeShapeRecord_T> SwfTagDeserializer::read_tag(const SwfTagData& data)
-    {
-        return Box<StyleChangeShapeRecord_T>(static_cast<StyleChangeShapeRecord_T*>(read_tag(data).release()));
-    }
+    //template<typename StyleChangeShapeRecord_T>
+    //Box<StyleChangeShapeRecord_T> SwfTagDeserializer::read_tag(const SwfTagData& data)
+    //{
+    //    return Box<StyleChangeShapeRecord_T>(static_cast<StyleChangeShapeRecord_T*>(read_tag(data).release()));
+    //}
 }

@@ -13,6 +13,7 @@
 #include "unknown_tag.h"
 #include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
+#include "DisplayListTags/place_object3_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
@@ -122,8 +123,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<SetTabIndexTag>();
                     //case SwfTagType::FileAttributes:
                     //	return std::make_unique<FileAttributesTag>();
-                    //case SwfTagType::PlaceObject3:
-                    //	return std::make_unique<display_list_tags::PlaceObject3Tag>();
+                case SwfTagType::PlaceObject3:
+                    return boxed<display_list_tags::PlaceObject3Tag>();
                     //case SwfTagType::ImportAssets2:
                     //	return std::make_unique<ImportAssets2Tag>();
                     //case SwfTagType::DoABCDefine:

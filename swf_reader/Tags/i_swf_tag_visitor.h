@@ -30,45 +30,45 @@ namespace swf_reader::tags
 #pragma region Display list tags
         virtual TResult& visit(display_list_tags::PlaceObjectTag& tag, TArg& arg) = 0;
         virtual TResult& visit(display_list_tags::PlaceObject2Tag& tag, TArg& arg) = 0;
-        //		virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag,  TArg& arg) = 0;
-        //		virtual TResult& visit(display_list_tags::RemoveObjectTag& tag,  TArg& arg) = 0;
-        //		virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
-        //		virtual TResult& visit(display_list_tags::ShowFrameTag& tag,     TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag, TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::RemoveObjectTag& tag, TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
+        //virtual TResult& visit(display_list_tags::ShowFrameTag& tag, TArg& arg) = 0;
 #pragma endregion
-//
-//#pragma region Control tags
-//		virtual TResult& visit(SetBackgroundColorTag& tag,           TArg& arg) = 0;
-//		virtual TResult& visit(FrameLabelTag& tag,                   TArg& arg) = 0;
-//		virtual TResult& visit(ProtectTag& tag,                      TArg& arg) = 0;
-//		virtual TResult& visit(EndTag& tag,                          TArg& arg) = 0;
-//		virtual TResult& visit(ExportAssetsTag& tag,                 TArg& arg) = 0;
-//		virtual TResult& visit(ImportAssetsTag& tag,                 TArg& arg) = 0;
-//		virtual TResult& visit(EnableDebuggerTag& tag,               TArg& arg) = 0;
-//		virtual TResult& visit(EnableDebugger2Tag& tag,              TArg& arg) = 0;
-//		virtual TResult& visit(ScriptLimitsTag& tag,                 TArg& arg) = 0;
-//		virtual TResult& visit(SetTabIndexTag& tag,                  TArg& arg) = 0;
-//		virtual TResult& visit(FileAttributesTag& tag,               TArg& arg) = 0;
-//		virtual TResult& visit(ImportAssets2Tag& tag,                TArg& arg) = 0;
-//		virtual TResult& visit(SymbolClassTag& tag,                  TArg& arg) = 0;
-//		virtual TResult& visit(MetadataTag& tag,                     TArg& arg) = 0;
-//		virtual TResult& visit(DefineScalingGridTag& tag,            TArg& arg) = 0;
-//		virtual TResult& visit(DefineSceneAndFrameLabelDataTag& tag, TArg& arg) = 0;
-//#pragma endregion
-//
+
+#pragma region Control tags
+        //virtual TResult& visit(SetBackgroundColorTag& tag,           TArg& arg) = 0;
+        //virtual TResult& visit(FrameLabelTag& tag,                   TArg& arg) = 0;
+        //virtual TResult& visit(ProtectTag& tag,                      TArg& arg) = 0;
+        virtual TResult& visit(control_tags::EndTag& tag, TArg& arg) = 0;
+        //virtual TResult& visit(ExportAssetsTag& tag,                 TArg& arg) = 0;
+        //virtual TResult& visit(ImportAssetsTag& tag,                 TArg& arg) = 0;
+        //virtual TResult& visit(EnableDebuggerTag& tag,               TArg& arg) = 0;
+        //virtual TResult& visit(EnableDebugger2Tag& tag,              TArg& arg) = 0;
+        //virtual TResult& visit(ScriptLimitsTag& tag,                 TArg& arg) = 0;
+        //virtual TResult& visit(SetTabIndexTag& tag,                  TArg& arg) = 0;
+        //virtual TResult& visit(FileAttributesTag& tag,               TArg& arg) = 0;
+        //virtual TResult& visit(ImportAssets2Tag& tag,                TArg& arg) = 0;
+        //virtual TResult& visit(SymbolClassTag& tag,                  TArg& arg) = 0;
+        //virtual TResult& visit(MetadataTag& tag,                     TArg& arg) = 0;
+        //virtual TResult& visit(DefineScalingGridTag& tag,            TArg& arg) = 0;
+        //virtual TResult& visit(DefineSceneAndFrameLabelDataTag& tag, TArg& arg) = 0;
+#pragma endregion
+
 //#pragma region Action tags
-//		virtual TResult& visit(DoActionTag& tag,     TArg& arg) = 0;
-//		virtual TResult& visit(DoInitActionTag& tag, TArg& arg) = 0;
-//		virtual TResult& visit(DoABCTag& tag,        TArg& arg) = 0;
-//		virtual TResult& visit(DoABCDefineTag& tag,  TArg& arg) = 0;
+        //virtual TResult& visit(DoActionTag& tag,     TArg& arg) = 0;
+        //virtual TResult& visit(DoInitActionTag& tag, TArg& arg) = 0;
+        //virtual TResult& visit(DoABCTag& tag,        TArg& arg) = 0;
+        //virtual TResult& visit(DoABCDefineTag& tag,  TArg& arg) = 0;
 //#pragma endregion
-//
+
 #pragma region Shape tags
         virtual TResult& visit(shape_tags::DefineShapeTag& tag, TArg& arg) = 0;
         virtual TResult& visit(shape_tags::DefineShape2Tag& tag, TArg& arg) = 0;
         virtual TResult& visit(shape_tags::DefineShape3Tag& tag, TArg& arg) = 0;
         virtual TResult& visit(shape_tags::DefineShape4Tag& tag, TArg& arg) = 0;
 #pragma endregion
-        //
+
         //#pragma region Bitmap tags
         //		virtual TResult& visit(DefineBitsTag& tag,          TArg& arg) = 0;
         //		virtual TResult& visit(JPEGTablesTag& tag,          TArg& arg) = 0;
@@ -117,11 +117,11 @@ namespace swf_reader::tags
         //		virtual TResult& visit(DefineButtonCxformTag& tag, TArg& arg) = 0;
         //		virtual TResult& visit(DefineButtonSoundTag& tag,  TArg& arg) = 0;
         //#pragma endregion
-        //
+
 #pragma region Sprites and movie clips
         virtual TResult& visit(DefineSpriteTag& tag, TArg& arg) = 0;
 #pragma endregion
-        //
+
         //#pragma region Video tags
         //		virtual TResult& visit(DefineVideoStreamTag& tag, TArg& arg) = 0;
         //		virtual TResult& visit(VideoFrameTag& tag,        TArg& arg) = 0;

@@ -20,8 +20,8 @@ namespace swf_reader::shapes::records
         u32 fillstyle0;
         u32 fillstyle1;
         u32 linestyle;
-        i16 move_delta_x;
-        i16 move_delta_y;
+        i32 move_delta_x;
+        i32 move_delta_y;
 
         inline ShapeRecordType get_type() const override { return ShapeRecordType::StyleChangeRecord; }
 

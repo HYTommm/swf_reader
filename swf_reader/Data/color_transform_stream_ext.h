@@ -16,6 +16,6 @@ namespace swf_reader::data {
 	class ColorTransformStreamExt {
 	public:
 		static ColorTransformRGB read_color_transform_rgb(ISwfStreamReader& reader);
-		static ColorTransformRGBA read_color_transform_rgba(ISwfStreamReader& reader);
+		static ColorTransformRgba read_color_transform_rgba(ISwfStreamReader& reader);
 	};
 }

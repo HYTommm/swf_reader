@@ -17,30 +17,30 @@
 
 namespace swf_reader::tags::display_list_tags
 {
-	class PlaceObject2Tag : public PlaceObjectBaseTag
-	{
-	public:
-		PlaceObject2Flags flags;
-		Box<data::ColorTransformRGBA> color_transform = nullptr;
-		u16 ratio = 0;
-		std::string name;
-		u16 clip_depth = 0;
+    class PlaceObject2Tag : public PlaceObjectBaseTag
+    {
+    public:
+        PlaceObject2Flags flags;
+        Box<data::ColorTransformRgba> color_transform = nullptr;
+        u16 ratio = 0;
+        std::string name;
+        u16 clip_depth = 0;
 
-		Box<clip_actions::ClipActionsList> clip_actions = nullptr;
+        Box<clip_actions::ClipActionsList> clip_actions = nullptr;
 
-		//PlaceObject2Tag() : flags()
-		//{
-		//	tag_type = SwfTagType::PlaceObject2;
-		//}
+        //PlaceObject2Tag() : flags()
+        //{
+        //	tag_type = SwfTagType::PlaceObject2;
+        //}
 
-		SwfTagType get_type () const override
-		{
-			return SwfTagType::PlaceObject2;
-		}
+        SwfTagType get_type() const override
+        {
+            return SwfTagType::PlaceObject2;
+        }
 
-		SwfTagBase& accept_visitor (ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
-		{
-			return visitor.visit (*this, reader);
-		}
-	};
+        SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
+        {
+            return visitor.visit(*this, reader);
+        }
+    };
 }

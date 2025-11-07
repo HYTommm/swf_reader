@@ -51,9 +51,9 @@ namespace swf_reader::data {
         return transform;
     }
 
-    ColorTransformRGBA ColorTransformStreamExt::read_color_transform_rgba(ISwfStreamReader& reader)
+    ColorTransformRgba ColorTransformStreamExt::read_color_transform_rgba(ISwfStreamReader& reader)
     {
-        ColorTransformRGBA transform;
+        ColorTransformRgba transform;
         const bool has_add_terms = reader.read_bit();
         const bool has_mult_terms = reader.read_bit();
         const u32 bits = reader.read_ub(4);

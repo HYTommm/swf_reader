@@ -7,16 +7,16 @@
  * Licensed under the MIT License.
  */
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 #include "i_action_visitor.h"
 
 namespace swf_reader::actions
 {
-	class ActionBase;
+    class ActionBase;
 
-	class ActionReader : IActionVisitor<u8, ActionBase&>
-	{
-	public:
-		ActionBase& visit(ActionEnd& action, u8 arg) override;
-	};
+    class ActionReader : IActionVisitor<u8, ActionBase&>
+    {
+    public:
+        ActionBase& visit(ActionEnd& action, u8 arg) override;
+    };
 }
