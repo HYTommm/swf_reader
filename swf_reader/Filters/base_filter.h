@@ -21,7 +21,8 @@ namespace swf_reader::filters
     class BaseFilter
     {
     public:
-
+        BaseFilter() = default;
+        virtual ~BaseFilter() = default;
         virtual FilterType get_type() const = 0;
         virtual BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) = 0;
     };

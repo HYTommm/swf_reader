@@ -8,6 +8,14 @@
  */
 
 #include "filter_factory.h"
+#include "drop_shadow_filter.h"
+#include "blur_filter.h"
+#include "glow_filter.h"
+#include "bevel_filter.h"
+#include "gradient_glow_filter.h"
+#include "convolution_filter.h"
+#include "color_matrix_filter.h"
+#include "gradient_bevel_filter.h"
 
 namespace swf_reader::filters
 {
@@ -15,22 +23,22 @@ namespace swf_reader::filters
     {
         switch (type)
         {
-            //case FilterType::DropShadow:
-            //    return Box<DropShadowFilter>();
-            //case FilterType::Blur:
-            //    return Box<BlurFilter>();
-            //case FilterType::Glow:
-            //    return Box<GlowFilter>();
-            //case FilterType::Bevel:
-            //    return Box<BevelFilter>();
-            //case FilterType::GradientGlow:
-            //    return Box<GradientGlowFilter>();
-            //case FilterType::Convolution:
-            //    return Box<ConvolutionFilter>();
-            //case FilterType::ColorMatrix:
-            //    return Box<ColorMatrixFilter>();
-            //case FilterType::GradientBevel:
-            //    return Box<GradientBevelFilter>();
+            case FilterType::DropShadow:
+                return boxed<DropShadowFilter>();
+            case FilterType::Blur:
+                return boxed<BlurFilter>();
+            case FilterType::Glow:
+                return boxed<GlowFilter>();
+            case FilterType::Bevel:
+                return boxed<BevelFilter>();
+            case FilterType::GradientGlow:
+                return boxed<GradientGlowFilter>();
+            case FilterType::Convolution:
+                return boxed<ConvolutionFilter>();
+            case FilterType::ColorMatrix:
+                return boxed<ColorMatrixFilter>();
+            case FilterType::GradientBevel:
+                return boxed<GradientBevelFilter>();
             default:
                 return nullptr;
         }

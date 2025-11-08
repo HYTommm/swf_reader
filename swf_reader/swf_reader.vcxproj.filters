@@ -461,6 +461,30 @@
     <ClInclude Include="Filters\filter_factory.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Filters\bevel_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\blur_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\color_matrix_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\drop_shadow_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\glow_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\convolution_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\gradient_glow_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\gradient_bevel_filter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

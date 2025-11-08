@@ -13,11 +13,21 @@
 #include "base_filter.h"
 namespace swf_reader::filters
 {
-    class FilterReader : public IFilterVisitor<ISwfStreamReader, BaseFilter>
+    class FilterReader : public IFilterVisitor<ISwfStreamReader, BaseFilter&>
     {
     private:
         FilterFactory factory_;
     public:
         Box<BaseFilter> read(ISwfStreamReader& reader);
+
+        // Í¨¹ý IFilterVisitor ¼Ì³Ð
+        BaseFilter& visit(DropShadowFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(BlurFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(GlowFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(BevelFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(GradientGlowFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(ConvolutionFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(ColorMatrixFilter& filter, ISwfStreamReader& reader) override;
+        BaseFilter& visit(GradientBevelFilter& filter, ISwfStreamReader& reader) override;
     };
 }

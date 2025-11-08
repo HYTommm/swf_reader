@@ -36,9 +36,9 @@ namespace swf_reader
         [[nodiscard]] virtual usize position() const = 0;
         [[nodiscard]] virtual usize bytes_left() const = 0;
 
-        virtual f64 read_fixed8() = 0;
-        virtual f64 read_fixed() = 0;
-        virtual f64 read_fb(u32 bits) = 0;
+        virtual f32 read_fixed8() = 0;
+        virtual f32 read_fixed() = 0;
+        virtual f32 read_fb(u32 bits) = 0;
 
         virtual u16 read_ui16() = 0;
         virtual i16 read_si16() = 0;

@@ -16,6 +16,7 @@ namespace swf_reader::filters
 {
     class FilterFactory
     {
+    public:
         Box<BaseFilter> create(FilterType type);
     };
 }

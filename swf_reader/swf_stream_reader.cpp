@@ -44,17 +44,17 @@ namespace swf_reader
         return static_cast<size_t>(end_pos - current_pos);
     }
 
-    f64 SwfStreamReader::read_fixed8()
+    f32 SwfStreamReader::read_fixed8()
     {
         return read_ui16() / 256.0;
     }
 
-    f64 SwfStreamReader::read_fixed()
+    f32 SwfStreamReader::read_fixed()
     {
         return read_ui32() / 65536.0;
     }
 
-    f64 SwfStreamReader::read_fb(const u32 bits)
+    f32 SwfStreamReader::read_fb(const u32 bits)
     {
         const i32 value = read_sb(bits);
         return value / 65536.0;
@@ -153,7 +153,7 @@ namespace swf_reader
 
     f32 SwfStreamReader::read_float()
     {
-        float value;
+        f32 value;
         stream_->read(reinterpret_cast<char*>(&value), sizeof(value));
         return value;
     }
