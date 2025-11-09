@@ -1,3 +1,12 @@
+/**
+ * @file filter_reader.cpp
+ *
+ * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
+ * C++ port: Copyright (c) 2025 HYTomZ
+ *
+ * Licensed under the MIT License.
+ */
+
 #include "filter_reader.h"
 #include "i_swf_stream_reader.h"
 #include "drop_shadow_filter.h"
@@ -16,8 +25,7 @@ namespace swf_reader::filters
     {
         FilterType type = static_cast<FilterType>(reader.read_byte());
         Box<BaseFilter> filter = factory_.create(type);
-        if (filter != nullptr)
-            filter->accept_visitor(*this, reader);
+        filter->accept_visitor(*this, reader);
         return filter;
     }
     BaseFilter& FilterReader::visit(DropShadowFilter& filter, ISwfStreamReader& reader)

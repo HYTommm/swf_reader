@@ -16,6 +16,7 @@ namespace swf_reader::filters
         u8 count = reader.read_byte();
         for (u8 i = 0; i < count; i++)
         {
+            //printf("Filter count: %d\n", count);
             Box<BaseFilter> filter = read_filter(reader);
             filters.push_back(std::move(filter));
         }

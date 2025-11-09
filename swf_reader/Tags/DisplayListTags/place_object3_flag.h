@@ -83,5 +83,9 @@ namespace swf_reader::tags::display_list_tags
             //    PlaceObject3Flag::HasFilterList)
             //    == 0x0603u;
         }
+        constexpr void set(const u8 high, const u8 low) noexcept
+        {
+            set(static_cast<u16>(high) << 8 | low);
+        }
     };
 }

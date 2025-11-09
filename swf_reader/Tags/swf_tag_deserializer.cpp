@@ -115,7 +115,27 @@ namespace swf_reader::tags
     SwfTagBase& SwfTagDeserializer::visit(display_list_tags::PlaceObject3Tag& tag, ISwfStreamReader& reader)
     {
         using namespace display_list_tags;
-        tag.flags.set(reader.read_ui16());
+        u8 high_bits = reader.read_byte();
+        u8 low_bits = reader.read_byte();
+        tag.flags.set(high_bits, low_bits);
+
+        //tag.flags.set(PlaceObject3Flag::HasClipActions, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasClipDepth, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasName, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasRatio, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasColorTransform, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasMatrix, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasCharacter, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::Move, reader.read_bit());
+
+        //tag.flags.set(PlaceObject3Flag::Reserved, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasOpaqueBackground, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasVisible, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasImage, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasClassName, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasCacheAsBitmap, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasBlendMode, reader.read_bit());
+        //tag.flags.set(PlaceObject3Flag::HasFilterList, reader.read_bit());
 
         tag.depth = reader.read_ui16();
         if (tag.flags.get(PlaceObject3Flag::HasClassName)) tag.class_name = reader.read_string();
