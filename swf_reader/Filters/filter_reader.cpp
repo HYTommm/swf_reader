@@ -26,6 +26,7 @@ namespace swf_reader::filters
         FilterType type = static_cast<FilterType>(reader.read_byte());
         Box<BaseFilter> filter = factory_.create(type);
         filter->accept_visitor(*this, reader);
+        //printf("1");
         return filter;
     }
     BaseFilter& FilterReader::visit(DropShadowFilter& filter, ISwfStreamReader& reader)
@@ -110,15 +111,20 @@ namespace swf_reader::filters
     {
         u8 matrix_x = reader.read_byte();
         u8 matrix_y = reader.read_byte();
-        filter.matrix_x = matrix_x;
-        filter.matrix_y = matrix_y;
+        //filter.matrix_x = matrix_x;
+        //filter.matrix_y = matrix_y;
         filter.divider = reader.read_float();
         filter.bias = reader.read_float();
         u32 size = matrix_x * matrix_y;
-        filter.matrix.reserve(size);
+        //filter.matrix.reserve(size);
+        filter.matrix.resize(matrix_y, matrix_x);
+        //for (u32 i = 0; i < size; i++)
+        //{
+        //    //filter.matrix.push_back(reader.read_float());
+        //}
         for (u32 i = 0; i < size; i++)
         {
-            filter.matrix.push_back(reader.read_float());
+            filter.matrix[i] = reader.read_float();
         }
         filter.default_color = data::ColorStreamExt::read_rgba(reader);
         filter.reserved = static_cast<u8>(reader.read_ub(6));

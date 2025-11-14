@@ -38,6 +38,7 @@ namespace swf_reader::tags
         SwfTagBase& visit(display_list_tags::PlaceObject3Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(display_list_tags::RemoveObjectTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(display_list_tags::RemoveObject2Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(display_list_tags::ShowFrameTag& tag, ISwfStreamReader& reader) override;
 
         SwfTagBase& visit(control_tags::EndTag& tag, ISwfStreamReader& reader) override;
 

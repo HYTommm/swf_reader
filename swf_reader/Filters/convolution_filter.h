@@ -12,16 +12,18 @@
 #include "base_filter.h"
 #include "cpp_base_type.h"
 #include "Data/swf_rgba.h"
+#include "Data/swf_array_2d.h"
 namespace swf_reader::filters
 {
     class ConvolutionFilter : public BaseFilter
     {
     public:
-        u8 matrix_x;
-        u8 matrix_y;
+        //u8 matrix_x;
+        //u8 matrix_y;
         f32 divider;
         f32 bias;
-        Vec<f32> matrix;
+        //Vec<f32> matrix;
+        data::SwfArray2D<f32> matrix;
         data::SwfRgba default_color;
         u8 reserved;
         bool clamp;

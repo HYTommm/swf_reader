@@ -33,7 +33,7 @@ namespace swf_reader::tags
         virtual TResult& visit(display_list_tags::PlaceObject3Tag& tag, TArg& arg) = 0;
         virtual TResult& visit(display_list_tags::RemoveObjectTag& tag, TArg& arg) = 0;
         virtual TResult& visit(display_list_tags::RemoveObject2Tag& tag, TArg& arg) = 0;
-        //virtual TResult& visit(display_list_tags::ShowFrameTag& tag, TArg& arg) = 0;
+        virtual TResult& visit(display_list_tags::ShowFrameTag& tag, TArg& arg) = 0;
 #pragma endregion
 
 #pragma region Control tags
@@ -55,12 +55,12 @@ namespace swf_reader::tags
         //virtual TResult& visit(DefineSceneAndFrameLabelDataTag& tag, TArg& arg) = 0;
 #pragma endregion
 
-//#pragma region Action tags
+#pragma region Action tags
         //virtual TResult& visit(DoActionTag& tag,     TArg& arg) = 0;
         //virtual TResult& visit(DoInitActionTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(DoABCTag& tag,        TArg& arg) = 0;
         //virtual TResult& visit(DoABCDefineTag& tag,  TArg& arg) = 0;
-//#pragma endregion
+#pragma endregion
 
 #pragma region Shape tags
         virtual TResult& visit(shape_tags::DefineShapeTag& tag, TArg& arg) = 0;
@@ -69,7 +69,7 @@ namespace swf_reader::tags
         virtual TResult& visit(shape_tags::DefineShape4Tag& tag, TArg& arg) = 0;
 #pragma endregion
 
-        //#pragma region Bitmap tags
+#pragma region Bitmap tags
         //		virtual TResult& visit(DefineBitsTag& tag,          TArg& arg) = 0;
         //		virtual TResult& visit(JPEGTablesTag& tag,          TArg& arg) = 0;
         //		virtual TResult& visit(DefineBitsJPEG2Tag& tag,     TArg& arg) = 0;
@@ -77,12 +77,12 @@ namespace swf_reader::tags
         //		virtual TResult& visit(DefineBitsLosslessTag& tag,  TArg& arg) = 0;
         //		virtual TResult& visit(DefineBitsLossless2Tag& tag, TArg& arg) = 0;
         //		virtual TResult& visit(DefineBitsJPEG4Tag& tag,     TArg& arg) = 0;
-        //#pragma endregion
+#pragma endregion
         //
-        //#pragma region Shape morphing tags
+#pragma region Shape morphing tags
         //		virtual TResult& visit(DefineMorphShapeTag& tag,    TArg& arg) = 0;
         //		virtual TResult& visit(DefineMorphShape2Tag& tag,   TArg& arg) = 0;
-        //#pragma endregion
+#pragma endregion
         //
         //#pragma region Font tags
         //		virtual TResult& visit(DefineFontTag& tag,           TArg& arg) = 0;

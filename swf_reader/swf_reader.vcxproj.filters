@@ -485,6 +485,12 @@
     <ClInclude Include="Filters\gradient_bevel_filter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Data\swf_array_2d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\DisplayListTags\show_frame_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

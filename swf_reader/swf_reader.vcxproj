@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -205,6 +205,7 @@
     <ClInclude Include="Data\color_transform_rgb.h" />
     <ClInclude Include="Data\color_transform_rgba.h" />
     <ClInclude Include="Data\color_transform_stream_ext.h" />
+    <ClInclude Include="Data\swf_array_2d.h" />
     <ClInclude Include="Data\swf_header.h" />
     <ClInclude Include="Data\swf_matrix.h" />
     <ClInclude Include="Data\swf_rect.h" />
@@ -298,6 +299,7 @@
     <ClInclude Include="Tags\DisplayListTags\place_object_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\remove_object2_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\remove_object_tag.h" />
+    <ClInclude Include="Tags\DisplayListTags\show_frame_tag.h" />
     <ClInclude Include="Tags\i_swf_tag_visitor.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape2_tag.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape3_tag.h" />

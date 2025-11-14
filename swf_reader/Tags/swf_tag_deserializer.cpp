@@ -23,6 +23,7 @@
 #include "DisplayListTags/place_object3_tag.h"
 #include "DisplayListTags/remove_object_tag.h"
 #include "DisplayListTags/remove_object2_tag.h"
+#include "DisplayListTags/show_frame_tag.h"
 #include "ControlTags/end_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
@@ -163,6 +164,11 @@ namespace swf_reader::tags
     SwfTagBase& SwfTagDeserializer::visit(display_list_tags::RemoveObject2Tag& tag, ISwfStreamReader& reader)
     {
         tag.depth = reader.read_ui16();
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::ShowFrameTag& tag, ISwfStreamReader& reader)
+    {
         return tag;
     }
 
