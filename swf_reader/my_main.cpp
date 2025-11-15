@@ -1,4 +1,6 @@
-﻿#include <cstdlib>
+﻿#ifdef _DEBUG
+
+#include <cstdlib>
 #include <format>
 #include <fstream>
 #include <iostream>
@@ -8,147 +10,6 @@
 #include "swf_file.h"
 #include "zlib.h"
 #include "Tags/ShapeTags/define_shape_tag.h"
-// 简单的压缩函数
-std::vector<uint8_t> simple_compress(const std::vector<uint8_t>& input)
-{
-    lzma_stream strm = LZMA_STREAM_INIT;
-    if (lzma_easy_encoder(&strm, 6, LZMA_CHECK_CRC64) != LZMA_OK)
-    {
-        return {};
-    }
-
-    std::vector<uint8_t> output;
-    const size_t buffer_size = 1024;
-    uint8_t buffer[buffer_size];
-
-    strm.next_in = input.data();
-    strm.avail_in = input.size();
-
-    do
-    {
-        strm.next_out = buffer;
-        strm.avail_out = buffer_size;
-
-        lzma_ret ret = lzma_code(&strm, LZMA_FINISH);
-
-        if (ret != LZMA_OK && ret != LZMA_STREAM_END)
-        {
-            lzma_end(&strm);
-            return {};
-        }
-
-        size_t compressed_size = buffer_size - strm.avail_out;
-        output.insert(output.end(), buffer, buffer + compressed_size);
-    } while (strm.avail_out == 0);
-
-    lzma_end(&strm);
-    return output;
-}
-
-// 简单的解压函数
-std::vector<uint8_t> simple_decompress(const std::vector<uint8_t>& input)
-{
-    lzma_stream strm = LZMA_STREAM_INIT;
-    if (lzma_stream_decoder(&strm, UINT64_MAX, 0) != LZMA_OK)
-    {
-        return {};
-    }
-
-    std::vector<uint8_t> output;
-    const size_t buffer_size = 1024;
-    uint8_t buffer[buffer_size];
-
-    strm.next_in = input.data();
-    strm.avail_in = input.size();
-
-    do
-    {
-        strm.next_out = buffer;
-        strm.avail_out = buffer_size;
-
-        lzma_ret ret = lzma_code(&strm, LZMA_FINISH);
-
-        if (ret != LZMA_OK && ret != LZMA_STREAM_END)
-        {
-            lzma_end(&strm);
-            return {};
-        }
-
-        size_t decompressed_size = buffer_size - strm.avail_out;
-        output.insert(output.end(), buffer, buffer + decompressed_size);
-    } while (strm.avail_out == 0);
-
-    lzma_end(&strm);
-    return output;
-}
-
-int my_main()
-{
-    /* 原始数据 */
-    unsigned char strSrc[] = "hello world! aaaaa bbbbb ccccc ddddd 中文测试 yes";
-    unsigned char buf[1024] = { 0 };
-    unsigned char strDst[1024] = { 0 };
-    unsigned long srcLen = sizeof(strSrc);
-    unsigned long bufLen = sizeof(buf);
-    unsigned long dstLen = sizeof(strDst);
-    //std::system("chcp 65001>nul");
-    printf("Src string:%s\nLength:%ld\n", strSrc, srcLen);
-
-    /* 压缩 */
-    compress(buf, &bufLen, strSrc, srcLen);
-    printf("After Compressed Length:%ld\n", bufLen);
-
-    /* 解压缩 */
-    uncompress(strDst, &dstLen, buf, bufLen);
-    printf("After UnCompressed Length:%ld\n", dstLen);
-
-    printf("UnCompressed String:%s\n", strDst);
-
-    std::cout << "测试liblzma库配置和功能..." << std::endl;
-    std::cout << "liblzma版本: " << lzma_version_string() << std::endl;
-
-    // 测试数据
-    const char* test_string = "Hello, liblzma! 这是一个测试字符串，用于验证压缩和解压缩功能。";
-    std::vector<uint8_t> original_data(test_string, test_string + strlen(test_string));
-
-    std::cout << "\n原始数据: " << test_string << std::endl;
-    std::cout << "原始数据大小: " << original_data.size() << " 字节" << std::endl;
-
-    // 压缩
-    auto compressed_data = simple_compress(original_data);
-    if (compressed_data.empty())
-    {
-        std::cout << "x 压缩失败!" << std::endl;
-        return 1;
-    }
-    std::cout << "压缩后大小: " << compressed_data.size() << " 字节" << std::endl;
-    std::cout << "压缩率: " << (compressed_data.size() * 100.0 / original_data.size()) << "%" << std::endl;
-
-    // 解压缩
-    auto decompressed_data = simple_decompress(compressed_data);
-    if (decompressed_data.empty())
-    {
-        std::cout << "解压缩失败!" << std::endl;
-        return 1;
-    }
-
-    // 转换为字符串并输出
-    std::string decompressed_string(decompressed_data.begin(), decompressed_data.end());
-    std::cout << "解压缩后数据: " << decompressed_string << std::endl;
-    std::cout << "解压缩后大小: " << decompressed_data.size() << " 字节" << std::endl;
-
-    // 验证数据一致性
-    if (original_data == decompressed_data)
-    {
-        std::cout << "\n测试成功! 压缩解压缩数据完全一致!" << std::endl;
-    }
-    else
-    {
-        std::cout << "\n测试失败! 数据不一致!" << std::endl;
-        return 1;
-    }
-    return 0;
-}
 
 int main(int argc, char* argv[])
 {
@@ -210,20 +71,22 @@ int main(int argc, char* argv[])
             continue;
         }
 
-        std::print("标签类型: {}", static_cast<int>(tag.get_type()));
-        if (tag.get_type() == swf_reader::tags::SwfTagType::DefineShape
-            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape2
-            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape3
-            || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape4
-            )
-        {
-            std::print("id: {}", static_cast<swf_reader::tags::shape_tags::ShapeBaseTag&>(tag).shape_id);
-        }
-        std::print("\n");
+        //std::print("标签类型: {}", static_cast<int>(tag.get_type()));
+        //if (tag.get_type() == swf_reader::tags::SwfTagType::DefineShape
+        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape2
+        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape3
+        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape4
+        //    )
+        //{
+        //    std::print("id: {}", static_cast<swf_reader::tags::shape_tags::ShapeBaseTag&>(tag).shape_id);
+        //}
+        //std::print("\n");
 
-        //std::print("标签数据: {}\n", tag.data);
+        ////std::print("标签数据: {}\n", tag.data);
     }
     std::print("可解析的标签比例: {}%\n", (100.0 - unknown_count * 100.0 / swf_file->tags.size()));
 
     return 0;
 }
+
+#endif // _DEBUG

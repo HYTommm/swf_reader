@@ -290,6 +290,9 @@
     <ClInclude Include="swf_stream_reader_ext.h" />
     <ClInclude Include="swf_zip.h" />
     <ClInclude Include="Tags\ControlTags\end_tag.h" />
+    <ClInclude Include="Tags\ControlTags\file_attributes_flag.h" />
+    <ClInclude Include="Tags\ControlTags\file_attributes_tag.h" />
+    <ClInclude Include="Tags\ControlTags\set_background_color_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\display_list_base_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object2_flag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object2_tag.h" />

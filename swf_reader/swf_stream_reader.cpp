@@ -23,11 +23,14 @@ namespace swf_reader
         {
             throw std::invalid_argument("Invalid stream provided to SwfStreamReader");
         }
+        stream_->seekg(0, std::ios::end);
+        end_pos = stream_->tellg();
+        stream_->seekg(0, std::ios::beg);
     }
 
     bool SwfStreamReader::is_eof() const
     {
-        return stream_->eof();
+        return stream_->peek() == EOF;
     }
 
     usize SwfStreamReader::position() const
@@ -37,27 +40,23 @@ namespace swf_reader
 
     usize SwfStreamReader::bytes_left() const
     {
-        const std::streampos current_pos = stream_->tellg();
-        stream_->seekg(0, std::ios::end);
-        const std::streampos end_pos = stream_->tellg();
-        stream_->seekg(current_pos);
-        return static_cast<size_t>(end_pos - current_pos);
+        return static_cast<size_t>(end_pos - stream_->tellg());
     }
 
     f32 SwfStreamReader::read_fixed8()
     {
-        return read_ui16() / 256.0;
+        return read_ui16() / 256.0f;
     }
 
     f32 SwfStreamReader::read_fixed()
     {
-        return read_ui32() / 65536.0;
+        return read_ui32() / 65536.0f;
     }
 
     f32 SwfStreamReader::read_fb(const u32 bits)
     {
         const i32 value = read_sb(bits);
-        return value / 65536.0;
+        return value / 65536.0f;
     }
 
     u16 SwfStreamReader::read_ui16()

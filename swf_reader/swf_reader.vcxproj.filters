@@ -491,6 +491,15 @@
     <ClInclude Include="Tags\DisplayListTags\show_frame_tag.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\ControlTags\file_attributes_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ControlTags\file_attributes_flag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ControlTags\set_background_color_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

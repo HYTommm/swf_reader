@@ -65,5 +65,6 @@ namespace swf_reader
 
         std::istream* stream_;
         BitContext bit_context_;
+        std::streampos end_pos;
     };
 }

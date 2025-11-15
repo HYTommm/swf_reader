@@ -24,7 +24,7 @@ namespace swf_reader::tags
         }
         else
         {
-            size = static_cast<i32>(reader.read_si32());
+            size = reader.read_si32();
         }
 
         const Vec<u8> tag_data = reader.read_bytes(size);

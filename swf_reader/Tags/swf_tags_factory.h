@@ -14,6 +14,14 @@
 #include "DisplayListTags/place_object_tag.h"
 #include "DisplayListTags/place_object2_tag.h"
 #include "DisplayListTags/place_object3_tag.h"
+#include "DisplayListTags/remove_object_tag.h"
+#include "DisplayListTags/remove_object2_tag.h"
+#include "DisplayListTags/show_frame_tag.h"
+
+#include "ControlTags/end_tag.h"
+
+#include "ControlTags/set_background_color_tag.h"
+#include "ControlTags/file_attributes_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
@@ -29,24 +37,24 @@ namespace swf_reader::tags
         {
             switch (tag_type)
             {
-                //case SwfTagType::End:
-                //	return std::make_unique<EndTag>();
-                //case SwfTagType::ShowFrame:
-                //	return std::make_unique<display_list_tags::ShowFrameTag>();
+                case SwfTagType::End:
+                    return boxed<control_tags::EndTag>();
+                case SwfTagType::ShowFrame:
+                    return boxed<display_list_tags::ShowFrameTag>();
                 case SwfTagType::DefineShape:
                     return boxed<shape_tags::DefineShapeTag>();
                 case SwfTagType::PlaceObject:
                     return boxed<display_list_tags::PlaceObjectTag>();
-                    //case SwfTagType::RemoveObject:
-                    //	return std::make_unique<display_list_tags::RemoveObjectTag>();
+                case SwfTagType::RemoveObject:
+                    return boxed<display_list_tags::RemoveObjectTag>();
                     //case SwfTagType::DefineBits:
                     //	return std::make_unique<DefineBitsTag>();
                     //case SwfTagType::DefineButton:
                     //	return std::make_unique<DefineButtonTag>();
                     //case SwfTagType::JPEGTables:
                     //	return std::make_unique<JPEGTablesTag>();
-                    //case SwfTagType::SetBackgroundColor:
-                    //	return std::make_unique<SetBackgroundColorTag>();
+                case SwfTagType::SetBackgroundColor:
+                    return boxed<control_tags::SetBackgroundColorTag>();
                     //case SwfTagType::DefineFont:
                     //	return std::make_unique<DefineFontTag>();
                     //case SwfTagType::DefineText:
@@ -77,8 +85,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<ProtectTag>();
                 case SwfTagType::PlaceObject2:
                     return boxed<display_list_tags::PlaceObject2Tag>();
-                    //case SwfTagType::RemoveObject2:
-                    //	return std::make_unique<display_list_tags::RemoveObject2Tag>();
+                case SwfTagType::RemoveObject2:
+                    return boxed<display_list_tags::RemoveObject2Tag>();
                 case SwfTagType::DefineShape3:
                     return boxed<shape_tags::DefineShape3Tag>();
                     //case SwfTagType::DefineText2:
@@ -121,8 +129,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<ScriptLimitsTag>();
                     //case SwfTagType::SetTabIndex:
                     //	return std::make_unique<SetTabIndexTag>();
-                    //case SwfTagType::FileAttributes:
-                    //	return std::make_unique<FileAttributesTag>();
+                case SwfTagType::FileAttributes:
+                    return boxed<control_tags::FileAttributesTag>();
                 case SwfTagType::PlaceObject3:
                     return boxed<display_list_tags::PlaceObject3Tag>();
                     //case SwfTagType::ImportAssets2:

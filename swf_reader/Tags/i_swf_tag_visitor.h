@@ -37,7 +37,7 @@ namespace swf_reader::tags
 #pragma endregion
 
 #pragma region Control tags
-        //virtual TResult& visit(SetBackgroundColorTag& tag,           TArg& arg) = 0;
+        virtual TResult& visit(control_tags::SetBackgroundColorTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(FrameLabelTag& tag,                   TArg& arg) = 0;
         //virtual TResult& visit(ProtectTag& tag,                      TArg& arg) = 0;
         virtual TResult& visit(control_tags::EndTag& tag, TArg& arg) = 0;
@@ -47,7 +47,7 @@ namespace swf_reader::tags
         //virtual TResult& visit(EnableDebugger2Tag& tag,              TArg& arg) = 0;
         //virtual TResult& visit(ScriptLimitsTag& tag,                 TArg& arg) = 0;
         //virtual TResult& visit(SetTabIndexTag& tag,                  TArg& arg) = 0;
-        //virtual TResult& visit(FileAttributesTag& tag,               TArg& arg) = 0;
+        virtual TResult& visit(control_tags::FileAttributesTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(ImportAssets2Tag& tag,                TArg& arg) = 0;
         //virtual TResult& visit(SymbolClassTag& tag,                  TArg& arg) = 0;
         //virtual TResult& visit(MetadataTag& tag,                     TArg& arg) = 0;

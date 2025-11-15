@@ -25,6 +25,8 @@
 #include "DisplayListTags/remove_object2_tag.h"
 #include "DisplayListTags/show_frame_tag.h"
 #include "ControlTags/end_tag.h"
+#include "ControlTags/file_attributes_tag.h"
+#include "ControlTags/set_background_color_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
@@ -174,6 +176,20 @@ namespace swf_reader::tags
 
     SwfTagBase& SwfTagDeserializer::visit(control_tags::EndTag& tag, ISwfStreamReader& reader)
     {
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::FileAttributesTag& tag, ISwfStreamReader& reader)
+    {
+        tag.flags.set(reader.read_byte());
+        printf("%d", tag.flags.get(control_tags::FileAttributesFlag::ActionScript3));
+        tag.reserved = reader.read_ub(24);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::SetBackgroundColorTag& tag, ISwfStreamReader& reader)
+    {
+        tag.color = data::ColorStreamExt::read_rgb(reader);
         return tag;
     }
 
