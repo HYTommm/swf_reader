@@ -1,4 +1,4 @@
-/*
+﻿/*
  * @file    drop_shadow_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -28,7 +28,10 @@ namespace swf_reader::filters
         bool composite_source;
         u8 passes;
 
-        FilterType get_type() const override { return FilterType::DropShadow; }
+        FilterType get_type() const override
+        {
+            return FilterType::DropShadow;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

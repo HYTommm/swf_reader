@@ -13,9 +13,10 @@
 
 namespace swf_reader::tags
 {
-	class TagStreamExt {
-	public:
-		static SwfTagData read_tag_data(ISwfStreamReader& reader);
-		// 注意：我们只移植读取部分，所以不实现写入方法
-	};
+    class TagStreamExt
+    {
+    public:
+        static SwfTagData read_tag_data(ISwfStreamReader& reader);
+        // 注意：我们只移植读取部分，所以不实现写入方法
+    };
 }

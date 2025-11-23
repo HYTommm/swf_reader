@@ -12,11 +12,13 @@
 #include "clip_event_flags.h"
 #include "cpp_base_type.h"
 
-namespace swf_reader::clip_actions {
-	class ClipActionsList {
-	public:
-		u16 reserved;
-		ClipEventFlags flags;
-		Vec<Box<ClipActionRecord>> records;
-	};
+namespace swf_reader::clip_actions
+{
+    class ClipActionsList
+    {
+    public:
+        u16 reserved;
+        ClipEventFlags flags;
+        Vec<Box<ClipActionRecord>> records;
+    };
 }

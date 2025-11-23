@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file     set_background_color_tag.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -17,7 +17,10 @@ namespace swf_reader::tags::control_tags
     {
     public:
         data::SwfRgb color;
-        SwfTagType get_type() const override { return SwfTagType::SetBackgroundColor; }
+        SwfTagType get_type() const override
+        {
+            return SwfTagType::SetBackgroundColor;
+        }
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

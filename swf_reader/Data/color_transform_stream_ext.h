@@ -12,10 +12,12 @@
 #include "color_transform_rgba.h"
 #include "i_swf_stream_reader.h"
 
-namespace swf_reader::data {
-	class ColorTransformStreamExt {
-	public:
-		static ColorTransformRGB read_color_transform_rgb(ISwfStreamReader& reader);
-		static ColorTransformRgba read_color_transform_rgba(ISwfStreamReader& reader);
-	};
+namespace swf_reader::data
+{
+    class ColorTransformStreamExt
+    {
+    public:
+        static ColorTransformRGB read_color_transform_rgb(ISwfStreamReader& reader);
+        static ColorTransformRgba read_color_transform_rgba(ISwfStreamReader& reader);
+    };
 }

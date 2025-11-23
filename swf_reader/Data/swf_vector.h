@@ -12,13 +12,14 @@
 
 namespace swf_reader::data
 {
-	struct SwfVector {
-		i32 x{ 0 };
-		i32 y{ 0 };
+    struct SwfVector
+    {
+        i32 x{ 0 };
+        i32 y{ 0 };
 
-		SwfVector() = default;
-		SwfVector(i32 x, i32 y) : x(x), y(y)
-		{
-		}
-	};
+        SwfVector() = default;
+        SwfVector(i32 x, i32 y) : x(x), y(y)
+        {
+        }
+    };
 }

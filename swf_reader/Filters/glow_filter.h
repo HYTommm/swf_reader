@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    glow_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -27,7 +27,10 @@ namespace swf_reader::filters
         bool composite_source;
         u32 passes;
 
-        FilterType get_type() const override { return FilterType::Glow; }
+        FilterType get_type() const override
+        {
+            return FilterType::Glow;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

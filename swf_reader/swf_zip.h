@@ -11,13 +11,13 @@
 
 #include <memory>
 
-
 #include "cpp_base_type.h"
 #include "swf_format.h"
 
-namespace swf_reader {
-
-    class SwfZip {
+namespace swf_reader
+{
+    class SwfZip
+    {
     public:
         // 流式解压接口 - 与 C# 原版保持一致
         static void decompress(std::istream& source, std::ostream& target, SwfFormat format);
@@ -30,5 +30,4 @@ namespace swf_reader {
         static void decompress_lzma(std::istream& source, std::ostream& target);
         static void validate_compression_format(SwfFormat format);
     };
-
 }

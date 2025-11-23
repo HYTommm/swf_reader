@@ -9,7 +9,8 @@
 #include "color_transform_stream_ext.h"
 
 #include "cpp_base_type.h"
-namespace swf_reader::data {
+namespace swf_reader::data
+{
     ColorTransformRGB ColorTransformStreamExt::read_color_transform_rgb(ISwfStreamReader& reader)
     {
         ColorTransformRGB transform;

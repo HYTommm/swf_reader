@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    color_stream_ext.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -12,20 +12,21 @@
  //#include "swf_rgb.h"
 namespace swf_reader
 {
-	class ISwfStreamReader;
+    class ISwfStreamReader;
 }
 namespace swf_reader::data
 {
-	struct SwfRgb;
-	struct SwfRgba;
-	class ColorStreamExt {
-	public:
-		static SwfRgb read_rgb(ISwfStreamReader& reader);
+    struct SwfRgb;
+    struct SwfRgba;
+    class ColorStreamExt
+    {
+    public:
+        static SwfRgb read_rgb(ISwfStreamReader& reader);
 
-		static void read_rgb(ISwfStreamReader& reader, SwfRgb& color);
+        static void read_rgb(ISwfStreamReader& reader, SwfRgb& color);
 
-		static SwfRgba read_rgba(ISwfStreamReader& reader);
+        static SwfRgba read_rgba(ISwfStreamReader& reader);
 
-		static SwfRgba read_argb(ISwfStreamReader& reader);
-	};
+        static SwfRgba read_argb(ISwfStreamReader& reader);
+    };
 }

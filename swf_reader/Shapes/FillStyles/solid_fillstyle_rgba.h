@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    solid_fillstyle_rgba.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -12,21 +12,22 @@
 #include "Data/swf_rgba.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class SolidFillStyleRgba : public FillStyleRgba {
-	public:
-		data::SwfRgba color;
+    class SolidFillStyleRgba : public FillStyleRgba
+    {
+    public:
+        data::SwfRgba color;
 
-		/// <summary>
-		/// Gets type of fill style.
-		/// </summary>
-		FillStyleType get_type() const override
-		{
-			return FillStyleType::SolidColor;
-		}
+        /// <summary>
+        /// Gets type of fill style.
+        /// </summary>
+        FillStyleType get_type() const override
+        {
+            return FillStyleType::SolidColor;
+        }
 
-		FillStyleRgba& accept_visitor(IFillStyleRgbaVisitor<ISwfStreamReader, FillStyleRgba&>& visitor, ISwfStreamReader& arg) override
-		{
-			return visitor.visit(*this, arg);
-		}
-	};
+        FillStyleRgba& accept_visitor(IFillStyleRgbaVisitor<ISwfStreamReader, FillStyleRgba&>& visitor, ISwfStreamReader& arg) override
+        {
+            return visitor.visit(*this, arg);
+        }
+    };
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    radial_gradient_fillstyle_rgb.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -19,7 +19,10 @@ namespace swf_reader::shapes::fillstyles
         data::SwfMatrix gradient_matrix;
         Box<gradients::LinearGradientRgb> gradient;
 
-        FillStyleType get_type() const override { return FillStyleType::RadialGradient; }
+        FillStyleType get_type() const override
+        {
+            return FillStyleType::RadialGradient;
+        }
 
         FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& reader) override
         {

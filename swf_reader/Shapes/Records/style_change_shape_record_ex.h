@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    style_change_shape_record_ex.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -20,7 +20,10 @@ namespace swf_reader::shapes::records
         Vec<Box<fillstyles::FillStyleRgba>> FillStyles;
         Vec<Box<linestyles::LineStyleEx>> LineStyles;
 
-        inline ShapeRecordType get_type() const override { return ShapeRecordType::StyleChangeRecord; }
+        inline ShapeRecordType get_type() const override
+        {
+            return ShapeRecordType::StyleChangeRecord;
+        }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

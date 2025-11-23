@@ -11,23 +11,23 @@
 
 namespace swf_reader::tags
 {
-	class UnknownTag : public SwfTagBase
-	{
-	public:
-		//UnknownTag ()
-		//{
-		//	tag_type = SwfTagType::Unknown;
-		//}
+    class UnknownTag : public SwfTagBase
+    {
+    public:
+        //UnknownTag ()
+        //{
+        //	tag_type = SwfTagType::Unknown;
+        //}
 
-		SwfTagType get_type() const override
-		{
-			return SwfTagType::Unknown;
-		}
+        SwfTagType get_type() const override
+        {
+            return SwfTagType::Unknown;
+        }
 
-		SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
-		{
-			return visitor.visit(*this, reader);
-			//return visitor;
-		}
-	};
+        SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
+        {
+            return visitor.visit(*this, reader);
+            //return visitor;
+        }
+    };
 }

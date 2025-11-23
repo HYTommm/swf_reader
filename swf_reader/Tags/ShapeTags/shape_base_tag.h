@@ -12,13 +12,13 @@
 
 namespace swf_reader::tags::shape_tags
 {
-	class ShapeBaseTag : public SwfTagBase
-	{
-	public:
-		u16 shape_id;
-		data::SwfRect shape_bounds;
+    class ShapeBaseTag : public SwfTagBase
+    {
+    public:
+        u16 shape_id;
+        data::SwfRect shape_bounds;
 
-		ShapeBaseTag() = default;
-		virtual ~ShapeBaseTag() = default;
-	};
+        ShapeBaseTag() = default;
+        virtual ~ShapeBaseTag() = default;
+    };
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    bitmap_fillstyle_rgb.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -20,7 +20,9 @@ namespace swf_reader::shapes::fillstyles
     {
     public:
         BitmapFillStyleRgb() = default;
-        BitmapFillStyleRgb(bool smoothing, BitmapMode mode) : smoothing{ smoothing }, mode{ mode } {}
+        BitmapFillStyleRgb(bool smoothing, BitmapMode mode) : smoothing{ smoothing }, mode{ mode }
+        {
+        }
         ~BitmapFillStyleRgb() = default;
         bool smoothing{ false };
         BitmapMode mode{ BitmapMode::Repeat };

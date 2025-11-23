@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    place_object2_tag.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -40,7 +40,10 @@ namespace swf_reader::tags::display_list_tags
         data::SwfRgba background_color;
         clip_actions::ClipActionsList clip_actions;
 
-        SwfTagType get_type() const override { return SwfTagType::PlaceObject3; }
+        SwfTagType get_type() const override
+        {
+            return SwfTagType::PlaceObject3;
+        }
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

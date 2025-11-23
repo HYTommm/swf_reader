@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    linestyle_rgba.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -11,9 +11,9 @@
 #include "Data/swf_rgba.h"
 namespace swf_reader::shapes::linestyles
 {
-	struct LineStyleRgba
-	{
-		u16 width;
-		data::SwfRgba color;
-	};
+    struct LineStyleRgba
+    {
+        u16 width;
+        data::SwfRgba color;
+    };
 }

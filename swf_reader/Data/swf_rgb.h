@@ -12,14 +12,15 @@
 
 namespace swf_reader::data
 {
-	struct SwfRgb {
-		u8 red{ 0 };
-		u8 green{ 0 };
-		u8 blue{ 0 };
+    struct SwfRgb
+    {
+        u8 red{ 0 };
+        u8 green{ 0 };
+        u8 blue{ 0 };
 
-		SwfRgb() = default;
-		SwfRgb(const u8 red, const u8 green, const u8 blue) : red(red), green(green), blue(blue)
-		{
-		}
-	};
+        SwfRgb() = default;
+        SwfRgb(const u8 red, const u8 green, const u8 blue) : red(red), green(green), blue(blue)
+        {
+        }
+    };
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file     remove_object_tag.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -18,7 +18,10 @@ namespace swf_reader::tags::display_list_tags
         u16 character_id;
         u16 depth;
 
-        SwfTagType get_type() const override { return SwfTagType::RemoveObject; }
+        SwfTagType get_type() const override
+        {
+            return SwfTagType::RemoveObject;
+        }
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

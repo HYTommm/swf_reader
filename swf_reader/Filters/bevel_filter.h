@@ -1,4 +1,4 @@
-/*
+﻿/*
  * @file    bevel_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -36,7 +36,10 @@ namespace swf_reader::filters
         u8 passes;
 
         // Gets type of filter.
-        FilterType get_type() const override { return FilterType::Bevel; }
+        FilterType get_type() const override
+        {
+            return FilterType::Bevel;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

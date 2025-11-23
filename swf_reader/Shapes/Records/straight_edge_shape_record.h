@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    straight_edge_shape_record.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -18,7 +18,10 @@ namespace swf_reader::shapes::records
         int delta_x;
         int delta_y;
 
-        inline ShapeRecordType get_type() const override { return ShapeRecordType::StraightEdge; }
+        inline ShapeRecordType get_type() const override
+        {
+            return ShapeRecordType::StraightEdge;
+        }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

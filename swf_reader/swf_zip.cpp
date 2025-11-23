@@ -15,8 +15,8 @@
 #include "lzma.h"
 #include "zlib.h"
 
-namespace swf_reader {
-
+namespace swf_reader
+{
     void SwfZip::decompress(std::istream& source, std::ostream& target, const SwfFormat format)
     {
         validate_compression_format(format);
@@ -61,7 +61,7 @@ namespace swf_reader {
     //    Vec<u8> out_buffer(BUFFER_SIZE);
 
     //    int result = Z_OK;
-    //    
+    //
     //    do
     //    {
     //        // 读取压缩数据
@@ -98,7 +98,6 @@ namespace swf_reader {
     //    inflateEnd(&stream);
     //    std::cout << "Decompression completed. Output size: " << total_decompressed_size << " bytes" << std::endl;
     //}
-
 
     void SwfZip::decompress_zlib(std::istream& source, std::ostream& target)
     {
@@ -182,7 +181,6 @@ namespace swf_reader {
                     // 真正的错误
                     throw std::runtime_error("Zlib decompression failed with error: " + std::to_string(result));
                 }
-
             } while (stream.avail_out == 0 || !stream_ended);
         }
         catch (...)
@@ -250,7 +248,6 @@ namespace swf_reader {
                 target.write(reinterpret_cast<const char*>(out_buffer.data()),
                     static_cast<std::streamsize>(decompressed_size));
             } while (stream.avail_out == 0);
-
         } while (result != LZMA_STREAM_END);
 
         lzma_end(&stream);
@@ -263,5 +260,4 @@ namespace swf_reader {
             throw std::invalid_argument("Unknown compression format");
         }
     }
-
 }

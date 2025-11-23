@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "cpp_base_type.h"
 #include <memory>
 #include <cassert>
@@ -14,7 +14,7 @@ namespace swf_reader::data
         u16 cols_ = 0;
 
     public:
-        // ¹¹ÔìºÍÎö¹¹
+        // æ„é€ å’Œææ„
         SwfArray2D() = default;
 
         SwfArray2D(u16 rows, u16 cols)
@@ -24,15 +24,15 @@ namespace swf_reader::data
         {
         }
 
-        // ÒÆ¶¯ÓïÒå
+        // ç§»åŠ¨è¯­ä¹‰
         SwfArray2D(SwfArray2D&&) = default;
         SwfArray2D& operator=(SwfArray2D&&) = default;
 
-        // ½ûÖ¹¿½±´
+        // ç¦æ­¢æ‹·è´
         SwfArray2D(const SwfArray2D&) = delete;
         SwfArray2D& operator=(const SwfArray2D&) = delete;
 
-        // ÖØÖÃ´óĞ¡£¨²»±£ÁôÊı¾İ£©
+        // é‡ç½®å¤§å°ï¼ˆä¸ä¿ç•™æ•°æ®ï¼‰
         void resize(u16 rows, u16 cols)
         {
             data_ = boxed<T[]>(rows * cols);
@@ -40,14 +40,14 @@ namespace swf_reader::data
             cols_ = cols;
         }
 
-        // ÖØÖÃ´óĞ¡²¢±£ÁôÊı¾İ£¨Èç¹û¿ÉÄÜ£©
+        // é‡ç½®å¤§å°å¹¶ä¿ç•™æ•°æ®ï¼ˆå¦‚æœå¯èƒ½ï¼‰
         void resize_preserve(u16 new_rows, u16 new_cols)
         {
             if (new_rows == rows_ && new_cols == cols_) return;
 
             Box<T[]> new_data = boxed<T[]>(new_rows * new_cols);
 
-            // ¿½±´ÖØµş²¿·Ö
+            // æ‹·è´é‡å éƒ¨åˆ†
             u16 min_rows = std::min(rows_, new_rows);
             u16 min_cols = std::min(cols_, new_cols);
 
@@ -60,16 +60,28 @@ namespace swf_reader::data
             cols_ = new_cols;
         }
 
-        // ¿ìËÙ·ÃÎÊ - ÎŞ±ß½ç¼ì²é
-        T& operator()(u16 row, u16 col) noexcept { return data_[row * cols_ + col]; }
+        // å¿«é€Ÿè®¿é—® - æ— è¾¹ç•Œæ£€æŸ¥
+        T& operator()(u16 row, u16 col) noexcept
+        {
+            return data_[row * cols_ + col];
+        }
 
-        T& operator[](u32 index) noexcept { return data_[index]; }
+        T& operator[](u32 index) noexcept
+        {
+            return data_[index];
+        }
 
-        const T& operator()(u16 row, u16 col) const noexcept { return data_[row * cols_ + col]; }
+        const T& operator()(u16 row, u16 col) const noexcept
+        {
+            return data_[row * cols_ + col];
+        }
 
-        const T& operator[](u32 index) const noexcept { return data_[index]; }
+        const T& operator[](u32 index) const noexcept
+        {
+            return data_[index];
+        }
 
-        // °²È«·ÃÎÊ - ´ø±ß½ç¼ì²é
+        // å®‰å…¨è®¿é—® - å¸¦è¾¹ç•Œæ£€æŸ¥
         T& at(u16 row, u16 col)
         {
             assert(row < rows_ && col < cols_);
@@ -94,34 +106,64 @@ namespace swf_reader::data
             return data_[index];
         }
 
-        // Ô­Ê¼Êı¾İ·ÃÎÊ
-        T* data() noexcept { return data_.get(); }
-        const T* data() const noexcept { return data_.get(); }
+        // åŸå§‹æ•°æ®è®¿é—®
+        T* data() noexcept
+        {
+            return data_.get();
+        }
+        const T* data() const noexcept
+        {
+            return data_.get();
+        }
 
-        T* row_data(u16 row) noexcept { return data() + row * cols_; }
+        T* row_data(u16 row) noexcept
+        {
+            return data() + row * cols_;
+        }
 
-        const T* row_data(u16 row) const noexcept { return data() + row * cols_; }
+        const T* row_data(u16 row) const noexcept
+        {
+            return data() + row * cols_;
+        }
 
-        // ³ß´çĞÅÏ¢
-        u16 rows() const noexcept { return rows_; }
-        u16 cols() const noexcept { return cols_; }
-        u32 size() const noexcept { return rows_ * cols_; }
-        bool empty() const noexcept { return size() == 0; }
+        // å°ºå¯¸ä¿¡æ¯
+        u16 rows() const noexcept
+        {
+            return rows_;
+        }
+        u16 cols() const noexcept
+        {
+            return cols_;
+        }
+        u32 size() const noexcept
+        {
+            return rows_ * cols_;
+        }
+        bool empty() const noexcept
+        {
+            return size() == 0;
+        }
 
-        // ÄÚ´æĞÅÏ¢
-        u32 memory_usage() const noexcept { return size() * sizeof(T) + sizeof(*this); }
+        // å†…å­˜ä¿¡æ¯
+        u32 memory_usage() const noexcept
+        {
+            return size() * sizeof(T) + sizeof(*this);
+        }
 
-        // Ìî³ä²Ù×÷
-        void fill(const T& value) noexcept { for (u32 i = 0; i < size(); ++i) data_[i] = value; }
+        // å¡«å……æ“ä½œ
+        void fill(const T& value) noexcept
+        {
+            for (u32 i = 0; i < size(); ++i) data_[i] = value;
+        }
 
-        // ÇåÁã£¨¶ÔÓÚÊıÖµÀàĞÍ£©
+        // æ¸…é›¶ï¼ˆå¯¹äºæ•°å€¼ç±»å‹ï¼‰
         void zero() noexcept
         {
             if constexpr (std::is_arithmetic_v<T>) std::memset(data(), 0, size() * sizeof(T));
             else fill(T{});
         }
 
-        // ½»»»²Ù×÷
+        // äº¤æ¢æ“ä½œ
         void swap(SwfArray2D& other) noexcept
         {
             data_.swap(other.data_);

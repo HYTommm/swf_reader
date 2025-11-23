@@ -13,9 +13,10 @@
 
 namespace swf_reader::data
 {
-	struct SwfHeader {
-		SwfRect frame_size;
-		f64 frame_rate{ 0.0 };
-		u16 frame_count{ 0 };
-	};
+    struct SwfHeader
+    {
+        SwfRect frame_size;
+        f64 frame_rate{ 0.0 };
+        u16 frame_count{ 0 };
+    };
 }

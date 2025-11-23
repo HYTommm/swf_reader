@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    convolution_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -29,7 +29,10 @@ namespace swf_reader::filters
         bool clamp;
         bool preserve_alpha;
 
-        FilterType get_type() const override { return FilterType::Convolution; }
+        FilterType get_type() const override
+        {
+            return FilterType::Convolution;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

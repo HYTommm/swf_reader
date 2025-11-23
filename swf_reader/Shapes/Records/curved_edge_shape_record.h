@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    curved_edge_shape_record.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -21,7 +21,10 @@ namespace swf_reader::shapes::records
         i32 anchor_delta_x;
         i32 anchor_delta_y;
 
-        inline ShapeRecordType get_type() const override { return ShapeRecordType::CurvedEdgeRecord; }
+        inline ShapeRecordType get_type() const override
+        {
+            return ShapeRecordType::CurvedEdgeRecord;
+        }
 
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,

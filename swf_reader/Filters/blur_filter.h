@@ -1,4 +1,4 @@
-/*
+﻿/*
  * @file    blur_filter.h
  *
  * C# original: BlurFilter
@@ -25,7 +25,10 @@ namespace swf_reader::filters
         u8 reserved;
 
         // Gets type of filter.
-        FilterType get_type() const override { return FilterType::Blur; }
+        FilterType get_type() const override
+        {
+            return FilterType::Blur;
+        }
 
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {

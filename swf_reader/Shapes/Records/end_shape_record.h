@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    end_shape_record.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -16,7 +16,10 @@ namespace swf_reader::shapes::records
     class EndShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
     {
     public:
-        inline ShapeRecordType get_type() const override { return ShapeRecordType::EndRecord; }
+        inline ShapeRecordType get_type() const override
+        {
+            return ShapeRecordType::EndRecord;
+        }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,
             ISwfStreamReader& reader,

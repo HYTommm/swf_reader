@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * @file    style_change_shape_record.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -23,10 +23,13 @@ namespace swf_reader::shapes::records
         i32 move_delta_x;
         i32 move_delta_y;
 
-        inline ShapeRecordType get_type() const override { return ShapeRecordType::StyleChangeRecord; }
+        inline ShapeRecordType get_type() const override
+        {
+            return ShapeRecordType::StyleChangeRecord;
+        }
 
-        // ÔÚC#ÖĞ£¬accept_visitorº¯ÊıÔÚIShapeRecord½Ó¿ÚÖĞÉùÃ÷£¬ËùÒÔĞèÒªÔÚStyleChangeShapeRecordÊµÏÖ
-        // µ«C++ÖĞÃ»ÓĞ½Ó¿Ú£¬´Ëº¯ÊıÖ±½Ó¼Ì³ĞÓÚIShapeRecord£¬ËùÒÔ²»ĞèÒªÔÚ´Ë´¦ÊµÏÖ
+        // åœ¨C#ä¸­ï¼Œaccept_visitorå‡½æ•°åœ¨IShapeRecordæ¥å£ä¸­å£°æ˜ï¼Œæ‰€ä»¥éœ€è¦åœ¨StyleChangeShapeRecordå®ç°
+        // ä½†C++ä¸­æ²¡æœ‰æ¥å£ï¼Œæ­¤å‡½æ•°ç›´æ¥ç»§æ‰¿äºIShapeRecordï¼Œæ‰€ä»¥ä¸éœ€è¦åœ¨æ­¤å¤„å®ç°
         //virtual IShapeRecord& accept_visitor(IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor, ISwfStreamReader& arg) = 0;
     };
 }

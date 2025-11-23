@@ -8,16 +8,18 @@
  */
 #pragma once
 
-//#include "iswf_stream_reader.h"
+ //#include "iswf_stream_reader.h"
 #include "swf_file_info.h"
 #include "Data/swf_header.h"
 #include "Data/swf_matrix.h"
 #include "Data/swf_symbol_reference.h"
 
-namespace swf_reader {
-	class ISwfStreamReader;
+namespace swf_reader
+{
+    class ISwfStreamReader;
 
-	class SwfStreamReaderExt {
+    class SwfStreamReaderExt
+    {
     public:
         static SwfFileInfo read_swf_file_info(ISwfStreamReader& reader);
         static data::SwfHeader read_swf_header(ISwfStreamReader& reader);
@@ -26,5 +28,4 @@ namespace swf_reader {
         static data::SwfMatrix read_matrix(ISwfStreamReader& reader);
         static data::SwfSymbolReference read_symbol_reference(ISwfStreamReader& reader);
     };
-
 }

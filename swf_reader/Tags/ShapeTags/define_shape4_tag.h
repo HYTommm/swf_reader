@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * @file define_shape4_tag.h
  *
  * Original C# implementation: Copyright (c)2018 Sergey Savchuk
@@ -27,7 +27,7 @@ namespace swf_reader::tags::shape_tags
 
         DefineShape4Flags flags;
 
-        //Í¨¹ý ShapeBaseTag¼Ì³Ð
+        //é€šè¿‡ ShapeBaseTagç»§æ‰¿
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& args) override
         {
             return visitor.visit(*this, args);
@@ -38,9 +38,21 @@ namespace swf_reader::tags::shape_tags
             return SwfTagType::DefineShape4;
         }
 
-        bool uses_fill_winding_rule() const { return flags.get(DefineShape4Flag::UsesFillWindingRule); }
-        bool uses_non_scaling_strokes() const { return flags.get(DefineShape4Flag::UsesNonScalingStrokes); }
-        bool uses_scaling_strokes() const { return flags.get(DefineShape4Flag::UsesScalingStrokes); }
-        u8 reserved_flags() const { return static_cast<u8>(flags.reserved()); }
+        bool uses_fill_winding_rule() const
+        {
+            return flags.get(DefineShape4Flag::UsesFillWindingRule);
+        }
+        bool uses_non_scaling_strokes() const
+        {
+            return flags.get(DefineShape4Flag::UsesNonScalingStrokes);
+        }
+        bool uses_scaling_strokes() const
+        {
+            return flags.get(DefineShape4Flag::UsesScalingStrokes);
+        }
+        u8 reserved_flags() const
+        {
+            return static_cast<u8>(flags.reserved());
+        }
     };
 }

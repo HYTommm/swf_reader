@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    color_matrix_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -21,7 +21,10 @@ namespace swf_reader::filters
         f32 b[5];
         f32 a[5];
 
-        FilterType get_type() const override { return FilterType::ColorMatrix; }
+        FilterType get_type() const override
+        {
+            return FilterType::ColorMatrix;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

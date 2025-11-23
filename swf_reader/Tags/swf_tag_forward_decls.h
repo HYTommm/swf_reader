@@ -42,8 +42,8 @@ namespace swf_reader::tags
     }
     class DoActionTag;
     class DoInitActionTag;
-    class DoABCTag;
-    class DoABCDefineTag;
+    class DoAbcTag;
+    class DoAbcDefineTag;
     namespace shape_tags
     {
         class DefineShapeTag;
@@ -52,12 +52,12 @@ namespace swf_reader::tags
         class DefineShape4Tag;
     }
     class DefineBitsTag;
-    class JPEGTablesTag;
-    class DefineBitsJPEG2Tag;
-    class DefineBitsJPEG3Tag;
+    class JpegTablesTag;
+    class DefineBitsJpeg2Tag;
+    class DefineBitsJpeg3Tag;
     class DefineBitsLosslessTag;
     class DefineBitsLossless2Tag;
-    class DefineBitsJPEG4Tag;
+    class DefineBitsJpeg4Tag;
     class DefineMorphShapeTag;
     class DefineMorphShape2Tag;
     class DefineFontTag;
@@ -86,7 +86,7 @@ namespace swf_reader::tags
     class DefineVideoStreamTag;
     class VideoFrameTag;
     class DefineBinaryDataTag;
-    class DebugIDTag;
+    class DebugIdTag;
     class ProductInfoTag;
     class UnknownTag;
 }

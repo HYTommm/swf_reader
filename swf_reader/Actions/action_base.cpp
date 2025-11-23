@@ -11,13 +11,13 @@
 
 namespace swf_reader::actions
 {
-	/*template <typename TArg, typename TResult>
-	TResult& ActionBase::accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg)
-	{
-		switch (action_code)
-		{
-			case ActionCode::End:
-				return visitor.visit();
-		}
-	}*/
+    /*template <typename TArg, typename TResult>
+    TResult& ActionBase::accept_visitor(IActionVisitor<TArg, TResult&>& visitor, TArg& arg)
+    {
+        switch (action_code)
+        {
+            case ActionCode::End:
+                return visitor.visit();
+        }
+    }*/
 }

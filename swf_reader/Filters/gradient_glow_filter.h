@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    gradient_glow_filter.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -29,7 +29,10 @@ namespace swf_reader::filters
         bool composite_source;
         bool on_top;
         u8 passes;
-        FilterType get_type() const override { return FilterType::GradientGlow; }
+        FilterType get_type() const override
+        {
+            return FilterType::GradientGlow;
+        }
         BaseFilter& accept_visitor(IFilterVisitor<ISwfStreamReader, BaseFilter&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

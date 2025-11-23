@@ -12,22 +12,22 @@
 #include "Data/swf_rgb.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class SolidFillStyleRgb : public FillStyleRgb
-	{
-	public:
-		data::SwfRgb color;
+    class SolidFillStyleRgb : public FillStyleRgb
+    {
+    public:
+        data::SwfRgb color;
 
-		/// <summary>
-		/// Gets type of fill style.
-		/// </summary>
-		FillStyleType get_type() const override
-		{
-			return FillStyleType::SolidColor;
-		}
+        /// <summary>
+        /// Gets type of fill style.
+        /// </summary>
+        FillStyleType get_type() const override
+        {
+            return FillStyleType::SolidColor;
+        }
 
-		FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) override
-		{
-			return visitor.visit(*this, arg);
-		}
-	};
+        FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) override
+        {
+            return visitor.visit(*this, arg);
+        }
+    };
 }

@@ -12,13 +12,13 @@
 #include "i_swf_stream_reader.h"
 namespace swf_reader::shapes::fillstyles
 {
-	class FillStyleRgb
-	{
-	public:
-		FillStyleRgb() = default;
-		virtual ~FillStyleRgb() = default;
+    class FillStyleRgb
+    {
+    public:
+        FillStyleRgb() = default;
+        virtual ~FillStyleRgb() = default;
 
-		virtual FillStyleType get_type() const = 0;
-		virtual FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) = 0;
-	};
+        virtual FillStyleType get_type() const = 0;
+        virtual FillStyleRgb& accept_visitor(IFillStyleRgbVisitor<ISwfStreamReader, FillStyleRgb&>& visitor, ISwfStreamReader& arg) = 0;
+    };
 }

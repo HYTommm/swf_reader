@@ -14,8 +14,8 @@
 
 namespace swf_reader::actions
 {
-	ActionBase& ActionReader::visit (ActionEnd& action, u8 arg)
-	{
-		return action;
-	}
+    ActionBase& ActionReader::visit(ActionEnd& action, u8 arg)
+    {
+        return action;
+    }
 }

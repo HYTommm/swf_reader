@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    join_style.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -10,10 +10,10 @@
 
 namespace swf_reader::shapes::linestyles
 {
-	enum class JoinStyle
-	{
-		Round = 0,
-		Bevel = 1,
-		Miter = 2
-	};
+    enum class JoinStyle
+    {
+        Round = 0,
+        Bevel = 1,
+        Miter = 2
+    };
 }

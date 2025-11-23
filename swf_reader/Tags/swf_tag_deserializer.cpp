@@ -9,6 +9,7 @@
 #include "swf_tag_deserializer.h"
 
 #include <optional>
+#include <print>
 #include <sstream>
 
 #include "swf_stream_reader.h"
@@ -182,7 +183,7 @@ namespace swf_reader::tags
     SwfTagBase& SwfTagDeserializer::visit(control_tags::FileAttributesTag& tag, ISwfStreamReader& reader)
     {
         tag.flags.set(reader.read_byte());
-        printf("%d", tag.flags.get(control_tags::FileAttributesFlag::ActionScript3));
+        std::print("{:d}", tag.flags.get(control_tags::FileAttributesFlag::ActionScript3));
         tag.reserved = reader.read_ub(24);
         return tag;
     }
