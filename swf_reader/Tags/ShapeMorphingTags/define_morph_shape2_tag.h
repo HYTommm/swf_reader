@@ -9,6 +9,8 @@
 
 #pragma once
 #include "shape_morphing_base_tag.h"
+#include "ShapeMorphing/MorphFillStyles/morph_fillstyle.h"
+#include "ShapeMorphing/MorphLineStyles/morph_linestyle_ex.h"
 
 namespace swf_reader::tags::shape_morphing_tags
 {

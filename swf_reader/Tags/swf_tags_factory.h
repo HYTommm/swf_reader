@@ -27,6 +27,8 @@
 #include "ShapeTags/define_shape3_tag.h"
 #include "ShapeTags/define_shape4_tag.h"
 #include "define_sprite_tag.h"
+#include "ShapeMorphingTags/define_morph_shape2_tag.h"
+#include "ShapeMorphingTags/define_morph_shape_tag.h"
 
 namespace swf_reader::tags
 {
@@ -105,8 +107,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<FrameLabelTag>();
                     //case SwfTagType::SoundStreamHead2:
                     //	return std::make_unique<SoundStreamHead2Tag>();
-                    //case SwfTagType::DefineMorphShape:
-                    //	return std::make_unique<DefineMorphShapeTag>();
+                case SwfTagType::DefineMorphShape:
+                    return boxed<shape_morphing_tags::DefineMorphShapeTag>();
                     //case SwfTagType::DefineFont2:
                     //	return std::make_unique<DefineFont2Tag>();
                     //case SwfTagType::ExportAssets:
@@ -153,8 +155,8 @@ namespace swf_reader::tags
                     //	return std::make_unique<DoABCTag>();
                 case SwfTagType::DefineShape4:
                     return boxed<shape_tags::DefineShape4Tag>();
-                    //case SwfTagType::DefineMorphShape2:
-                    //	return std::make_unique<DefineMorphShape2Tag>();
+                case SwfTagType::DefineMorphShape2:
+                    return boxed<shape_morphing_tags::DefineMorphShape2Tag>();
                     //case SwfTagType::DefineSceneAndFrameLabelData:
                     //	return std::make_unique<DefineSceneAndFrameLabelDataTag>();
                     //case SwfTagType::DefineBinaryData:
