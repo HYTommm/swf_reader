@@ -5,6 +5,14 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="lib|Win32">
+      <Configuration>lib</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="lib|x64">
+      <Configuration>lib</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -33,7 +41,14 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='lib|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -46,6 +61,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='lib|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -63,10 +85,16 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='lib|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='lib|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -74,9 +102,22 @@
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='lib|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <TargetExt />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <TargetExt>
+    </TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='lib|Win32'">
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <TargetExt />
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -90,6 +131,8 @@
       <LanguageStandard>stdcpp23</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,7 +159,29 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\HYTomZ\source\repos\swf_reader\swf_reader\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\zlib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlibstaticd.lib;liblzma.lib</AdditionalDependencies>
+      <AdditionalDependencies>zlibstatic.lib;lzma.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='lib|Win32'">
+    <ClCompile>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>LZMA_API_STATIC;ZLIB_WINAPI;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>
+      </AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\HYTomZ\source\repos\swf_reader\swf_reader\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\zlib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlibstatic.lib;lzma.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,6 +197,8 @@
       <DisableSpecificWarnings>4061;4062;4514;4100;4820;5045;26495</DisableSpecificWarnings>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>cpp_base_type.h</PrecompiledHeaderFile>
+      <Optimization>MaxSpeed</Optimization>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,12 +222,42 @@
       </AdditionalOptions>
       <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\HYTomZ\source\repos\swf_reader\swf_reader\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\zlib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlibstaticd.lib;liblzma.lib</AdditionalDependencies>
+      <AdditionalDependencies>zlibstatic.lib;lzma.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='lib|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>LZMA_API_STATIC;ZLIB_WINAPI;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AdditionalIncludeDirectories>$(MSBuildProjectDirectory);$(MSBuildProjectDirectory)\liblzma_v5.8.1\include;$(MSBuildProjectDirectory)\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\HYTomZ\source\repos\swf_reader\swf_reader\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\liblzma_v5.8.1\lib\x64;$(MSBuildProjectDirectory)\zlib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlibstatic.lib;lzma.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -173,6 +270,9 @@
     <ClCompile Include="Filters\filter_reader.cpp" />
     <ClCompile Include="Filters\filter_stream_ext.cpp" />
     <ClCompile Include="my_main.cpp" />
+    <ClCompile Include="ShapeMorphing\MorphFillStyles\morph_fillstyle_reader.cpp" />
+    <ClCompile Include="ShapeMorphing\morph_fillstyle_stream_ext.cpp" />
+    <ClCompile Include="ShapeMorphing\morph_linestyle_stream_ext.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb.h" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgba_reader.cpp" />
     <ClCompile Include="Shapes\FillStyles\fillstyle_rgb_reader.cpp" />
@@ -240,7 +340,32 @@
     <ClInclude Include="Gradients\spread_mode.h" />
     <ClInclude Include="i_swf_stream_reader.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MorphGradients\base_morph_gradient.h" />
+    <ClInclude Include="MorphGradients\morph_focal_gradient.h" />
+    <ClInclude Include="MorphGradients\morph_gradient_stream_ext.h" />
+    <ClInclude Include="MorphGradients\morph_linear_gradient.h" />
+    <ClInclude Include="MorphGradients\morph_gradient_record.h" />
+    <ClInclude Include="MorphGradients\morph_interpolation_mode.h" />
+    <ClInclude Include="MorphGradients\morph_spread_mode.h" />
     <ClInclude Include="primitive_types.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_bitmap_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_bitmap_mode.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_focal_gradient_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_linear_gradient_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_fillstyle_factory.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_fillstyle_type.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\i_morph_fillstyle_visitor.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_fillstyle_reader.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_radial_gradient_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphFillStyles\morph_solid_fillstyle.h" />
+    <ClInclude Include="ShapeMorphing\MorphLineStyles\morph_cap_style.h" />
+    <ClInclude Include="ShapeMorphing\MorphLineStyles\morph_join_style.h" />
+    <ClInclude Include="ShapeMorphing\MorphLineStyles\morph_linestyle_ex.h" />
+    <ClInclude Include="ShapeMorphing\MorphLineStyles\morph_linestyle_ex_flag.h" />
+    <ClInclude Include="ShapeMorphing\MorphLineStyles\morph_linestyle.h" />
+    <ClInclude Include="ShapeMorphing\morph_fillstyle_stream_ext.h" />
+    <ClInclude Include="ShapeMorphing\morph_linestyle_stream_ext.h" />
     <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgb.h" />
     <ClInclude Include="Shapes\FillStyles\bitmap_fillstyle_rgba.h" />
     <ClInclude Include="Shapes\FillStyles\bitmap_mode.h" />
@@ -304,6 +429,9 @@
     <ClInclude Include="Tags\DisplayListTags\remove_object_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\show_frame_tag.h" />
     <ClInclude Include="Tags\i_swf_tag_visitor.h" />
+    <ClInclude Include="Tags\ShapeMorphingTags\define_morph_shape2_tag.h" />
+    <ClInclude Include="Tags\ShapeMorphingTags\define_morph_shape_tag.h" />
+    <ClInclude Include="Tags\ShapeMorphingTags\shape_morphing_base_tag.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape2_tag.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape3_tag.h" />
     <ClInclude Include="Tags\ShapeTags\define_shape4_flag.h" />
@@ -321,6 +449,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

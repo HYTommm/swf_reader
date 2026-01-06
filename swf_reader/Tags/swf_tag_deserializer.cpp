@@ -39,6 +39,10 @@
 #include "Shapes/shape_record_stream_ext.h"
 
 #include "swf_file.h"
+#include "ShapeMorphing/morph_fillstyle_stream_ext.h"
+#include "ShapeMorphing/morph_linestyle_stream_ext.h"
+#include "ShapeMorphingTags/define_morph_shape2_tag.h"
+#include "ShapeMorphingTags/define_morph_shape_tag.h"
 
 namespace swf_reader::tags
 {
@@ -47,17 +51,18 @@ namespace swf_reader::tags
         const std::string data = std::string(reinterpret_cast<const char*>(tag_data.data.data()), tag_data.data.size());
         const Box<std::istringstream> stream = boxed<std::istringstream>(data);
         const Box<SwfStreamReader> reader = boxed<SwfStreamReader>(*stream);
-        const SwfTagType type = tag_data.type;
-        return read_tag(type, *reader);
+        //const SwfTagType type = tag_data.type;
+        return read_tag(tag_data, *reader);
     }
 
-    Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagType type, ISwfStreamReader& reader)
+    Box<SwfTagBase> SwfTagDeserializer::read_tag(const SwfTagData& tag_data, ISwfStreamReader& reader)
     {
-        Box<SwfTagBase> tag = factory_.create(type);
+        Box<SwfTagBase> tag = factory_.create(tag_data.type);
         if (tag->get_type() == SwfTagType::Unknown)
         {
             return tag;
         }
+        tag->tag_length = tag_data.data.size();
         tag->accept_visitor(*this, reader);
 
         if (reader.bytes_left() > 0)
@@ -183,7 +188,7 @@ namespace swf_reader::tags
     SwfTagBase& SwfTagDeserializer::visit(control_tags::FileAttributesTag& tag, ISwfStreamReader& reader)
     {
         tag.flags.set(reader.read_byte());
-        std::print("{:d}", tag.flags.get(control_tags::FileAttributesFlag::ActionScript3));
+        //std::print("{:d}", tag.flags.get(control_tags::FileAttributesFlag::ActionScript3));
         tag.reserved = reader.read_ub(24);
         return tag;
     }
@@ -200,6 +205,7 @@ namespace swf_reader::tags
         tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
         shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, false);
         shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, false);
+        tag.shape_records.reserve(tag.tag_length / 2 + 1);
         shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.shape_records);
         return tag;
     }
@@ -210,6 +216,7 @@ namespace swf_reader::tags
         tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
         shapes::FillStyleStreamExt::read_to_fillstyles_rgb(reader, tag.fill_styles, true);
         shapes::LineStyleStreamExt::read_to_linestyles_rgb(reader, tag.line_styles, true);
+        tag.shape_records.reserve(tag.tag_length / 2 + 1);
         shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.shape_records);
         return tag;
     }
@@ -220,6 +227,7 @@ namespace swf_reader::tags
         tag.shape_bounds = SwfStreamReaderExt::read_rect(reader);
         shapes::FillStyleStreamExt::read_to_fillstyles_rgba(reader, tag.fill_styles);
         shapes::LineStyleStreamExt::read_to_linestyles_rgba(reader, tag.line_styles);
+        tag.shape_records.reserve(tag.tag_length / 2 + 1);
         shapes::ShapeRecordStreamExt::read_to_shape_records_rgba(reader, tag.shape_records);
         return tag;
     }
@@ -232,7 +240,41 @@ namespace swf_reader::tags
         tag.flags.set(reader.read_byte());
         shapes::FillStyleStreamExt::read_to_fillstyles_rgba(reader, tag.fill_styles);
         shapes::LineStyleStreamExt::read_to_linestyles_ex(reader, tag.line_styles);
+        tag.shape_records.reserve(tag.tag_length / 2 + 1);
         shapes::ShapeRecordStreamExt::read_to_shape_records_ex(reader, tag.shape_records);
+
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(shape_morphing_tags::DefineMorphShapeTag& tag, ISwfStreamReader& reader)
+    {
+        tag.character_id = reader.read_ui16();
+        tag.start_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.end_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.offset = reader.read_ui32();
+        shape_morphing::MorphFillStyleStreamExt::read_to_fillstyles(reader, tag.fill_styles);
+        shape_morphing::MorphLineStyleStreamExt::read_to_linestyles(reader, tag.line_styles);
+        tag.start_edge.reserve(tag.tag_length / 2 + 1);
+        tag.end_edge.reserve(tag.tag_length / 2 + 1);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.start_edge);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.end_edge);
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(shape_morphing_tags::DefineMorphShape2Tag& tag, ISwfStreamReader& reader)
+    {
+        tag.character_id = reader.read_ui16();
+        tag.start_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.end_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.start_edge_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.end_edge_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.offset = reader.read_ui32();
+        shape_morphing::MorphFillStyleStreamExt::read_to_fillstyles(reader, tag.fill_styles);
+        shape_morphing::MorphLineStyleStreamExt::read_to_linestyles_ex(reader, tag.line_styles);
+        tag.start_edge.reserve(tag.tag_length / 2 + 1);
+        tag.end_edge.reserve(tag.tag_length / 2 + 1);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.start_edge);
+        shapes::ShapeRecordStreamExt::read_to_shape_records_rgb(reader, tag.end_edge);
         return tag;
     }
 
@@ -240,6 +282,7 @@ namespace swf_reader::tags
     {
         tag.sprite_id = reader.read_ui16();
         tag.frames_count = reader.read_ui16();
+        tag.tags.reserve(tag.tag_length / 16 + tag.frames_count * 2);
         Box<SwfTagBase> sub_tag;
         bool is_end_tag;
         do

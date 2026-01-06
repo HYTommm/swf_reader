@@ -16,6 +16,7 @@ namespace swf_reader
     {
     public:
         explicit SwfStreamReader(std::istream& stream);
+        //explicit SwfStreamReader(u8* data, usize size);
 
         ~SwfStreamReader() override = default;
         SwfStreamReader(const SwfStreamReader&) = delete;
@@ -66,5 +67,7 @@ namespace swf_reader
         std::istream* stream_;
         BitContext bit_context_;
         std::streampos end_pos;
+
+        //Vec<u8> my_buffer = Vec<u8>(buffer_size);
     };
 }

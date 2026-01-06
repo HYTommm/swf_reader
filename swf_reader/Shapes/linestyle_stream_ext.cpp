@@ -1,4 +1,4 @@
-#include "linestyle_stream_ext.h"
+﻿#include "linestyle_stream_ext.h"
 /**
  * @file    linestyle_stream_ext.cpp
  *

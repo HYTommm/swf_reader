@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    fillstyle_rgba_reader.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk

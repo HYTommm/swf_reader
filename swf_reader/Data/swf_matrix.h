@@ -8,7 +8,7 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 #include "swf_vector.h"
 
 namespace swf_reader::data

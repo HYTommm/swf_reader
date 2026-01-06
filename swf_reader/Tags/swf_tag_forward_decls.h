@@ -58,8 +58,11 @@ namespace swf_reader::tags
     class DefineBitsLosslessTag;
     class DefineBitsLossless2Tag;
     class DefineBitsJpeg4Tag;
-    class DefineMorphShapeTag;
-    class DefineMorphShape2Tag;
+    namespace shape_morphing_tags
+    {
+        class DefineMorphShapeTag;
+        class DefineMorphShape2Tag;
+    }
     class DefineFontTag;
     class DefineFontInfoTag;
     class DefineFontInfo2Tag;

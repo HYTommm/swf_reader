@@ -1,4 +1,4 @@
-﻿#ifdef _DEBUG
+﻿//#ifdef _DEBUG
 
 #include <cstdlib>
 #include <format>
@@ -10,6 +10,9 @@
 #include "swf_file.h"
 #include "zlib.h"
 #include "Tags/ShapeTags/define_shape_tag.h"
+
+#include <chrono>
+#include <map>
 
 int main(int argc, char* argv[])
 {
@@ -25,8 +28,16 @@ int main(int argc, char* argv[])
     std::ifstream file(argv[1], std::ios::binary);
 
     std::print("文件打开成功\n");
+    auto start = std::chrono::high_resolution_clock::now();
 
-    Box<swf_reader::SwfFile> swf_file = swf_reader::SwfFile::read_from(file);
+    constexpr size_t buffer_size = 16 * 1024; // 128kb
+    char my_buffer[buffer_size];
+
+    file.rdbuf()->pubsetbuf(my_buffer, buffer_size);
+    const Box<swf_reader::SwfFile> swf_file = swf_reader::SwfFile::read_from(file);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    std::print("读取耗时: {} 毫秒\n", duration.count());
 
     std::print("已读取\n");
 
@@ -62,31 +73,18 @@ int main(int argc, char* argv[])
         swf_file->header.frame_size.x_min / 20, swf_file->header.frame_size.y_min / 20,
         swf_file->header.frame_size.x_max / 20, swf_file->header.frame_size.y_max / 20);
     int unknown_count = 0;
-    for (i32 i = 0; i < swf_file->tags.size(); i++)
+    for (const Box<swf_reader::tags::SwfTagBase>& tag : swf_file->tags)
     {
-        swf_reader::tags::SwfTagBase& tag = *(swf_file->tags[i]);
-        if (tag.get_type() == swf_reader::tags::SwfTagType::Unknown)
+        if (tag->get_type() == swf_reader::tags::SwfTagType::Unknown)
         {
             unknown_count++;
-            continue;
         }
-
-        //std::print("标签类型: {}", static_cast<int>(tag.get_type()));
-        //if (tag.get_type() == swf_reader::tags::SwfTagType::DefineShape
-        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape2
-        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape3
-        //    || tag.get_type() == swf_reader::tags::SwfTagType::DefineShape4
-        //    )
-        //{
-        //    std::print("id: {}", static_cast<swf_reader::tags::shape_tags::ShapeBaseTag&>(tag).shape_id);
-        //}
-        //std::print("\n");
-
-        ////std::print("标签数据: {}\n", tag.data);
     }
+    std::print("标签数量: {}\n", swf_file->tags.size());
+    std::print("文件大小与标签数量之比: {}\n", swf_file->file_info.file_length / swf_file->tags.size());
     std::print("可解析的标签比例: {}%\n", (100.0 - unknown_count * 100.0 / swf_file->tags.size()));
-
+    std::map <int, int> tag_count;
     return 0;
 }
 
-#endif // _DEBUG
+//#endif // _DEBUG

@@ -8,7 +8,7 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
+#include "primitive_types.h"
 
 namespace swf_reader::data
 {
@@ -18,7 +18,7 @@ namespace swf_reader::data
         i32 y{ 0 };
 
         SwfVector() = default;
-        SwfVector(i32 x, i32 y) : x(x), y(y)
+        SwfVector(const i32 x, const i32 y) : x(x), y(y)
         {
         }
     };

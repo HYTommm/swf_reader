@@ -43,13 +43,15 @@ namespace swf_reader::tags
             /// </summary>
         Option<Vec<u8>> rest_data;
 
+        usize tag_length;
+
         /// <summary>
             /// Accept visitor.
             /// </summary>
         //template<typename TArg, typename TResult>
         //TResult& accept_visitor(ISwfTagVisitor<TArg, TResult&>& visitor, TArg& arg);
         virtual SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&, ISwfStreamReader&) = 0;
-        virtual SwfTagType get_type() const = 0;
+        [[nodiscard]] virtual SwfTagType get_type() const = 0;
     };
     //extern template SwfTagBase& SwfTagBase::accept_visitor<ISwfStreamReader, SwfTagBase>(
     //	ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>&,

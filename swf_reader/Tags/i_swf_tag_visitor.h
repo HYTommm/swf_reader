@@ -80,8 +80,8 @@ namespace swf_reader::tags
 #pragma endregion
         //
 #pragma region Shape morphing tags
-        //		virtual TResult& visit(DefineMorphShapeTag& tag,    TArg& arg) = 0;
-        //		virtual TResult& visit(DefineMorphShape2Tag& tag,   TArg& arg) = 0;
+        virtual TResult& visit(shape_morphing_tags::DefineMorphShapeTag& tag, TArg& arg) = 0;
+        virtual TResult& visit(shape_morphing_tags::DefineMorphShape2Tag& tag, TArg& arg) = 0;
 #pragma endregion
         //
         //#pragma region Font tags

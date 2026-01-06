@@ -27,7 +27,7 @@ namespace swf_reader::tags
 
         Box<SwfTagBase> read_tag(const SwfTagData& tag_data);
 
-        Box<SwfTagBase> read_tag(const SwfTagType type, ISwfStreamReader& reader);
+        Box<SwfTagBase> read_tag(const SwfTagData& tag_data, ISwfStreamReader& reader);
 
         //template<typename StyleChangeShapeRecord_T>
         //Box<StyleChangeShapeRecord_T> read_tag(const SwfTagData& data);
@@ -48,6 +48,10 @@ namespace swf_reader::tags
         SwfTagBase& visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader) override;
+
+        SwfTagBase& visit(shape_morphing_tags::DefineMorphShapeTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(shape_morphing_tags::DefineMorphShape2Tag& tag, ISwfStreamReader& reader) override;
+
         SwfTagBase& visit(DefineSpriteTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(UnknownTag& tag, ISwfStreamReader& reader) override;
 

@@ -23,6 +23,7 @@ namespace swf_reader
         {
             throw std::invalid_argument("Invalid stream provided to SwfStreamReader");
         }
+
         stream_->seekg(0, std::ios::end);
         end_pos = stream_->tellg();
         stream_->seekg(0, std::ios::beg);

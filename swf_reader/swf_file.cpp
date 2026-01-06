@@ -26,14 +26,14 @@ namespace swf_reader
     Box<SwfFile> SwfFile::read_from(std::istream& stream)
     {
         Box<SwfFile> file = boxed<SwfFile>();
-        std::print("开始读取文件\n");
+        //std::print("开始读取文件\n");
 
         SwfStreamReader reader(stream);
         file->file_info = SwfStreamReaderExt::read_swf_file_info(reader);
-        std::print("文件信息读取完毕\n");
+        //std::print("文件信息读取完毕\n");
         const Box<ISwfStreamReader> final_reader = file->get_swf_stream_reader(file->file_info, stream);
         file->header = SwfStreamReaderExt::read_swf_header(*final_reader);
-        std::print("头部信息读取完毕\n");
+        //std::print("头部信息读取完毕\n");
         read_tags(*file, *final_reader);
 
         return file;
@@ -41,14 +41,16 @@ namespace swf_reader
 
     void SwfFile::read_tags(SwfFile& file, ISwfStreamReader& reader)
     {
-        const Box<tags::SwfTagDeserializer> deserializer = boxed<tags::SwfTagDeserializer>(file);
+        //const Box<tags::SwfTagDeserializer> deserializer = boxed<tags::SwfTagDeserializer>(file);
+        tags::SwfTagDeserializer deserializer = tags::SwfTagDeserializer(file);
+        file.tags.reserve(file.file_info.file_length / 512);
         while (!reader.is_eof())
         {
             tags::SwfTagData tag_data = tags::TagStreamExt::read_tag_data(reader);
 
-            if (Box<tags::SwfTagBase> tag = deserializer->read_tag(tag_data))
+            if (Box<tags::SwfTagBase> tag = deserializer.read_tag(tag_data))
             {
-                std::print("读取到标签 {}\n", (int)tag->get_type());
+                //std::print("读取到标签 {}\n", (int)tag->get_type());
                 file.tags.push_back(std::move(tag));
             }
             else

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    gradient_stream_ext.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -26,9 +26,10 @@ namespace swf_reader::gradients
             gradient->spread_mode = static_cast<SpreadMode>(reader.read_ub(2));
             gradient->interpolation_mode = static_cast<InterpolationMode>(reader.read_ub(2));
             const u32 count = reader.read_ub(4);
+            gradient->gradient_records.reserve(count);
             for (u32 i = 0; i < count; i++)
             {
-                gradient->gradient_records.push_back(GradientStreamExt::read_gradient_record_rgb(reader));
+                gradient->gradient_records.push_back(read_gradient_record_rgb(reader));
             }
             return gradient;
         }
@@ -39,9 +40,10 @@ namespace swf_reader::gradients
             gradient->spread_mode = static_cast<SpreadMode>(reader.read_ub(2));
             gradient->interpolation_mode = static_cast<InterpolationMode>(reader.read_ub(2));
             const u32 count = reader.read_ub(4);
+            gradient->gradient_records.reserve(count);
             for (u32 i = 0; i < count; i++)
             {
-                gradient->gradient_records.push_back(GradientStreamExt::read_gradient_record_rgba(reader));
+                gradient->gradient_records.push_back(read_gradient_record_rgba(reader));
             }
             return gradient;
         }
@@ -57,9 +59,10 @@ namespace swf_reader::gradients
             gradient->interpolation_mode = static_cast<InterpolationMode>(reader.read_ub(2));
 
             const u32 count = reader.read_ub(4);
+            gradient->gradient_records.reserve(count);
             for (u32 i = 0; i < count; i++)
             {
-                gradient->gradient_records.push_back(GradientStreamExt::read_gradient_record_rgb(reader));
+                gradient->gradient_records.push_back(read_gradient_record_rgb(reader));
             }
             gradient->focal_point = reader.read_fixed8();
             return gradient;
@@ -71,9 +74,10 @@ namespace swf_reader::gradients
             gradient->spread_mode = static_cast<SpreadMode>(reader.read_ub(2));
             gradient->interpolation_mode = static_cast<InterpolationMode>(reader.read_ub(2));
             const u32 count = reader.read_ub(4);
+            gradient->gradient_records.reserve(count);
             for (u32 i = 0; i < count; i++)
             {
-                gradient->gradient_records.push_back(GradientStreamExt::read_gradient_record_rgba(reader));
+                gradient->gradient_records.push_back(read_gradient_record_rgba(reader));
             }
             gradient->focal_point = reader.read_fixed8();
             return gradient;
