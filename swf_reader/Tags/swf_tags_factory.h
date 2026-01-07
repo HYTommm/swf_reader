@@ -37,6 +37,7 @@ namespace swf_reader::tags
     public:
         Box<SwfTagBase> create(SwfTagType tag_type)
         {
+            //return boxed<UnknownTag>();
             switch (tag_type)
             {
                 case SwfTagType::End:

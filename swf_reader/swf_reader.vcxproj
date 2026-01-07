@@ -414,6 +414,17 @@
     <ClInclude Include="swf_stream_reader.h" />
     <ClInclude Include="swf_stream_reader_ext.h" />
     <ClInclude Include="swf_zip.h" />
+    <ClInclude Include="Tags\BitmapTags\bitmap_base_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg3_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg4_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg_alpha_base.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg2_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg_tag_base.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless2_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless_tag_base.h" />
+    <ClInclude Include="Tags\BitmapTags\define_bits_tag.h" />
+    <ClInclude Include="Tags\BitmapTags\jpeg_tables_tag.h" />
     <ClInclude Include="Tags\ControlTags\end_tag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_flag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_tag.h" />

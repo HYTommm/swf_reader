@@ -49,6 +49,14 @@ namespace swf_reader::tags
         SwfTagBase& visit(shape_tags::DefineShape3Tag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape4Tag& tag, ISwfStreamReader& reader) override;
 
+        SwfTagBase& visit(bitmap_tags::DefineBitsTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::JpegTablesTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::DefineBitsJpeg2Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::DefineBitsJpeg3Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::DefineBitsJpeg4Tag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::DefineBitsLosslessTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(bitmap_tags::DefineBitsLossless2Tag& tag, ISwfStreamReader& reader) override;
+
         SwfTagBase& visit(shape_morphing_tags::DefineMorphShapeTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_morphing_tags::DefineMorphShape2Tag& tag, ISwfStreamReader& reader) override;
 

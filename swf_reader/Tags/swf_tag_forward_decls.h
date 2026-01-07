@@ -51,13 +51,16 @@ namespace swf_reader::tags
         class DefineShape3Tag;
         class DefineShape4Tag;
     }
-    class DefineBitsTag;
-    class JpegTablesTag;
-    class DefineBitsJpeg2Tag;
-    class DefineBitsJpeg3Tag;
-    class DefineBitsLosslessTag;
-    class DefineBitsLossless2Tag;
-    class DefineBitsJpeg4Tag;
+    namespace bitmap_tags
+    {
+        class DefineBitsTag;
+        class JpegTablesTag;
+        class DefineBitsJpeg2Tag;
+        class DefineBitsJpeg3Tag;
+        class DefineBitsLosslessTag;
+        class DefineBitsLossless2Tag;
+        class DefineBitsJpeg4Tag;
+    }
     namespace shape_morphing_tags
     {
         class DefineMorphShapeTag;

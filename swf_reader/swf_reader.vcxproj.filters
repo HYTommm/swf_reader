@@ -593,6 +593,39 @@
     <ClInclude Include="ShapeMorphing\morph_linestyle_stream_ext.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\bitmap_base_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg_tag_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg2_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg_alpha_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg3_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_jpeg4_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\jpeg_tables_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless_tag_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\BitmapTags\define_bits_lossless2_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />
