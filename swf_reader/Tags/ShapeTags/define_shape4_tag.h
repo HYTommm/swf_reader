@@ -11,7 +11,6 @@
 #include "Data/swf_rect.h"
 #include "Shapes/FillStyles/fillstyle_rgba.h"
 #include "Shapes/LineStyles/linestyle_ex.h"
-#include "Shapes/Records/i_shape_record_ex.h"
 #include "define_shape4_flag.h"
 
 namespace swf_reader::tags::shape_tags
@@ -23,8 +22,8 @@ namespace swf_reader::tags::shape_tags
 
         Vec<Box<shapes::fillstyles::FillStyleRgba>> fill_styles;
         Vec<Box<shapes::linestyles::LineStyleEx>> line_styles;
-        Vec<Box<shapes::records::IShapeRecordEx>> shape_records;
 
+        //Vec<Box<shapes::records::IShapeRecordEx>> shape_records;
         DefineShape4Flags flags;
 
         //通过 ShapeBaseTag继承

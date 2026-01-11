@@ -8,12 +8,10 @@
  */
 #pragma once
 
-#include "i_shape_record_rgb.h"
-#include "i_shape_record_rgba.h"
-#include "i_shape_record_ex.h"
+#include "i_shape_record.h"
 namespace swf_reader::shapes::records
 {
-    class CurvedEdgeShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
+    class CurvedEdgeShapeRecord : public IShapeRecord
     {
     public:
         i32 control_delta_x;

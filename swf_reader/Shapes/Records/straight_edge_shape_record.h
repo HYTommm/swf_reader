@@ -7,12 +7,10 @@
  * Licensed under the MIT License.
  */
 #pragma once
-#include "i_shape_record_rgb.h"
-#include "i_shape_record_rgba.h"
-#include "i_shape_record_ex.h"
+#include "i_shape_record.h"
 namespace swf_reader::shapes::records
 {
-    class StraightEdgeShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
+    class StraightEdgeShapeRecord : public IShapeRecord
     {
     public:
         int delta_x;

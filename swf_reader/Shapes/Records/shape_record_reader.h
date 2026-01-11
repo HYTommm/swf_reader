@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    shape_record_reader.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -25,8 +25,8 @@ namespace swf_reader::shapes::records
     {
     public:
 
-        template<std::derived_from<StyleChangeShapeRecord> StyleChangeShapeRecord_T, std::derived_from<IShapeRecord> ReturnType>
-        Box<ReturnType> read(ISwfStreamReader& reader, bool allow_big_array, u32& fill_bits_count, u32& line_bits_count)
+        template<std::derived_from<StyleChangeShapeRecord> StyleChangeShapeRecord_T>
+        Box<IShapeRecord> read(ISwfStreamReader& reader, bool allow_big_array, u32& fill_bits_count, u32& line_bits_count)
         {
             bool is_edge = reader.read_bit();
             if (is_edge)

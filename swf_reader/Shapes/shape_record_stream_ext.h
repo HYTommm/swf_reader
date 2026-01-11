@@ -9,9 +9,6 @@
 #pragma once
 
 #include "Records/shape_record_reader.h"
-#include "Records/i_shape_record_rgb.h"
-#include "Records/style_change_shape_record_rgb.h"
-#include "Records/style_change_shape_record_rgba.h"
 #include "Records/style_change_shape_record_ex.h"
 namespace swf_reader::shapes
 {
@@ -19,10 +16,9 @@ namespace swf_reader::shapes
     {
     public:
         static records::ShapeRecordReader _shape_record_reader;
-        static void read_to_shape_records_rgb(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgb>>& shapeRecords);
+        static void read_to_shape_records_rgb(ISwfStreamReader& reader, Vec<Box<records::IShapeRecord>>& shape_records);
 
-        static void read_to_shape_records_rgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordRgba>>& shapeRecords);
-
-        static void read_to_shape_records_ex(ISwfStreamReader& reader, Vec<Box<records::IShapeRecordEx>>& shapeRecords);
+        static void read_to_shape_records_rgba(ISwfStreamReader& reader, Vec<Box<records::IShapeRecord>>& shape_records);
+        static void read_to_shape_records_ex(ISwfStreamReader& reader, Vec<Box<records::IShapeRecord>>& shape_records);
     };
 }

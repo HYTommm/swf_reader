@@ -108,7 +108,7 @@
     <IncludePath>$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
-    <TargetExt />
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
@@ -396,9 +396,6 @@
     <ClInclude Include="Shapes\Records\curved_edge_shape_record.h" />
     <ClInclude Include="Shapes\Records\end_shape_record.h" />
     <ClInclude Include="Shapes\Records\i_shape_record.h" />
-    <ClInclude Include="Shapes\Records\i_shape_record_ex.h" />
-    <ClInclude Include="Shapes\Records\i_shape_record_rgb.h" />
-    <ClInclude Include="Shapes\Records\i_shape_record_rgba.h" />
     <ClInclude Include="Shapes\Records\i_shape_record_visitor.h" />
     <ClInclude Include="Shapes\Records\shape_record_reader.h" />
     <ClInclude Include="Shapes\Records\shape_record_type.h" />

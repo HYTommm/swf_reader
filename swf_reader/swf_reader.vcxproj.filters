@@ -320,15 +320,6 @@
     <ClInclude Include="Shapes\Records\end_shape_record.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Shapes\Records\i_shape_record_rgb.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shapes\Records\i_shape_record_rgba.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shapes\Records\i_shape_record_ex.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Shapes\Records\shape_record_reader.h">
       <Filter>头文件</Filter>
     </ClInclude>

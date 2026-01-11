@@ -8,12 +8,9 @@
  */
 #pragma once
 #include "i_shape_record.h"
-#include "i_shape_record_rgb.h"
-#include "i_shape_record_rgba.h"
-#include "i_shape_record_ex.h"
 namespace swf_reader::shapes::records
 {
-    class EndShapeRecord : public IShapeRecordRgb, public IShapeRecordRgba, public IShapeRecordEx
+    class EndShapeRecord : public IShapeRecord
     {
     public:
         inline ShapeRecordType get_type() const override

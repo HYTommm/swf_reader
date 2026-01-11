@@ -19,5 +19,7 @@ namespace swf_reader::tags::shape_morphing_tags
         data::SwfRect start_bounds;
         data::SwfRect end_bounds;
         u32 offset;
+        Vec<Box<shapes::records::IShapeRecord>> start_edge;
+        Vec<Box<shapes::records::IShapeRecord>> end_edge;
     };
 }

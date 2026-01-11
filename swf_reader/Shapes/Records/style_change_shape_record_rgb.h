@@ -8,21 +8,20 @@
  */
 #pragma once
 #include "style_change_shape_record.h"
-#include "i_shape_record_rgb.h"
 #include "../FillStyles/fillstyle_rgb.h"
 #include "../LineStyles/linestyle_rgb.h"
 
 namespace swf_reader::shapes::records
 {
-    class StyleChangeShapeRecordRgb : public StyleChangeShapeRecord, public IShapeRecordRgb
+    class StyleChangeShapeRecordRgb : public StyleChangeShapeRecord
     {
     public:
-        Vec<Box<fillstyles::FillStyleRgb>> FillStyles;
-        Vec<Box<linestyles::LineStyleRgb>> LineStyles;
+        Vec<Box<fillstyles::FillStyleRgb>> fill_styles;
+        Vec<Box<linestyles::LineStyleRgb>> line_styles;
 
         inline ShapeRecordType get_type() const override
         {
-            return ShapeRecordType::StyleChangeRecord;
+            return ShapeRecordType::StyleChangeRecordRgb;
         }
         IShapeRecord& accept_visitor(
             IShapeRecordVisitor<ISwfStreamReader, IShapeRecord&>& visitor,

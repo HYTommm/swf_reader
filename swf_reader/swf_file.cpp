@@ -32,10 +32,17 @@ namespace swf_reader
         file->file_info = SwfStreamReaderExt::read_swf_file_info(reader);
         //std::print("文件信息读取完毕\n");
         const Box<ISwfStreamReader> final_reader = file->get_swf_stream_reader(file->file_info, stream);
-        file->header = SwfStreamReaderExt::read_swf_header(*final_reader);
-        //std::print("头部信息读取完毕\n");
-        read_tags(*file, *final_reader);
-
+        if (final_reader != nullptr)
+        {
+            file->header = SwfStreamReaderExt::read_swf_header(*final_reader);
+            //std::print("头部信息读取完毕\n");
+            read_tags(*file, *final_reader);
+        }
+        else
+        {
+            std::cerr << "Error reading SWF file: Unsupported compression format";
+            file = nullptr;
+        }
         return file;
     }
 
@@ -72,7 +79,15 @@ namespace swf_reader
 
         // 对于压缩格式，先解压
         decompressed_stream_ = boxed<std::stringstream>();
-        SwfZip::decompress(stream, *decompressed_stream_, info.format);
+        try
+        {
+            SwfZip::decompress(stream, *decompressed_stream_, info.format);
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << "Error decompressing SWF file: " << e.what();
+            return nullptr;
+        }
         decompressed_stream_->seekg(0);
 
         return boxed<SwfStreamReader>(*decompressed_stream_);

@@ -26,8 +26,8 @@ namespace swf_reader::tags::shape_morphing_tags
 
         Vec<Box<shape_morphing::morph_fillstyles::MorphFillStyle>> fill_styles;
         Vec<Box<shape_morphing::morph_linestyles::MorphLineStyleEx>> line_styles;
-        Vec<Box<shapes::records::IShapeRecordRgb>> start_edge;
-        Vec<Box<shapes::records::IShapeRecordRgb>> end_edge;
+        //Vec<Box<shapes::records::IShapeRecordRgb>> start_edge;
+        //Vec<Box<shapes::records::IShapeRecordRgb>> end_edge;
 
         [[nodiscard]] SwfTagType get_type() const override
         {

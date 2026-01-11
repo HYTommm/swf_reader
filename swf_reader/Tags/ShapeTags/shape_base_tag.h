@@ -9,6 +9,7 @@
 #pragma once
 #include "Tags/swf_tag_base.h"
 #include "Data/swf_rect.h"
+#include "Shapes/Records/i_shape_record.h"
 
 namespace swf_reader::tags::shape_tags
 {
@@ -17,7 +18,7 @@ namespace swf_reader::tags::shape_tags
     public:
         u16 shape_id;
         data::SwfRect shape_bounds;
-
+        Vec<Box<shapes::records::IShapeRecord>> shape_records;
         ShapeBaseTag() = default;
         virtual ~ShapeBaseTag() = default;
     };

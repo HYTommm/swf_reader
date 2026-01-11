@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    shape_record_reader.cpp
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -82,8 +82,8 @@ namespace swf_reader::shapes::records
         record_read_helper(record, reader, fill_bits_count, line_bits_count);
         if (record.flags.get(StyleChangeRecordFlag::StateNewStyles))
         {
-            FillStyleStreamExt::read_to_fillstyles_rgba(reader, record.FillStyles);
-            LineStyleStreamExt::read_to_linestyles_ex(reader, record.LineStyles);
+            FillStyleStreamExt::read_to_fillstyles_rgba(reader, record.fill_styles);
+            LineStyleStreamExt::read_to_linestyles_ex(reader, record.line_styles);
             fill_bits_count = reader.read_ub(4);
             line_bits_count = reader.read_ub(4);
         }
@@ -99,8 +99,8 @@ namespace swf_reader::shapes::records
         record_read_helper(record, reader, fill_bits_count, line_bits_count);
         if (record.flags.get(StyleChangeRecordFlag::StateNewStyles))
         {
-            FillStyleStreamExt::read_to_fillstyles_rgb(reader, record.FillStyles, allow_big_array);
-            LineStyleStreamExt::read_to_linestyles_rgb(reader, record.LineStyles, allow_big_array);
+            FillStyleStreamExt::read_to_fillstyles_rgb(reader, record.fill_styles, allow_big_array);
+            LineStyleStreamExt::read_to_linestyles_rgb(reader, record.line_styles, allow_big_array);
             fill_bits_count = reader.read_ub(4);
             line_bits_count = reader.read_ub(4);
         }
@@ -117,8 +117,8 @@ namespace swf_reader::shapes::records
         record_read_helper(record, reader, fill_bits_count, line_bits_count);
         if (record.flags.get(StyleChangeRecordFlag::StateNewStyles))
         {
-            FillStyleStreamExt::read_to_fillstyles_rgba(reader, record.FillStyles);
-            LineStyleStreamExt::read_to_linestyles_rgba(reader, record.LineStyles);
+            FillStyleStreamExt::read_to_fillstyles_rgba(reader, record.fill_styles);
+            LineStyleStreamExt::read_to_linestyles_rgba(reader, record.line_styles);
             fill_bits_count = reader.read_ub(4);
             line_bits_count = reader.read_ub(4);
         }

@@ -26,8 +26,8 @@ namespace swf_reader
         static std::vector<u8> decompress(const std::vector<u8>& compressed, SwfFormat format);
 
     private:
-        static void decompress_zlib(std::istream& source, std::ostream& target);
-        static void decompress_lzma(std::istream& source, std::ostream& target);
+        static bool decompress_zlib(std::istream& source, std::ostream& target);
+        static bool decompress_lzma(std::istream& source, std::ostream& target);
         static void validate_compression_format(SwfFormat format);
     };
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file    shape_record_type.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -14,7 +14,9 @@ namespace swf_reader::shapes::records
     enum class ShapeRecordType : u8
     {
         EndRecord,
-        StyleChangeRecord,
+        StyleChangeRecordRgb,
+        StyleChangeRecordRgba,
+        StyleChangeRecordEx,
         StraightEdge,
         CurvedEdgeRecord
     };
