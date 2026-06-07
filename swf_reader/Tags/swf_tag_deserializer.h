@@ -43,6 +43,8 @@ namespace swf_reader::tags
         SwfTagBase& visit(control_tags::EndTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(control_tags::FileAttributesTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(control_tags::SetBackgroundColorTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(control_tags::SymbolClassTag& tag, ISwfStreamReader& reader) override;
+        SwfTagBase& visit(control_tags::DefineSceneAndFrameLabelDataTag& tag, ISwfStreamReader& reader) override;
 
         SwfTagBase& visit(shape_tags::DefineShapeTag& tag, ISwfStreamReader& reader) override;
         SwfTagBase& visit(shape_tags::DefineShape2Tag& tag, ISwfStreamReader& reader) override;

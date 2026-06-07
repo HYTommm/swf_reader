@@ -617,6 +617,18 @@
     <ClInclude Include="Tags\BitmapTags\define_bits_lossless2_tag.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\ControlTags\define_scene_and_frame_label_data_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\scene_offset_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\frame_label_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags\ControlTags\symbol_class_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

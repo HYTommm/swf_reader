@@ -49,10 +49,10 @@ namespace swf_reader::tags
         //virtual TResult& visit(SetTabIndexTag& tag,                  TArg& arg) = 0;
         virtual TResult& visit(control_tags::FileAttributesTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(ImportAssets2Tag& tag,                TArg& arg) = 0;
-        //virtual TResult& visit(SymbolClassTag& tag,                  TArg& arg) = 0;
+        virtual TResult& visit(control_tags::SymbolClassTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(MetadataTag& tag,                     TArg& arg) = 0;
         //virtual TResult& visit(DefineScalingGridTag& tag,            TArg& arg) = 0;
-        //virtual TResult& visit(DefineSceneAndFrameLabelDataTag& tag, TArg& arg) = 0;
+        virtual TResult& visit(control_tags::DefineSceneAndFrameLabelDataTag& tag, TArg& arg) = 0;
         #pragma endregion
 
         #pragma region Action tags

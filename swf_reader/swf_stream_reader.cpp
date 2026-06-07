@@ -124,7 +124,7 @@ namespace swf_reader
         auto read_byte_part = [this](u32& value, const int shift) -> bool {
             const u8 bt = read_byte();
             value |= (bt & 0x7fu) << shift;
-            return (bt & 0x80) != 0;
+            return (bt & 0x80) == 0;
             };
 
         if (read_byte_part(val, 0)) return val;

@@ -21,6 +21,7 @@ namespace swf_reader::tags::shape_morphing_tags
         data::SwfRect start_edge_bounds;
         data::SwfRect end_edge_bounds;
 
+        u8 reserved;
         bool uses_non_scaling_strokes;
         bool uses_scaling_strokes;
 

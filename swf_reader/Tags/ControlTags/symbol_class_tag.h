@@ -1,5 +1,5 @@
-﻿/*
- * @file    define_bits_jpeg4_tag.h
+﻿/**
+ * @file    symbol_class_tag.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
  * C++ port: Copyright (c) 2025 HYTomZ
@@ -8,18 +8,22 @@
  */
 
 #pragma once
-#include "define_bits_jpeg_alpha_base.h"
 
-namespace swf_reader::tags::bitmap_tags
+#include <vector>
+
+#include "Tags/swf_tag_base.h"
+#include "Data/swf_symbol_reference.h"
+
+namespace swf_reader::tags::control_tags
 {
-    class DefineBitsJpeg4Tag : public DefineBitsJpegAlphaBase
+    class SymbolClassTag : public SwfTagBase
     {
     public:
-        u16 deblock_param;
+        Vec<data::SwfSymbolReference> references;
 
-        [[nodiscard]] SwfTagType get_type() const override
+        SwfTagType get_type() const override
         {
-            return SwfTagType::DefineBitsJPEG4;
+            return SwfTagType::SymbolClass;
         }
 
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override

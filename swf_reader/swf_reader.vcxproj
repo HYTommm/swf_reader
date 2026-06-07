@@ -306,7 +306,9 @@
     <ClInclude Include="Data\color_transform_rgb.h" />
     <ClInclude Include="Data\color_transform_rgba.h" />
     <ClInclude Include="Data\color_transform_stream_ext.h" />
+    <ClInclude Include="Data\scene_offset_data.h" />
     <ClInclude Include="Data\swf_array_2d.h" />
+    <ClInclude Include="Data\frame_label_data.h" />
     <ClInclude Include="Data\swf_header.h" />
     <ClInclude Include="Data\swf_matrix.h" />
     <ClInclude Include="Data\swf_rect.h" />
@@ -423,10 +425,12 @@
     <ClInclude Include="Tags\BitmapTags\define_bits_lossless_tag_base.h" />
     <ClInclude Include="Tags\BitmapTags\define_bits_tag.h" />
     <ClInclude Include="Tags\BitmapTags\jpeg_tables_tag.h" />
+    <ClInclude Include="Tags\ControlTags\define_scene_and_frame_label_data_tag.h" />
     <ClInclude Include="Tags\ControlTags\end_tag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_flag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_tag.h" />
     <ClInclude Include="Tags\ControlTags\set_background_color_tag.h" />
+    <ClInclude Include="Tags\ControlTags\symbol_class_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\display_list_base_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object2_flag.h" />
     <ClInclude Include="Tags\DisplayListTags\place_object2_tag.h" />

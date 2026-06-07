@@ -28,6 +28,7 @@
 #include "ControlTags/end_tag.h"
 #include "ControlTags/file_attributes_tag.h"
 #include "ControlTags/set_background_color_tag.h"
+#include "ControlTags/symbol_class_tag.h"
 #include "ShapeTags/define_shape_tag.h"
 #include "ShapeTags/define_shape2_tag.h"
 #include "ShapeTags/define_shape3_tag.h"
@@ -46,6 +47,9 @@
 #include "BitmapTags/define_bits_lossless_tag.h"
 #include "BitmapTags/define_bits_tag.h"
 #include "BitmapTags/jpeg_tables_tag.h"
+#include "ControlTags/define_scene_and_frame_label_data_tag.h"
+#include "Data/frame_label_data.h"
+#include "Data/scene_offset_data.h"
 #include "ShapeMorphing/morph_fillstyle_stream_ext.h"
 #include "ShapeMorphing/morph_linestyle_stream_ext.h"
 #include "ShapeMorphingTags/define_morph_shape2_tag.h"
@@ -220,6 +224,41 @@ namespace swf_reader::tags
         return tag;
     }
 
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::DefineSceneAndFrameLabelDataTag& tag, ISwfStreamReader& arg)
+    {
+        const u32 scenes_count = arg.read_encoded_u32();
+        for (u32 i = 0; i < scenes_count; i++)
+        {
+            data::SceneOffsetData item;
+            item.offset = arg.read_encoded_u32();
+            item.name = arg.read_string();
+            tag.scenes.push_back(std::move(item));
+        }
+        const u32 frames_count = arg.read_encoded_u32();
+        for (u32 i = 0; i < frames_count; i++)
+        {
+            data::FrameLabelData item;
+            item.frame_number = arg.read_encoded_u32();
+            item.label = arg.read_string();
+            tag.frames.push_back(std::move(item));
+        }
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::SymbolClassTag& tag, ISwfStreamReader& reader)
+    {
+        std::print("SymbolClassTag\n");
+        const u16 count = reader.read_ui16();
+        for (u16 i = 0; i < count; ++i)
+        {
+            data::SwfSymbolReference reference;
+            reference.symbol_id = reader.read_ui16();
+            reference.symbol_name = reader.read_string();
+            tag.references.push_back(std::move(reference));
+        }
+        return tag;
+    }
+
     #pragma endregion
 
     #pragma region Shapes tags
@@ -360,6 +399,9 @@ namespace swf_reader::tags
         tag.end_bounds = SwfStreamReaderExt::read_rect(reader);
         tag.start_edge_bounds = SwfStreamReaderExt::read_rect(reader);
         tag.end_edge_bounds = SwfStreamReaderExt::read_rect(reader);
+        tag.reserved = reader.read_ub(6);
+        tag.uses_non_scaling_strokes = reader.read_ub(1);
+        tag.uses_scaling_strokes = reader.read_ub(1);
         tag.offset = reader.read_ui32();
         shape_morphing::MorphFillStyleStreamExt::read_to_fillstyles(reader, tag.fill_styles);
         shape_morphing::MorphLineStyleStreamExt::read_to_linestyles_ex(reader, tag.line_styles);
