@@ -62,7 +62,7 @@ namespace swf_reader
             }
             else
             {
-                throw std::runtime_error("Tag can't be null. Loss of data possible");
+                continue;
             }
         }
     }
@@ -79,15 +79,7 @@ namespace swf_reader
 
         // 对于压缩格式，先解压
         decompressed_stream_ = boxed<std::stringstream>();
-        try
-        {
-            SwfZip::decompress(stream, *decompressed_stream_, info.format);
-        }
-        catch (const std::exception& e)
-        {
-            std::cerr << "Error decompressing SWF file: " << e.what();
-            return nullptr;
-        }
+        SwfZip::decompress(stream, *decompressed_stream_, info.format);
         decompressed_stream_->seekg(0);
 
         return boxed<SwfStreamReader>(*decompressed_stream_);

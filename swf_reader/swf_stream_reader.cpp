@@ -24,9 +24,11 @@ namespace swf_reader
             throw std::invalid_argument("Invalid stream provided to SwfStreamReader");
         }
 
+        const std::streampos current_pos = stream_->tellg();
+
         stream_->seekg(0, std::ios::end);
         end_pos = stream_->tellg();
-        stream_->seekg(0, std::ios::beg);
+        stream_->seekg(current_pos, std::ios::beg);
     }
 
     bool SwfStreamReader::is_eof() const

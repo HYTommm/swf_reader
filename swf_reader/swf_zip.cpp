@@ -20,9 +20,8 @@
 
 namespace swf_reader
 {
-    void SwfZip::decompress(std::istream& source, std::ostream& target, const SwfFormat format)
+    bool decompress(std::istream& source, std::ostream& target, const SwfFormat format)
     {
-        validate_compression_format(format);
         switch (format)
         {
             case SwfFormat::FWS:
@@ -31,16 +30,26 @@ namespace swf_reader
             case SwfFormat::CWS:
             {
                 const bool result = decompress_zlib(source, target);
-                if (!result) throw std::runtime_error("Failed to decompress zlib compressed data");
+                if (!result)
+                {
+                    std::cerr << "Failed to decompress zlib compressed data\n";
+                    return false;
+                }
             }break;
             case SwfFormat::ZWS:
             {
                 const bool result = decompress_lzma(source, target);
-                if (!result) throw std::runtime_error("Failed to decompress lzma compressed data");
+                if (!result)
+                {
+                    std::cerr << "Failed to decompress lzma compressed data\n";
+                    return false;
+                }
             }break;
             case SwfFormat::Unknown:
-                throw std::invalid_argument("Unknown compression format");
+                std::cerr << "Unknown compression format\n";
+                return false;
         }
+        return true;
     }
 
     Vec<u8> SwfZip::decompress(const std::vector<u8>& compressed, const SwfFormat format)
@@ -48,7 +57,10 @@ namespace swf_reader
         std::istringstream source(std::string(compressed.begin(), compressed.end()));
         std::ostringstream target;
 
-        decompress(source, target, format);
+        if (!decompress(source, target, format))
+        {
+            return {};
+        }
 
         std::string result_str = target.str();
         return { result_str.begin(), result_str.end() };
@@ -131,9 +143,7 @@ namespace swf_reader
         int result = Z_OK;
         bool stream_ended = false;
         std::streamsize total_decompressed_size = 0;
-        try
-        {
-            do
+        do
             {
                 // 只有当输入缓冲区为空时才读取新数据
                 if (stream.avail_in == 0 && !stream_ended)
@@ -195,13 +205,6 @@ namespace swf_reader
                     return false;
                 }
             } while (stream.avail_out == 0 || !stream_ended);
-        }
-        catch (...)
-        {
-            inflateEnd(&stream);
-            std::cerr << "Exception occurred during zlib decompression\n";
-            return false;
-        }
 
         inflateEnd(&stream);
         return true;
@@ -396,11 +399,4 @@ namespace swf_reader
         lzma_end(&stream);
     }
     #endif
-    void SwfZip::validate_compression_format(const SwfFormat format)
-    {
-        if (format == SwfFormat::Unknown)
-        {
-            throw std::invalid_argument("Unknown compression format");
-        }
-    }
 }

@@ -247,7 +247,6 @@ namespace swf_reader::tags
 
     SwfTagBase& SwfTagDeserializer::visit(control_tags::SymbolClassTag& tag, ISwfStreamReader& reader)
     {
-        std::print("SymbolClassTag\n");
         const u16 count = reader.read_ui16();
         for (u16 i = 0; i < count; ++i)
         {

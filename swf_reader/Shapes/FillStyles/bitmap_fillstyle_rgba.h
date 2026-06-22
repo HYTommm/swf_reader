@@ -39,7 +39,7 @@ namespace swf_reader::shapes::fillstyles
                 case BitmapMode::Repeat:
                     return smoothing ? FillStyleType::RepeatingBitmap : FillStyleType::NonSmoothedRepeatingBitmap;
                 default:
-                    throw std::runtime_error("Unsupported bitmap mode");
+                    return smoothing ? FillStyleType::ClippedBitmap : FillStyleType::NonSmoothedClippedBitmap;
             }
         }
 

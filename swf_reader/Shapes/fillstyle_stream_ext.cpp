@@ -15,8 +15,10 @@ namespace swf_reader::shapes
     void FillStyleStreamExt::read_to_fillstyles_rgb(ISwfStreamReader& reader, Vec<Box<fillstyles::FillStyleRgb>>& fillstyles, const bool allow_big_array)
     {
         u16 count = reader.read_byte();
+
         if (allow_big_array && count == 255)
             count = reader.read_ui16();
+
         fillstyles.reserve(count);
         for (u16 i = 0; i < count; i++)
         {
@@ -29,6 +31,7 @@ namespace swf_reader::shapes
         u16 count = reader.read_byte();
         if (count == 255)
             count = reader.read_ui16();
+
         fillstyles.reserve(count);
         for (u16 i = 0; i < count; i++)
         {

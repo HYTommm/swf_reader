@@ -14,6 +14,9 @@
 #include <chrono>
 #include <map>
 
+#include "Tags/define_sprite_tag.h"
+#include "Tags/ControlTags/symbol_class_tag.h"
+
 int main(int argc, char* argv[])
 {
     //std::system("chcp 65001>nul");
@@ -23,11 +26,11 @@ int main(int argc, char* argv[])
         std::print("Usage: {} <swf_file>\n", argv[0]);
         return 1;
     }
-    std::print("读取swf文件{}\n", argv[1]);
+    //std::print("读取swf文件{}\n", argv[1]);
     // 以二进制形式打开swf文件
     std::ifstream file(argv[1], std::ios::binary);
 
-    std::print("文件打开成功\n");
+    //std::print("文件打开成功\n");
     auto start = std::chrono::high_resolution_clock::now();
 
     constexpr size_t buffer_size = 16 * 1024; // 128kb
@@ -36,10 +39,10 @@ int main(int argc, char* argv[])
     file.rdbuf()->pubsetbuf(my_buffer, buffer_size);
     const Box<swf_reader::SwfFile> swf_file = swf_reader::SwfFile::read_from(file);
     auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    std::print("读取耗时: {} 毫秒\n", duration.count());
+    //auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    //std::print("读取耗时: {} 毫秒\n", duration.count());
 
-    std::print("已读取\n");
+    //std::print("已读取\n");
 
     if (!swf_file)
     {
@@ -61,29 +64,44 @@ int main(int argc, char* argv[])
     */
 
     // 打印swf文件信息
-    std::print("签名: {}\n", static_cast<int>(swf_file->file_info.format));
-    std::print("版本: {}\n", swf_file->file_info.version);
-    std::print("文件大小: {}\n", swf_file->file_info.file_length);
-    std::print("帧率: {}\n", swf_file->header.frame_rate);
-    std::print("帧数: {}\n", swf_file->header.frame_count);
-    std::print("显示区域（缇）: {}, {}=> {}, {}缇\n",
-        swf_file->header.frame_size.x_min, swf_file->header.frame_size.y_min,
-        swf_file->header.frame_size.x_max, swf_file->header.frame_size.y_max);
-    std::print("显示区域（像素）: {}, {}=> {}, {}像素\n",
-        swf_file->header.frame_size.x_min / 20, swf_file->header.frame_size.y_min / 20,
-        swf_file->header.frame_size.x_max / 20, swf_file->header.frame_size.y_max / 20);
-    int unknown_count = 0;
+    //std::print("签名: {}\n", static_cast<int>(swf_file->file_info.format));
+    //std::print("版本: {}\n", swf_file->file_info.version);
+    //std::print("文件大小: {}\n", swf_file->file_info.file_length);
+    //std::print("帧率: {}\n", swf_file->header.frame_rate);
+    //std::print("帧数: {}\n", swf_file->header.frame_count);
+    //std::print("显示区域（缇）: {}, {}=> {}, {}缇\n",
+    //    swf_file->header.frame_size.x_min, swf_file->header.frame_size.y_min,
+    //    swf_file->header.frame_size.x_max, swf_file->header.frame_size.y_max);
+    //std::print("显示区域（像素）: {}, {}=> {}, {}像素\n",
+    //    swf_file->header.frame_size.x_min / 20, swf_file->header.frame_size.y_min / 20,
+    //    swf_file->header.frame_size.x_max / 20, swf_file->header.frame_size.y_max / 20);
+    //int unknown_count = 0;
+    //for (const Box<swf_reader::tags::SwfTagBase>& tag : swf_file->tags)
+    //{
+    //    if (tag->get_type() == swf_reader::tags::SwfTagType::Unknown)
+    //    {
+    //        unknown_count++;
+    //    }
+    //}
+    //std::print("标签数量: {}\n", swf_file->tags.size());
+    //std::print("文件大小与标签数量之比: {}\n", swf_file->file_info.file_length / swf_file->tags.size());
+    //std::print("可解析的标签比例: {}%\n", (100.0 - unknown_count * 100.0 / swf_file->tags.size()));
+
     for (const Box<swf_reader::tags::SwfTagBase>& tag : swf_file->tags)
     {
-        if (tag->get_type() == swf_reader::tags::SwfTagType::Unknown)
+        using namespace swf_reader::tags;
+        if (tag->get_type() == SwfTagType::SymbolClass)
         {
-            unknown_count++;
+            auto* sym_tag = static_cast<control_tags::SymbolClassTag*>(tag.get());
+            for (const swf_reader::data::SwfSymbolReference& ref : sym_tag->references)
+            {
+                //_symbol_map.insert(StringName(ref.symbol_name.c_str()), ref.symbol_id);
+                //id宽度至少4位
+                std::print("Symbol ID: {:-4}  Symbol Name: {}\n", ref.symbol_id, ref.symbol_name);
+            }
         }
     }
-    std::print("标签数量: {}\n", swf_file->tags.size());
-    std::print("文件大小与标签数量之比: {}\n", swf_file->file_info.file_length / swf_file->tags.size());
-    std::print("可解析的标签比例: {}%\n", (100.0 - unknown_count * 100.0 / swf_file->tags.size()));
-    std::map <int, int> tag_count;
+
     return 0;
 }
 

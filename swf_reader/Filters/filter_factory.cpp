@@ -40,7 +40,7 @@ namespace swf_reader::filters
             case FilterType::GradientBevel:
                 return boxed<GradientBevelFilter>();
             default:
-                throw std::runtime_error("Unknown filter type");
+                return nullptr;
         }
     }
 }
