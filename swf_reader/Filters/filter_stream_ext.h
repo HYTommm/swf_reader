@@ -14,7 +14,7 @@ namespace swf_reader::filters
     class FilterStreamExt
     {
     public:
-        FilterStreamExt() = delete; // 此类为静态类
+        FilterStreamExt() = delete; // 姝ょ被涓洪潤鎬佺被
 
         static inline FilterReader _reader;
 

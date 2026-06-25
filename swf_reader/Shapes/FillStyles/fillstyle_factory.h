@@ -47,7 +47,7 @@ namespace swf_reader::shapes::fillstyles
                 case FillStyleType::NonSmoothedClippedBitmap:
                     return boxed<BitmapFillStyleRgb>(false, BitmapMode::Clip);
                 default:
-                    throw std::runtime_error("Not supported");
+                    return nullptr;
             }
         }
         Box<FillStyleRgba> create_rgba(const FillStyleType type)
@@ -71,7 +71,7 @@ namespace swf_reader::shapes::fillstyles
                 case FillStyleType::NonSmoothedClippedBitmap:
                     return boxed<BitmapFillStyleRgba>(false, BitmapMode::Clip);
                 default:
-                    throw std::runtime_error("Not supported");
+                    return nullptr;
             }
         }
     };

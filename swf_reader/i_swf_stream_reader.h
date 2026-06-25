@@ -11,9 +11,6 @@
 #include "cpp_base_type.h"
 #include <string>
 #include <vector>
-
-#include "Data/swf_matrix.h"
-#include "Tags/swf_tag_data.h"
 #include "swf_stream_reader_ext.h"
 
 namespace swf_reader

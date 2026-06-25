@@ -45,6 +45,7 @@ namespace swf_reader::shape_morphing::morph_fillstyles
                 case MorphFillStyleType::NonSmoothedClippedBitmap:
                     return boxed<MorphBitmapFillStyle>(false, MorphBitmapMode::Clip);
             }
+            return nullptr;
         }
     };
 }

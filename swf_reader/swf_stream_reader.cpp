@@ -8,6 +8,7 @@
  */
 #include "swf_stream_reader.h"
 
+#include <cstring>
 #include <stdexcept>
 #include <sstream>
 #include <vector>
@@ -21,7 +22,8 @@ namespace swf_reader
     {
         if (!stream_ || !*stream_)
         {
-            throw std::invalid_argument("Invalid stream provided to SwfStreamReader");
+            std::cerr << "Invalid stream provided to SwfStreamReader\n";
+            return;
         }
 
         const std::streampos current_pos = stream_->tellg();

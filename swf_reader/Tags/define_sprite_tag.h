@@ -19,7 +19,7 @@ namespace swf_reader::tags
         u16 frames_count;
         Vec<Box<SwfTagBase>> tags;
 
-        // Í¨¹ý SwfTagBase ¼Ì³Ð
+        // é€šè¿‡ SwfTagBase ç»§æ‰¿
         SwfTagBase& accept_visitor(ISwfTagVisitor<ISwfStreamReader, SwfTagBase&>& visitor, ISwfStreamReader& reader) override
         {
             return visitor.visit(*this, reader);

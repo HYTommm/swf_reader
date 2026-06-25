@@ -16,10 +16,10 @@ namespace swf_reader::shapes::records
 {
     IShapeRecord& ShapeRecordReader::visit(
         EndShapeRecord& record,
-        ISwfStreamReader& reader,
-        bool allow_big_array,
-        u32& fill_bits_count,
-        u32& line_bits_count)
+        ISwfStreamReader&,
+        bool,
+        u32&,
+        u32&)
     {
         return record;
     }
@@ -27,9 +27,9 @@ namespace swf_reader::shapes::records
     IShapeRecord& ShapeRecordReader::visit(
         StraightEdgeShapeRecord& record,
         ISwfStreamReader& reader,
-        bool allow_big_array,
-        u32& fill_bits_count,
-        u32& line_bits_count)
+        bool,
+        u32&,
+        u32&)
     {
         u32 num_bits = reader.read_ub(4) + 2;
         bool general_line_flag = reader.read_bit();
@@ -43,9 +43,9 @@ namespace swf_reader::shapes::records
     IShapeRecord& ShapeRecordReader::visit(
         CurvedEdgeShapeRecord& record,
         ISwfStreamReader& reader,
-        bool allow_big_array,
-        u32& fill_bits_count,
-        u32& line_bits_count)
+        bool,
+        u32&,
+        u32&)
     {
         u32 num_bits = reader.read_ub(4) + 2;
         record.control_delta_x = reader.read_sb(num_bits);
@@ -75,7 +75,7 @@ namespace swf_reader::shapes::records
     IShapeRecord& ShapeRecordReader::visit(
         StyleChangeShapeRecordEx& record,
         ISwfStreamReader& reader,
-        bool allow_big_array,
+        bool,
         u32& fill_bits_count,
         u32& line_bits_count)
     {
@@ -110,7 +110,7 @@ namespace swf_reader::shapes::records
     IShapeRecord& ShapeRecordReader::visit(
         StyleChangeShapeRecordRgba& record,
         ISwfStreamReader& reader,
-        bool allow_big_array,
+        bool,
         u32& fill_bits_count,
         u32& line_bits_count)
     {

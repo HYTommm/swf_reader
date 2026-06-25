@@ -2,6 +2,7 @@
 #include "cpp_base_type.h"
 #include <memory>
 #include <cassert>
+#include <cstring>
 
 namespace swf_reader::data
 {

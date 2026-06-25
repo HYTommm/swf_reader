@@ -25,7 +25,6 @@ namespace swf_reader::tags::display_list_tags
     public:
 
         PlaceObject3Tag() = default;
-        PlaceObject3Tag(const PlaceObject3Tag&) = default;
         PlaceObject3Flags flags;
 
         std::string class_name;

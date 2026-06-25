@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file   i_shape_record_visitor.h
  *
  * Original C# implementation: Copyright (c) 2018 Sergey Savchuk
@@ -7,7 +7,9 @@
  * Licensed under the MIT License.
  */
 #pragma once
-#include "cpp_base_type.h"
+
+#include "primitive_types.h"
+
 namespace swf_reader::shapes::records
 {
     class EndShapeRecord;

@@ -10,6 +10,7 @@
 
 #include "morph_fillstyle.h"
 #include "Data/swf_matrix.h"
+#include "MorphGradients/morph_focal_gradient.h"
 
 namespace swf_reader::morph_gradients
 {

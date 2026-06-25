@@ -42,6 +42,7 @@ namespace swf_reader::shape_morphing::morph_fillstyles
                 case MorphBitmapMode::Repeat:
                     return smoothing ? MorphFillStyleType::RepeatingBitmap : MorphFillStyleType::NonSmoothedRepeatingBitmap;
             }
+            return MorphFillStyleType::RepeatingBitmap;
         }
 
         MorphFillStyle& accept_visitor(IMorphFillStyleVisitor<ISwfStreamReader, MorphFillStyle&>& visitor, ISwfStreamReader& arg) override

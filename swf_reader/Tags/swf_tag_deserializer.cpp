@@ -196,7 +196,7 @@ namespace swf_reader::tags
         return tag;
     }
 
-    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::ShowFrameTag& tag, ISwfStreamReader& reader)
+    SwfTagBase& SwfTagDeserializer::visit(display_list_tags::ShowFrameTag& tag, ISwfStreamReader&)
     {
         return tag;
     }
@@ -205,7 +205,7 @@ namespace swf_reader::tags
 
     #pragma region Control tags
 
-    SwfTagBase& SwfTagDeserializer::visit(control_tags::EndTag& tag, ISwfStreamReader& reader)
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::EndTag& tag, ISwfStreamReader&)
     {
         return tag;
     }

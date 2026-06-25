@@ -15,7 +15,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerCommandArguments>C:\Users\HYTomZ\Documents\Godot\godot-swf-3\Dra_FeiEr3_001_battle.swf</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArgumentsHistory>C:\Users\HYTomZ\Documents\Godot\godot-swf\swf\90.swf|</LocalDebuggerCommandArgumentsHistory>
+    <LocalDebuggerCommandArgumentsHistory>C:\Users\HYTomZ\Documents\Godot\godot-swf\swf\90.swf|C:\Users\HYTomZ\Documents\Godot\godot-swf-3\Dra_FeiEr3_001_battle.swf|</LocalDebuggerCommandArgumentsHistory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LocalDebuggerCommandArguments>C:\Users\HYTomZ\Documents\Godot\godot-swf-3\90.swf</LocalDebuggerCommandArguments>

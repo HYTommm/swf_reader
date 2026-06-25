@@ -8,7 +8,6 @@
  */
 
 #pragma once
-#include "cpp_base_type.h"
 #include "swf_rect.h"
 
 namespace swf_reader::data

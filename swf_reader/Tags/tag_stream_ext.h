@@ -10,6 +10,7 @@
 #pragma once
 
 #include "i_swf_stream_reader.h"
+#include "swf_tag_data.h"
 
 namespace swf_reader::tags
 {

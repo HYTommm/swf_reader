@@ -30,7 +30,11 @@ namespace swf_reader
         if (sig == "FWS") header.format = SwfFormat::FWS;
         else if (sig == "CWS") header.format = SwfFormat::CWS;
         else if (sig == "ZWS") header.format = SwfFormat::ZWS;
-        else throw std::runtime_error("Unsupported File Format: " + sig);
+        else
+        {
+            std::cerr << "Unsupported File Format: " << sig << "\n";
+            header.format = SwfFormat::Unknown;
+        }
 
         header.version = reader.read_byte();
 

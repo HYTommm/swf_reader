@@ -4,7 +4,6 @@
 #include <optional>
 #include <unordered_map>
 #include <vector>
-#include "primitive_types.h"
 
 template<typename T>
 using Box = std::unique_ptr<T>;

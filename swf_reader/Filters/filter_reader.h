@@ -20,7 +20,7 @@ namespace swf_reader::filters
     public:
         Box<BaseFilter> read(ISwfStreamReader& reader);
 
-        // Í¨¹ý IFilterVisitor ¼Ì³Ð
+        // é€šè¿‡ IFilterVisitor ç»§æ‰¿
         BaseFilter& visit(DropShadowFilter& filter, ISwfStreamReader& reader) override;
         BaseFilter& visit(BlurFilter& filter, ISwfStreamReader& reader) override;
         BaseFilter& visit(GlowFilter& filter, ISwfStreamReader& reader) override;

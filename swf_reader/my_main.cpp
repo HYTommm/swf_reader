@@ -1,18 +1,15 @@
 ﻿//#ifdef _DEBUG
 
-#include <cstdlib>
 #include <format>
 #include <fstream>
 #include <iostream>
 #include <print>
 #include <vector>
-#include "lzma.h"
 #include "swf_file.h"
 #include "zlib.h"
 #include "Tags/ShapeTags/define_shape_tag.h"
 
 #include <chrono>
-#include <map>
 
 #include "Tags/define_sprite_tag.h"
 #include "Tags/ControlTags/symbol_class_tag.h"
@@ -31,16 +28,12 @@ int main(int argc, char* argv[])
     std::ifstream file(argv[1], std::ios::binary);
 
     //std::print("文件打开成功\n");
-    auto start = std::chrono::high_resolution_clock::now();
 
-    constexpr size_t buffer_size = 16 * 1024; // 128kb
+    constexpr usize buffer_size = static_cast<usize>(16) * 1024; // 128kb
     char my_buffer[buffer_size];
 
     file.rdbuf()->pubsetbuf(my_buffer, buffer_size);
     const Box<swf_reader::SwfFile> swf_file = swf_reader::SwfFile::read_from(file);
-    auto end = std::chrono::high_resolution_clock::now();
-    //auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    //std::print("读取耗时: {} 毫秒\n", duration.count());
 
     //std::print("已读取\n");
 

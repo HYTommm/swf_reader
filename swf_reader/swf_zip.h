@@ -9,9 +9,9 @@
 
 #pragma once
 
-#include <memory>
-
+#include "primitive_types.h"
 #include "cpp_base_type.h"
+
 #include "swf_format.h"
 
 namespace swf_reader
@@ -23,7 +23,7 @@ namespace swf_reader
         static bool decompress(std::istream& source, std::ostream& target, SwfFormat format);
 
         // 字节数组解压接口
-        static std::vector<u8> decompress(const std::vector<u8>& compressed, SwfFormat format);
+        static Vec<u8> decompress(const Vec<u8>& compressed, SwfFormat format);
 
     private:
         static bool decompress_zlib(std::istream& source, std::ostream& target);
