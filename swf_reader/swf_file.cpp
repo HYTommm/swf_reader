@@ -8,9 +8,7 @@
  */
 #include "swf_file.h"
 
-#include <format>
 #include <memory>
-#include <print>
 #include <sstream>
 #include <stdexcept>
 
@@ -26,16 +24,12 @@ namespace swf_reader
     Box<SwfFile> SwfFile::read_from(std::istream& stream)
     {
         Box<SwfFile> file = boxed<SwfFile>();
-        //std::print("开始读取文件\n");
-
         SwfStreamReader reader(stream);
         file->file_info = SwfStreamReaderExt::read_swf_file_info(reader);
-        //std::print("文件信息读取完毕\n");
         const Box<ISwfStreamReader> final_reader = file->get_swf_stream_reader(file->file_info, stream);
         if (final_reader != nullptr)
         {
             file->header = SwfStreamReaderExt::read_swf_header(*final_reader);
-            //std::print("头部信息读取完毕\n");
             read_tags(*file, *final_reader);
         }
         else
@@ -57,7 +51,6 @@ namespace swf_reader
 
             if (Box<tags::SwfTagBase> tag = deserializer.read_tag(tag_data))
             {
-                //std::print("读取到标签 {}\n", (int)tag->get_type());
                 file.tags.push_back(std::move(tag));
             }
             else
