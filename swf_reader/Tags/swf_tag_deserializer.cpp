@@ -47,6 +47,7 @@
 #include "BitmapTags/define_bits_tag.h"
 #include "BitmapTags/jpeg_tables_tag.h"
 #include "ControlTags/define_scene_and_frame_label_data_tag.h"
+#include "ControlTags/frame_label_tag.h"
 #include "Data/frame_label_data.h"
 #include "Data/scene_offset_data.h"
 #include "ShapeMorphing/morph_fillstyle_stream_ext.h"
@@ -222,22 +223,32 @@ namespace swf_reader::tags
         return tag;
     }
 
-    SwfTagBase& SwfTagDeserializer::visit(control_tags::DefineSceneAndFrameLabelDataTag& tag, ISwfStreamReader& arg)
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::FrameLabelTag& tag, ISwfStreamReader& reader)
     {
-        const u32 scenes_count = arg.read_encoded_u32();
+        tag.name = reader.read_string();
+        if (!reader.is_eof())
+            tag.anchor_flag = reader.read_byte();
+        else
+            tag.anchor_flag = std::nullopt;
+        return tag;
+    }
+
+    SwfTagBase& SwfTagDeserializer::visit(control_tags::DefineSceneAndFrameLabelDataTag& tag, ISwfStreamReader& reader)
+    {
+        const u32 scenes_count = reader.read_encoded_u32();
         for (u32 i = 0; i < scenes_count; i++)
         {
             data::SceneOffsetData item;
-            item.offset = arg.read_encoded_u32();
-            item.name = arg.read_string();
+            item.offset = reader.read_encoded_u32();
+            item.name = reader.read_string();
             tag.scenes.push_back(std::move(item));
         }
-        const u32 frames_count = arg.read_encoded_u32();
+        const u32 frames_count = reader.read_encoded_u32();
         for (u32 i = 0; i < frames_count; i++)
         {
             data::FrameLabelData item;
-            item.frame_number = arg.read_encoded_u32();
-            item.label = arg.read_string();
+            item.frame_number = reader.read_encoded_u32();
+            item.label = reader.read_string();
             tag.frames.push_back(std::move(item));
         }
         return tag;

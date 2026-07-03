@@ -40,6 +40,7 @@
 #include "BitmapTags/define_bits_lossless_tag.h"
 #include "BitmapTags/define_bits_lossless2_tag.h"
 #include "BitmapTags/define_bits_jpeg4_tag.h"
+#include "ControlTags/frame_label_tag.h"
 
 namespace swf_reader::tags
 {
@@ -115,8 +116,8 @@ namespace swf_reader::tags
                     //	return boxed<DefineEditTextTag>();
                 case SwfTagType::DefineSprite:
                     return boxed<DefineSpriteTag>();
-                    //case SwfTagType::FrameLabel:
-                    //	return boxed<FrameLabelTag>();
+                case SwfTagType::FrameLabel:
+                    return boxed<control_tags::FrameLabelTag>();
                     //case SwfTagType::SoundStreamHead2:
                     //	return boxed<SoundStreamHead2Tag>();
                 case SwfTagType::DefineMorphShape:

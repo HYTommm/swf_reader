@@ -38,7 +38,7 @@ namespace swf_reader::tags
 
         #pragma region Control tags
         virtual TResult& visit(control_tags::SetBackgroundColorTag& tag, TArg& arg) = 0;
-        //virtual TResult& visit(FrameLabelTag& tag,                   TArg& arg) = 0;
+        virtual TResult& visit(control_tags::FrameLabelTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(ProtectTag& tag,                      TArg& arg) = 0;
         virtual TResult& visit(control_tags::EndTag& tag, TArg& arg) = 0;
         //virtual TResult& visit(ExportAssetsTag& tag,                 TArg& arg) = 0;

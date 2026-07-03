@@ -629,6 +629,9 @@
     <ClInclude Include="Tags\ControlTags\symbol_class_tag.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Tags\ControlTags\frame_label_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-tidy" />

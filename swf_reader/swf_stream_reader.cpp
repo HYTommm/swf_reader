@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <vector>
+#include <limits>
 
 #include "Tags/tag_stream_ext.h"
 

@@ -430,6 +430,7 @@
     <ClInclude Include="Tags\ControlTags\end_tag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_flag.h" />
     <ClInclude Include="Tags\ControlTags\file_attributes_tag.h" />
+    <ClInclude Include="Tags\ControlTags\frame_label_tag.h" />
     <ClInclude Include="Tags\ControlTags\set_background_color_tag.h" />
     <ClInclude Include="Tags\ControlTags\symbol_class_tag.h" />
     <ClInclude Include="Tags\DisplayListTags\display_list_base_tag.h" />

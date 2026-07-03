@@ -5,3 +5,7 @@ swf_reader/swf_reader/x64
 swf_reader/.idea/
 
 *.cd
+check.bat
+build_*.bat
+build_*.sh
+build_clang_wsl/
